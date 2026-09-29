@@ -1,0 +1,13 @@
+{
+  "python": "3.11.13 | packaged by Anaconda, Inc. | (main, Jun  5 2025, 13:03:15) [MSC v.1929 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "torch": "2.11.0+cu128",
+  "cuda_available": true,
+  "cuda_version": "12.8",
+  "cuda_device_count": 1,
+  "cuda_device_index": 0,
+  "cuda_device_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "cuda_total_vram_gb": 7.996,
+  "cuda_bf16_supported": true,
+  "pid": 14188
+}

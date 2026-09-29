@@ -1,0 +1,114 @@
+scheme2:
+  # Teacher Scheme 2: one seed, no curriculum, fresh random instance generation.
+  training_seed: 0
+  run_root: result/scheme2_runs
+  run_name_prefix: egdm_hgppo_scheme2_seed
+  # The active budget profile is selected by the measured RTX 4060 pilot.
+  # accelerated_3epoch preserves the full sampled-event budget while reducing
+  # each PPO replay update from four to three epochs.
+  active_budget_profile: accelerated_3epoch
+  budget_profiles:
+    baseline:
+      formal_iterations: 100
+      parallel_envs: 32
+      rollout_events: 8192
+      ppo_epochs: 4
+      validation_every_iterations: 20
+    accelerated_3epoch:
+      formal_iterations: 200
+      parallel_envs: 32
+      rollout_events: 4096
+      ppo_epochs: 3
+      validation_every_iterations: 40
+    accelerated_2epoch:
+      formal_iterations: 200
+      parallel_envs: 32
+      rollout_events: 4096
+      ppo_epochs: 2
+      validation_every_iterations: 40
+
+  # Fixed validation/test design only. Online training uses the S/M/L ranges
+  # in configs/instance.yaml and samples fresh structural dimensions each PPO
+  # iteration; this file is never used to constrain training.
+  instance_parameter_table_path: configs/fixed_design_scheme2.yaml
+  training_structural_source: scale_ranges
+
+  fresh_instances_each_iteration: true
+
+  execution:
+    # A 512-event replay microbatch preserves the paper's 512-event logical
+    # PPO minibatch and optimizer-step count, while avoiding a second encoder
+    # forward/backward pass. CUDA OOM establishes an in-process run-local safe
+    # cap for later updates; it never rewrites this configuration.
+    # RTX 4060 Laptop 8 GB: 512 logical samples remain unchanged, while 128
+    # transitions are materialized on the GPU at once. A full 8192-event
+    # baseline update empirically OOMs at 256 on this 8 GB card; starting at
+    # the observed safe cap avoids a wasted retry while retaining the
+    # run-local fallback for larger-than-expected graphs.
+    replay_microbatch_target: 128
+    replay_microbatch_min: 16
+    persist_oom_fallback_across_updates: true
+    materialize_cache_max_mib: 2048
+    # Batch candidate-row construction inside each autoregressive decoder step.
+    # Feasibility masks, candidate order, stored traces and PPO objectives stay exact.
+    tensorized_decoder_scoring: true
+    # A candidate's neural features are immutable within one stored trace.
+    # Reuse its differentiable score while re-running every feasibility mask.
+    replay_candidate_score_memoization: true
+    # RTX 4060 8 GB execution profile. The logical PPO minibatch remains 512;
+    # the selected budget profile controls the event/epoch schedule.
+    # Metadata label for the target execution host.  The effective AMP dtype
+    # is sourced only from configs/algo.yaml -> ppo_implementation.mixed_precision
+    # so there is no duplicate, non-functional dtype setting.
+    hardware_profile_label: rtx_4060_laptop_8gb
+    # This discrete-event simulator remains CPU/Python bound. The promotion gate
+    # measured 38.64 events/s with four workers versus 23.33 events/s for the
+    # single-process GPU collector (1.66x, above the 1.5x SKILL threshold). With
+    # immutable live-feature caching enabled, the final 8192-event production
+    # path reached 65.18 events/s. PPO remains on GPU and synchronizes only at
+    # rollout boundaries, preserving its on-policy contract.
+    rollout_executor: multiprocess_cpu
+
+  training_distribution:
+    scales: [S, M, L]
+    scenarios: [D1, D2, D3, D4, D5]
+    load_ratios: [0.65, 0.80, 0.95]
+    due_tightness: [tight, medium, loose]
+
+  validation:
+    root: data/instances/val_scheme2
+    base_seed: 300000
+    instances_per_combination: 1
+    scales: [S, M, L]
+    scenarios: [D1, D2, D3, D4, D5]
+    load_ratios: [0.65, 0.80, 0.95]
+    due_tightness: [tight, medium, loose]
+    monitor_subset: parameter_cases
+    every_iterations: 20
+    progress_every_instances: 1
+    min_delta: 0.0
+
+  evaluation:
+    # Formal scripts must evaluate the validation-selected checkpoint. They do
+    # not silently substitute final_model.pt when best_model.pt is absent.
+    checkpoint_policy: best_validation
+
+  monitoring:
+    visdom:
+      # CSV remains authoritative. With no service running, training continues
+      # and emits one warning; start `python -m visdom.server` for live curves.
+      enabled: true
+      server: http://localhost
+      port: 8097
+      env_prefix: egdm_hgppo_scheme2
+      update_every_iterations: 1
+
+  pilot:
+    confirm_iterations: 1
+    confirm_rollout_events: 128
+    # Operator+shape+memory tracing is intentionally smaller than smoke. The
+    # complete selected-profile PPO update still runs; only optimizer step 1
+    # is traced.
+    profile_rollout_events: 32
+    short_iterations: 3
+    validation_every_iterations: 20

@@ -1,0 +1,34 @@
+throughput:
+  # L1.5 ENGINEERING-ONLY execution profile for the newer 16-GB GPU machine.
+  # These values do not change the paper's 32-env / 8192-event / 512-logical-
+  # minibatch / 4-PPO-epoch training protocol.
+  rollout_action_batch_size: 32
+  # Legacy L1 diagnostics read this 256 default. Formal Scheme-2 does not:
+  # configs/scheme2.yaml explicitly overrides it with 512 and retries at
+  # 256/128/... only if CUDA reports OOM for the current update.
+  replay_microbatch_size: 256
+  replay_microbatch_min_size: 16
+  cuda_oom_fallback: true
+  progress_every_events: 1024
+  diagnostics: true
+
+  # L1.6.9 production promotion of teacher Strategy 1. These are execution-only
+  # settings validated by L1.6.8; they preserve the frozen 32-env / 8192-event /
+  # 512-logical-minibatch / 4-PPO-epoch algorithmic protocol.
+  formal_strategy1:
+    enabled: true
+    worker_processes: 4
+    worker_torch_threads: 2
+    start_method: spawn
+    static_processing_cache: true
+    trusted_replay_normalization: true
+    # L1.7.6 production promotion. Reuses immutable CPU graph/ActionContext
+    # materializations across the four PPO epochs; no GPU tensors/gradients cached.
+    cross_epoch_materialize_cache: true
+    materialize_cache_max_mib: 2048
+
+  # One-iteration isolated benchmark copied from a formal latest.pt. The pilot
+  # writes to its own run directory and never mutates the formal checkpoint.
+  pilot:
+    additional_iterations: 1
+    run_name_prefix: l1_5_throughput_pilot_seed

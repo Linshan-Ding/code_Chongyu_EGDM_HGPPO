@@ -1,0 +1,9 @@
+﻿instance_id,relative_path,scale,scenario,generation_seed,target_load_ratio,due_tightness,num_orders,num_cells,num_workers,num_robots,num_stages,num_products,relocation_multiplier,worker_skill_density,robot_capability_density,S,M,A,J,H,R,V,parameter_case_id
+test_L_12_08_06_90_D5_rho080_medium_000,test_L_12_08_06_90_D5_rho080_medium_000.csv,L,D5,1680299561,0.8,medium,90,12,8,6,8,6,1.0,0.75,0.5,8,12,8,90,8,6,6,L_12_08_06_90
+test_L_18_08_10_160_D1_rho095_loose_000,test_L_18_08_10_160_D1_rho095_loose_000.csv,L,D1,1329607660,0.95,loose,160,18,12,10,8,8,1.0,0.9,0.8,8,18,8,160,12,10,8,L_18_08_10_160
+test_M_08_06_04_40_D3_rho095_loose_000,test_M_08_06_04_40_D3_rho095_loose_000.csv,M,D3,4193017736,0.95,loose,40,8,5,4,6,4,1.0,0.75,0.65,6,8,6,40,5,4,4,M_08_06_04_40
+test_M_12_06_07_80_D4_rho065_tight_000,test_M_12_06_07_80_D4_rho065_tight_000.csv,M,D4,3518306378,0.65,tight,80,12,8,7,6,5,1.0,0.6,0.5,6,12,6,80,8,7,5,M_12_06_07_80
+test_S_06_04_02_20_D1_rho065_tight_000,test_S_06_04_02_20_D1_rho065_tight_000.csv,S,D1,1455406549,0.65,tight,20,6,3,2,4,3,1.0,0.75,0.65,4,6,4,20,3,2,3,S_06_04_02_20
+test_S_07_04_04_35_D2_rho080_medium_000,test_S_07_04_04_35_D2_rho080_medium_000.csv,S,D2,2380315527,0.8,medium,35,7,5,4,4,3,1.0,0.9,0.8,4,7,4,35,5,4,3,S_07_04_04_35
+test_XL_18_10_09_180_D1_rho065_tight_000,test_XL_18_10_09_180_D1_rho065_tight_000.csv,XL,D1,1455406549,0.65,tight,180,18,12,9,10,8,1.0,0.6,0.8,10,18,10,180,12,9,8,XL_18_10_09_180
+test_XL_24_10_13_300_D2_rho080_medium_000,test_XL_24_10_13_300_D2_rho080_medium_000.csv,XL,D2,2380315527,0.8,medium,300,24,16,13,10,10,1.0,0.9,0.5,10,24,10,300,16,13,10,XL_24_10_13_300

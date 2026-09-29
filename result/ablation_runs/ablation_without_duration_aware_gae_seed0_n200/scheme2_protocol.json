@@ -1,0 +1,65 @@
+{
+  "training_protocol": "teacher_scheme2_component_ablation",
+  "training_seed": 0,
+  "total_iterations": 200,
+  "scale_pool": [
+    "S",
+    "M",
+    "L"
+  ],
+  "scenario_pool": [
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "D5"
+  ],
+  "load_ratio_pool": [
+    0.65,
+    0.8,
+    0.95
+  ],
+  "due_tightness_pool": [
+    "tight",
+    "medium",
+    "loose"
+  ],
+  "curriculum_enabled": false,
+  "fresh_instances_each_training_iteration": true,
+  "instance_parameter_table_path": "configs/fixed_design_scheme2.yaml",
+  "training_instance_parameter_table_path": null,
+  "training_structural_source": "scale_ranges",
+  "all_policy_parameters_trainable_from_iteration_1": true,
+  "action_constraints": "unconstrained_physical_feasibility_only",
+  "ppo_components": "full",
+  "fixed_validation_used_for_monitoring": true,
+  "validation_monitor_subset": "parameter_cases",
+  "validation_changes_training_distribution": false,
+  "validation_early_stops_training": false,
+  "test_visible_to_training": false,
+  "execution_stack": "L1.7.6",
+  "budget_profile": "accelerated_3epoch",
+  "rollout_events_per_iteration": 4096,
+  "ppo_epochs": 3,
+  "parallel_envs": 32,
+  "rollout_executor": "multiprocess_cpu",
+  "hardware_profile_label": "rtx_4060_laptop_8gb",
+  "tensorized_decoder_scoring": true,
+  "replay_candidate_score_memoization": true,
+  "live_static_processing_cache": true,
+  "batched_fixed_validation": true,
+  "trusted_validation_inputs": true,
+  "validation_precision": "fp32",
+  "visdom": {
+    "enabled": false,
+    "server": "http://localhost",
+    "port": 8097,
+    "env_prefix": "egdm_hgppo_scheme2",
+    "update_every_iterations": 1
+  },
+  "ablation_variant": "without_duration_aware_gae",
+  "ablation_description": "w/o Duration-aware GAE",
+  "same_online_distribution_and_ppo_budget": true,
+  "potential_shaping_enabled": true,
+  "duration_aware_gae": false
+}

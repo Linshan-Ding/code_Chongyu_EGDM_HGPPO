@@ -1,0 +1,180 @@
+phase_l1:
+  # Phase L1.4 keeps the validated L1.3d.1 protocol and adds an explicit, auditable
+  # reward-protocol freeze. The file intentionally ships in the pending state:
+  # after Tier-2 confirmation, run `python phase_l1.py --freeze-reward`. That command
+  # verifies the saved validation evidence and writes the selected variant/eta here.
+  # No fixed-test data are used for this freeze.
+  status: frozen_for_formal_training
+  formal_training_ready: true
+
+  # ------------------------------------------------------------------
+  # Formal EGDM-HGPPO training budget
+  # ------------------------------------------------------------------
+  # IMPLEMENTATION CHOICE: the paper specifies four curriculum stages but does
+  # not give numerical PPO-iteration budgets. These are explicit upper bounds;
+  # fixed-validation patience may move to the next stage earlier.
+  stage_iterations: [100, 100, 300, 300]
+  # Formal Scheme-2 advisor override: one reproducible training seed.
+  training_seeds: [0]
+  run_root: result/formal_runs
+  run_name_prefix: egdm_hgppo_formal_seed
+
+  # Paper Table 9 runtime.
+  parallel_envs: 32
+  rollout_events: 8192
+  minibatch_size: 512
+  ppo_epochs: 4
+
+  normalization:
+    episodes: 8
+    max_graphs: 1024
+
+  # Phase L1.2 engineering-only memory controls. They do NOT alter the paper's
+  # 512-event logical PPO minibatch or 8192-event rollout budget.
+  memory_safe_runtime:
+    rollout_storage_mode: compact_replay_state
+    replay_microbatch_size: 16
+
+
+  validation:
+    root: data/instances/val_phase_l1
+    base_seed: 200000
+    # IMPLEMENTATION CHOICE: paper requires a fixed validation set but does not
+    # prescribe its size. Keep the already materialized 3 files/combination.
+    instances_per_combination: 3
+    scales: [S, M, L]
+    scenarios: [D1, D2, D3, D4, D5]
+    load_ratios: [0.65, 0.80, 0.95]
+    due_tightness: [tight, medium, loose]
+    every_iterations: 20
+    patience_validations: 5
+    min_delta: 0.0
+    deterministic: true
+
+  test_protection:
+    test_root: data/instances/test
+    # One fixed CSV per advisor-approved design combination.
+    minimum_instances_per_combination: 1
+    forbid_test_access_during_training: true
+
+  reward_policy:
+    # Paper Eq. (15) fixes the production objective to exact TWT. Eq. (16)-(17)
+    # makes potential shaping optional but does not prescribe eta. L1.1 now
+    # implements the paper formula and blocks formal seeds until validation-only
+    # selection decides between eta=0 (strict TWT) and a positive eta.
+    main_training_reward: potential_shaped_twt_integral
+    potential_shaping_implemented: true
+    selected_variant: potential_shaping
+    potential_shaping_enabled: true
+    potential_eta: 0.01
+    # IMPLEMENTATION CHOICE: compact candidate grid for validation-only tuning.
+    # eta=0 is the strict-TWT candidate and prevents assuming shaping helps.
+    calibration_candidates: [0.0, 0.01, 0.05, 0.10]
+
+  # Tier-1 compact validation-only reward screen. These budgets are NOT the
+  # paper's formal training budget. L1.3d uses the selected stable budget only to shortlist eta values;
+  # it can no longer directly freeze the formal reward protocol.
+  # L1.3d searches for the smallest tested compact budget under which the
+  # strict-TWT control (eta=0) is valid for both diagnostic seeds. Budget A
+  # intentionally reuses the existing L1.3b/L1.3c directory so prior work is
+  # never discarded. B/C are fresh larger budgets. These are IMPLEMENTATION
+  # CHOICES because the paper does not prescribe a shaping-calibration budget.
+  shaping_budget_search:
+    output_root: result/phase_l1_3d/shaping_budget_search
+    candidates:
+      - label: A
+        stage_iterations: [4, 4, 8, 8]
+        run_root: result/phase_l1_3b/shaping_calibration
+      - label: B
+        stage_iterations: [8, 8, 16, 16]
+        run_root: result/phase_l1_3d/shaping_calibration_B
+      - label: C
+        stage_iterations: [16, 16, 32, 32]
+        run_root: result/phase_l1_3d/shaping_calibration_C
+    stop_after_first_stable: true
+    stop_budget_after_first_invalid_seed: true
+    # Failure-first validation is objective-neutral: once one fixed validation
+    # instance is non-terminating/deadlocked, that checkpoint is already
+    # ineligible. Stop that validation suite there instead of burning time on
+    # more 10,000-decision failures. No artificial finite TWT is introduced.
+    validation_stop_after_first_failure: true
+
+  shaping_calibration:
+    # Phase L1.3b retains L1.3a failure-aware validation: non-termination/deadlock
+    # is a policy-level failure,
+    # not a Python crash. It invalidates that validation score (selection metric
+    # becomes non-finite) without inventing a finite TWT penalty. The 10,000
+    # decision safety guard remains inherited from configs/train.yaml.
+    seeds: [9100, 9101]
+    stage_iterations: [4, 4, 8, 8]
+    parallel_envs: 8
+    rollout_events: 1024
+    ppo_epochs: 2
+    normalization_episodes: 2
+    normalization_max_graphs: 256
+    validation_root: data/instances/val_phase_l1_shaping
+    validation_base_seed: 260000
+    validation_instances_per_combination: 1
+    validation_scales: [S, M, L]
+    validation_scenarios: [D1, D2, D3, D4, D5]
+    validation_load_ratios: [0.80]
+    validation_due_tightness: [medium]
+    validation_every_iterations: 999
+    patience_validations: 99
+    # Keep the L1.3b output root intentionally: L1.3c reuses the user's already
+    # completed/partial checkpoints instead of invalidating or deleting them.
+    output_root: result/phase_l1_3b/shaping_calibration
+    # L1.3d engineering safeguards. They do not alter the policy, reward, or PPO.
+    resume_existing_runs: true
+    strict_twt_control_gate: true
+    # L1.3d uses the same objective-neutral failure-first evaluation for compact
+    # eta candidates. Stable candidates still evaluate the whole fixed suite.
+    validation_stop_after_first_failure: true
+    # L1.3d.1 candidate-level fail-fast: once one diagnostic seed makes an eta
+    # ineligible, do not launch/resume unfinished remaining seeds for that eta.
+    # Already-completed runs are still loaded for diagnostics; partial checkpoints
+    # are preserved untouched. This changes no policy/reward/PPO computation.
+    stop_candidate_after_first_invalid_seed: true
+
+  # Tier-2 confirmation is evaluation-only: it reloads the final compact-screen
+  # checkpoints and evaluates the shortlist on a broader fixed VALIDATION suite.
+  # No test data are touched and no extra gradient update is performed.
+  # IMPLEMENTATION CHOICE: one fixed instance per S/M/L × D1-D5 × all rho × all
+  # due-tightness cells (135 instances). Selection uses equal-scale macro ranks,
+  # never a pooled raw-TWT mean whose magnitude would be dominated by L scale.
+  shaping_confirmation:
+    validation_root: data/instances/val_phase_l1_shaping_confirm
+    validation_base_seed: 270000
+    validation_instances_per_combination: 1
+    validation_scales: [S, M, L]
+    validation_scenarios: [D1, D2, D3, D4, D5]
+    validation_load_ratios: [0.65, 0.80, 0.95]
+    validation_due_tightness: [tight, medium, loose]
+    output_root: result/phase_l1_3d/shaping_confirmation
+
+  resource_decoder:
+    # Global feasible edge-set autoregressive decoding matches the paper's
+    # candidate-edge + conflict-mask + STOP formulation; no fixed worker-source
+    # traversal is present to randomize externally.
+    implementation: global_masked_autoregressive_edge_set
+    fixed_source_order_exists: false
+    paper_randomized_resource_source_order: not_applicable_under_global_edge_set_decoder
+
+  logging:
+    authoritative_training_log: csv
+    frozen_manifest: false
+    live_visualization: disabled_in_phase_l1
+    publication_plots_deferred_to_phase_m: true
+
+  hardware_pilot:
+    stage1_stop_after_global_iterations: 1
+    # Worst-case structural pilot starts directly at Stage IV and forces L/D4,
+    # rho=0.95, tight due dates. It still uses the formal 32 env / 8192 events /
+    # 4 PPO epochs and full EGDM action heads.
+    full_stress:
+      start_stage_index: 3
+      scale_pool: [L]
+      scenario_pool: [D4]
+      load_ratio_pool: [0.95]
+      due_tightness_pool: [tight]
+      additional_iterations: 1

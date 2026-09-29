@@ -1,0 +1,71 @@
+{
+  "root": "D:\\newpytorch\\EGDM_HGPPO_Scheme2_FINAL_20260905_RELEASE\\EGDM_HGPPO_Scheme2_FINAL_20260905_RELEASE",
+  "git_commit": null,
+  "files": [
+    {
+      "path": "agent/policy.py",
+      "sha256": "d7bb72b964913a76c403995615056464fe2d5daeab30fc7b440b787f5da13c7e"
+    },
+    {
+      "path": "agent/pooling.py",
+      "sha256": "803c8ad6499e25b5bb8e171eb399cb7d2fd2f43dd6c5e5dd473c2a49589ef288"
+    },
+    {
+      "path": "agent/ppo.py",
+      "sha256": "dc6fbd25311936838a7b5b8b297d82424f1142516208febcad091c31461c0be2"
+    },
+    {
+      "path": "configs/algo.yaml",
+      "sha256": "c7332edb0271293ca0e181021752a2e8670e08f6e460457d22c2dd1dd2aba7ce"
+    },
+    {
+      "path": "configs/curriculum.yaml",
+      "sha256": "c1bee3f040ea1c3b18baeec1bb8f67a39acd0693b53b88a2c2ea99ee6adb9222"
+    },
+    {
+      "path": "configs/env.yaml",
+      "sha256": "c464718ba2bc1f9d60dc9cc099869757602712f2f6e060ba382167744696b301"
+    },
+    {
+      "path": "configs/instance.yaml",
+      "sha256": "0cc7af1bab751c9a7ea7387055de86417db646f6cd46c5981aafc87ffb921679"
+    },
+    {
+      "path": "configs/phase_l1.yaml",
+      "sha256": "68e74e005d54833dc7819c985a7fb358d16db3e856daf27c721f8098125246ce"
+    },
+    {
+      "path": "configs/scheme2.yaml",
+      "sha256": "a2ddd52194a7c1eec424bf3e461d46d2b6014fb07e059c833449b81c89b4c7a4"
+    },
+    {
+      "path": "configs/throughput.yaml",
+      "sha256": "481d5f0cf0fd2baf179326a7999cd2c7d9e68aaa95a7fffa4b69cea1630bc381"
+    },
+    {
+      "path": "configs/train.yaml",
+      "sha256": "bd3d4307b0d88edc7b38febbca2c0a61bec879d8d66042413f59843785dce7f7"
+    },
+    {
+      "path": "experiments/scheme2.py",
+      "sha256": "ae01e4dcaec55526416c81549a4a0fea30213b2f91e35913cc06bf99e8d12e30"
+    },
+    {
+      "path": "scheme2.py",
+      "sha256": "ea98171653f65d65c32150889989fcad91e3b6d2a92d854468e873f86ba760e8"
+    },
+    {
+      "path": "training/multiprocess_rollout.py",
+      "sha256": "5cfa55876da17f3aa2f41c1539cfb8910138cf9aa01d374048438d53b521e83f"
+    },
+    {
+      "path": "training/trainer_j.py",
+      "sha256": "43485539fed6e5a54c8d7d873ca2fb147a70b4b7c99c109a46ea20034866e043"
+    },
+    {
+      "path": "training/trainer_random_joint.py",
+      "sha256": "dffbcc757b4ab3c22d4c6f200f4d6d69df25e950e3792ae8834618faa427877f"
+    }
+  ],
+  "aggregate_sha256": "5787af100cc66ac6aebbddd39bcf308dd9c78f4520ac539598bb4245ca079537"
+}

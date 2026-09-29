@@ -1,0 +1,69 @@
+phase_k:
+  # Fixed test files are permanent scientific artifacts. Training and validation
+  # never write into this directory.
+  test_root: data/instances/test
+  output_csv: result/eval_results.csv
+  max_episode_decisions: 6000
+  deterministic_learned_policy: true
+  # Runtime-only inference chunk size. A chunk shares one learned graph-encoder
+  # forward; each environment keeps its original decoder, masks, and step.
+  learned_policy_batch_size: 32
+
+  formal:
+    # Scheme-2 follows the SKILL design-unit contract: one immutable CSV per
+    # parameter-table case x dynamic-factor cell. Increase only for a declared
+    # replication study; never regenerate existing files in place.
+    instances_per_combination: 1
+    scales: [S, M, L]
+    scenarios: [D1, D2, D3, D4, D5]
+    load_ratios: [0.65, 0.80, 0.95]
+    due_tightness: [tight, medium, loose]
+    instance_parameter_table_path: configs/fixed_design_scheme2.yaml
+
+  rule_baselines:
+    # IMPLEMENTATION CHOICES: Table 8 defines these baselines conceptually but
+    # does not prescribe numerical period / ATC-k / threshold values.
+    periodic_interval_minutes: 10.0
+    atc_k: 2.0
+    threshold_load_capacity_ratio: 1.0
+    bottleneck_min_gap: 0.15
+    relocation_time_penalty: 0.05
+    max_reconfiguration_moves: 2
+
+  smoke:
+    root: result/phase_k_smoke_test
+    output_csv: result/phase_k_smoke_eval_results.csv
+    seed: 310000
+    scale: S
+    scenario: D1
+    load_ratio: 0.65
+    due_tightness: tight
+
+  # K2 comparison methods use the same frozen fixed-test instances.
+  k2:
+    optimization:
+      # MILP backend: scipy.optimize.milp / HiGHS.  Offline model is exact for
+      # the modeled problem when minimum dwell = 0; with positive global dwell it
+      # is explicitly reported as a relaxation/lower-bound model.
+      offline_time_limit_seconds: 3600.0
+      offline_mip_rel_gap: 0.0
+      offline_max_operations: 140
+      rolling_time_limit_seconds: 0.20
+      rolling_max_reconfiguration_moves: 3
+      rolling_relocation_penalty: 0.05
+      rolling_tardiness_pressure: 2.0
+      rolling_processing_penalty: 0.02
+    alns:
+      # IMPLEMENTATION CHOICES: Table 8 names RH-ALNS but does not prescribe
+      # neighborhood budget/reaction parameters.
+      iterations_per_event: 40
+      max_reconfiguration_moves: 4
+      reaction_factor: 0.20
+      random_accept_temperature: 0.10
+      relocation_penalty: 0.05
+      imbalance_weight: 1.0
+      schedule_weight: 1.0
+    learned:
+      # Formal fairness contract: all learned baselines must be trained with the
+      # same online instance distribution and total event interactions as EGDM.
+      require_checkpoint_method_tag: true

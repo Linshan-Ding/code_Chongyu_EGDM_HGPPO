@@ -1,0 +1,125 @@
+algo:
+  family: PPO
+  method_name: EGDM-HGPPO
+
+  encoder:
+    type: relation_aware_heterogeneous_graph_transformer
+
+  actor_heads:
+    - event_gate
+    - worker_cell_autoregressive_matcher
+    - robot_cell_autoregressive_matcher
+    - operation_cell_autoregressive_matcher
+
+  matching_decoder:
+    strategy: masked_autoregressive_edge_selection
+    stop_token: true
+    worker_before_robot: true
+    update_cell_embedding_after_worker_matching: true
+    operation_dispatch_is_parallel_set_matching: true
+    # Phase G implementation choice: all continuous matching-time scalars use the
+    # paper's SMDP reference time as a common external scale.
+    scalar_time_reference_minutes: 10.0
+    # Prefix-feasible autoregressive masks preserve executable coverage and legal
+    # H/R/HR configuration after every selected resource edge. This is stronger
+    # than only checking the final set and guarantees every sampled prefix is valid.
+    prefix_feasible_reconfiguration: true
+
+  critic_heads:
+    - V_gate
+    - V_rec
+    - V_sch
+
+  embed_dim: 128
+  hgt_layers: 3
+  attention_heads: 4
+  relation_type_embed_dim: 32
+  policy_value_mlp: [256, 128]
+  activation: GELU
+  layer_norm: true
+
+
+  # ------------------------------------------------------------------
+  # Phase F representation-network implementation choices
+  # ------------------------------------------------------------------
+  representation_network:
+    node_categorical_embed_dim: 32
+    pooling: type_aware_attention
+    relation_attention_uses_edge_features: true
+    event_type_embed_dim: 32
+    dropout: 0.0
+
+
+  # ------------------------------------------------------------------
+  # Phase K2 learned-baseline capacity matching (IMPLEMENTATION CHOICE)
+  # ------------------------------------------------------------------
+  baselines:
+    parameter_match:
+      hidden_dim: 1024
+      residual_blocks_per_type: 3
+
+  optimizer: AdamW
+  weight_decay: 0.00001
+  learning_rate: 0.0003
+  encoder_learning_rate: 0.0002
+  lr_schedule:
+    type: linear_decay
+    final_ratio: 0.10
+
+  clip_eps: 0.20
+  gamma: 0.995
+  tau_0_minutes: 10.0
+  gae_lambda: 0.95
+  value_loss_coef: 0.5
+
+  entropy:
+    gate:
+      start: 0.01
+      end: 0.001
+    matching:
+      start: 0.02
+      end: 0.002
+
+  parallel_envs: 32
+  rollout_events: 8192
+  minibatch_size: 512
+  ppo_epochs: 4
+  max_grad_norm: 0.5
+
+  training_stabilization:
+    advantage_normalization: true
+    value_target_clipping: true
+    entropy_annealing: true
+    # The implemented resource decoder scores the complete feasible resource-cell
+    # edge set, so it has no externally fixed resource-source sequence. The paper's
+    # randomized source-order stabilizer is therefore not directly applicable; L1
+    # freezes the K3-tested global edge-set formulation instead of silently changing it.
+    randomized_resource_decoding_order: false
+    resource_decode_order_semantics: global_edge_set_no_fixed_source_sequence
+    # Advisor Scheme-2 uses a fixed iteration budget. Validation is a monitor
+    # and checkpoint selector only; it never changes or truncates training.
+    validation_early_stopping: false
+
+  # ------------------------------------------------------------------
+  # Phase H PPO implementation choices not numerically fixed by paper
+  # ------------------------------------------------------------------
+  ppo_implementation:
+    # The paper writes one composite-action PPO ratio but three critic heads.
+    # Phase H fuses their GAE signals by averaging active heads:
+    # gate + schedule (+ reconfiguration when gate=RECONFIGURE).
+    policy_advantage_fusion: mean_active_heads
+    # The paper requests value-target clipping but gives no separate range.
+    # We transparently reuse the PPO clip epsilon as the value-change clip range.
+    value_clip_eps: 0.20
+    rollout_storage_device: cpu
+    shared_encoder_minibatch_replay: true
+    mixed_precision:
+      # BF16 is enabled only on CUDA. CPU runs and numerical smoke tests stay
+      # in FP32; masked logits and PPO ratios therefore remain reproducible.
+      enabled: true
+      dtype: bf16
+
+  # Advisor override of the historical multi-seed paper protocol: the formal
+  # Scheme-2 result is one training run with exactly seed 0.
+  num_training_seeds: 1
+  training_seeds: [0]

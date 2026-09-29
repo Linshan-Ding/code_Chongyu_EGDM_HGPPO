@@ -1,0 +1,17 @@
+{
+  "phase": "L1.6.9",
+  "executor": "multiprocess_strategy1",
+  "parallel_envs": 32,
+  "rollout_events": 4096,
+  "worker_processes": 4,
+  "worker_torch_threads": 2,
+  "start_method": "spawn",
+  "logical_minibatch": 512,
+  "replay_microbatch": 512,
+  "static_processing_cache": true,
+  "trusted_replay_normalization": true,
+  "cross_epoch_materialize_cache": true,
+  "materialize_cache_max_mib": 2048,
+  "algorithmic_semantics_changed": false,
+  "rollout_executor": "multiprocess_cpu"
+}

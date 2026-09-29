@@ -1,0 +1,132 @@
+version: 1
+semantics:
+  S: assembly_stages
+  M: total_assembly_cells
+  R: robots
+  J: orders
+  H: workers
+  V: product_types
+
+# Controlled one-factor-at-a-time test suite. Dynamic conditions and companion
+# resource dimensions stay fixed so the effect of S/M/R/J is not confounded.
+# ``base_scale`` is the generator anchor; these are structural-effect tiers,
+# not a claim that every out-of-range cell is an ordinary M-scale benchmark.
+# Each design cell produces exactly one immutable CSV instance.
+fixed_conditions:
+  scale: M
+  scenario: D1
+  load_ratio: 0.80
+  due_tightness: medium
+  worker_skill_density: 0.75
+  robot_capability_density: 0.65
+  relocation_multiplier: 1.0
+
+instances:
+  BASE:
+    scale: M
+    tier: structural_effect
+    base_scale: M
+    effect_factor: baseline
+    effect_level: center
+    S: 6
+    M: 12
+    R: 7
+    J: 80
+    H: 8
+    V: 5
+  S_LOW:
+    scale: M
+    tier: structural_effect
+    base_scale: M
+    effect_factor: S
+    effect_level: low
+    S: 4
+    M: 12
+    R: 7
+    J: 80
+    H: 8
+    V: 5
+  S_HIGH:
+    scale: M
+    tier: structural_effect
+    base_scale: M
+    effect_factor: S
+    effect_level: high
+    S: 8
+    M: 12
+    R: 7
+    J: 80
+    H: 8
+    V: 5
+  M_LOW:
+    scale: M
+    tier: structural_effect
+    base_scale: M
+    effect_factor: M
+    effect_level: low
+    S: 6
+    M: 8
+    R: 7
+    J: 80
+    H: 8
+    V: 5
+  M_HIGH:
+    scale: M
+    tier: structural_effect
+    base_scale: M
+    effect_factor: M
+    effect_level: high
+    S: 6
+    M: 18
+    R: 7
+    J: 80
+    H: 8
+    V: 5
+  J_LOW:
+    scale: M
+    tier: structural_effect
+    base_scale: M
+    effect_factor: J
+    effect_level: low
+    S: 6
+    M: 12
+    R: 7
+    J: 40
+    H: 8
+    V: 5
+  J_HIGH:
+    scale: M
+    tier: structural_effect
+    base_scale: M
+    effect_factor: J
+    effect_level: high
+    S: 6
+    M: 12
+    R: 7
+    J: 160
+    H: 8
+    V: 5
+  R_LOW:
+    scale: M
+    tier: structural_effect
+    base_scale: M
+    effect_factor: R
+    effect_level: low
+    S: 6
+    M: 12
+    R: 4
+    J: 80
+    H: 8
+    V: 5
+  R_HIGH:
+    scale: M
+    tier: structural_effect
+    base_scale: M
+    effect_factor: R
+    effect_level: high
+    S: 6
+    M: 12
+    R: 10
+    J: 80
+    H: 8
+    V: 5

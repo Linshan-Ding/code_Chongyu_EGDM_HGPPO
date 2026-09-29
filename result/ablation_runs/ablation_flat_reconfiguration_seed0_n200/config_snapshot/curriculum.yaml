@@ -1,0 +1,55 @@
+curriculum:
+  uses_expert_demonstrations: false
+  uses_behavior_cloning: false
+  uses_world_model: false
+
+  stages:
+    - name: fixed_configuration_warmup
+      description: train_encoder_scheduler_and_scheduling_critic_only
+      gate_enabled: false
+      worker_reconfiguration_enabled: false
+      robot_reconfiguration_enabled: false
+      allowed_scales: [S]
+      transition_threshold: null
+
+    - name: single_resource_reconfiguration
+      description: learn_basic_migration_benefit_vs_time_loss
+      gate_enabled: true
+      worker_reconfiguration_enabled: true
+      robot_reconfiguration_enabled: true
+      max_worker_moves_per_event: 1
+      max_robot_moves_per_event: 1
+      allowed_scales: [S]
+      load_regime: low_to_medium
+      transition_threshold: null
+
+    - name: full_set_reconfiguration
+      description: joint_gate_dual_matching_and_scheduling_under_dynamic_scenarios
+      gate_enabled: true
+      worker_reconfiguration_enabled: true
+      robot_reconfiguration_enabled: true
+      max_worker_moves_per_event: null
+      max_robot_moves_per_event: null
+      # IMPLEMENTATION CHOICE (Phase L1.1): the paper makes Stage IV, not Stage III,
+      # the explicit multi-scale stage.  Stage III therefore uses M as a single
+      # representative scale while introducing the full reconfiguration action
+      # and D2-D4 dynamics.  This isolates action/dynamics difficulty from scale.
+      allowed_scales: [M]
+      enable_dynamic_product_mix_and_arrival_bursts: true
+      transition_threshold: null
+
+    - name: multi_scale_joint_finetuning
+      description: online_sampling_across_sizes_for_generalization
+      gate_enabled: true
+      worker_reconfiguration_enabled: true
+      robot_reconfiguration_enabled: true
+      max_worker_moves_per_event: null
+      max_robot_moves_per_event: null
+      allowed_scales: [S, M, L]
+      use_parameter_sharing: true
+      use_feature_normalization: true
+      transition_threshold: null
+
+  note: >
+    The paper specifies four curriculum stages, but does not prescribe numerical
+    transition thresholds. Those values remain unset in Phase B instead of being invented.

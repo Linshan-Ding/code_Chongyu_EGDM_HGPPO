@@ -1,0 +1,29 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.idea/
+.vscode/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+*.log
+*.tmp
+*.temp
+*.trace
+*.gz
+# Keep formal CSVs, logs, JSON audits and the report in the release package.
+# Large diagnostics and checkpoints are intentionally excluded.
+result/profiles/
+result/phase_k_smoke_test/
+result/phase_k_smoke_eval_results.csv
+result/scheme2_runs/scheme2_confirm_*/
+result/scheme2_runs/scheme2_pilot_*/
+result/scheme2_runs/scheme2_ppo_profile_*/
+*.pt
+!**/best_model.pt
+*.pth
+*.ckpt
+*.onnx

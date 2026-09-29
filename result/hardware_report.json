@@ -1,0 +1,27 @@
+{
+  "python_executable": "C:\\Users\\28263\\.conda\\envs\\pytorch_gpu\\python.exe",
+  "python_version": "3.11.13",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "cpu_logical_cores": 16,
+  "system_memory_gb": 15.29,
+  "torch_version": "2.11.0+cu128",
+  "torch_cuda_version": "12.8",
+  "torch_cuda_available": true,
+  "torch_cuda_device_count": 1,
+  "torch_active_device": 0,
+  "torch_gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "torch_compute_capability": [
+    8,
+    9
+  ],
+  "torch_vram_gb": 8.0,
+  "bf16_supported": true,
+  "nvidia_smi": [
+    {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "memory_total_mib": "8188",
+      "driver_version": "528.23"
+    }
+  ],
+  "nvidia_smi_error": null
+}

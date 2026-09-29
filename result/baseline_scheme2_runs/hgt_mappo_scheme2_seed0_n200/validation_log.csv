@@ -1,0 +1,6 @@
+global_iteration,stage_index,stage_name,instances,completed_instances,failed_instances,nonterminating_instances,deadlocked_instances,failure_rate,mean_twt,median_twt,mean_completed_twt,mean_decisions,mean_reconfigurations,max_reward_identity_error
+40,3,random_joint_training,6,4,2,2,0,0.3333333333333333,inf,inf,80395.2514707748,3870.5,1114.8333333333333,1.4551915228366852e-11
+80,3,random_joint_training,6,5,1,1,0,0.16666666666666666,inf,inf,65678.38971147675,2220.8333333333335,402.0,2.9103830456733704e-11
+120,3,random_joint_training,6,3,3,3,0,0.5,inf,inf,20257.96645546213,5133.833333333333,883.8333333333334,7.275957614183426e-12
+160,3,random_joint_training,6,2,4,4,0,0.6666666666666666,inf,inf,45881.0606130684,6854.166666666667,2542.5,0.0
+200,3,random_joint_training,6,6,0,0,0,0.0,52397.98178482272,43592.79364560153,52397.98178482272,937.3333333333334,127.5,5.820766091346741e-11

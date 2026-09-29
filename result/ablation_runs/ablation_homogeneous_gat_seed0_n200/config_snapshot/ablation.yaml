@@ -1,0 +1,38 @@
+ablation:
+  # Strict Table-10 component ablations. All variants use the same online
+  # S/M/L random-joint distribution, fixed validation/test instances and PPO
+  # budget; only the named component is changed.
+  variants:
+    - name: without_event_gate
+      description: w/o Event Gate
+      operational_definition: replace the learned event gate by RECONFIGURE whenever hard feasibility permits
+    - name: periodic_gate
+      description: Periodic Gate
+      operational_definition: replace the learned event gate by a feasibility-safe decision-index periodic gate
+    - name: without_stage_nodes
+      description: w/o Stage Nodes
+      operational_definition: zero stage embeddings and remove every incident relation in all HGT layers
+    - name: homogeneous_gat
+      description: Homogeneous GAT
+      operational_definition: replace only the relation-aware heterogeneous encoder by the homogeneous GAT encoder
+    - name: flat_reconfiguration
+      description: Flat Reconfiguration
+      operational_definition: cap worker and robot relocation matching at one edge while retaining parallel scheduling
+    - name: sequential_dispatch
+      description: Sequential Dispatch
+      operational_definition: cap operation-cell dispatch at one assignment while retaining set-valued resource matching
+    - name: without_duration_aware_gae
+      description: w/o Duration-aware GAE
+      operational_definition: use fixed gamma in GAE instead of gamma raised to elapsed time over tau0
+    - name: without_potential_shaping
+      description: w/o Potential Shaping
+      operational_definition: remove the frozen eta=0.01 potential term while retaining exact base TWT reward
+    - name: single_critic
+      description: Single Critic
+      operational_definition: replace the event-aware three-head critic by one shared scalar value head
+  run_root: result/ablation_runs
+  eval_csv: result/ablation_results.csv
+  iterations: null
+  validation_every_iterations: null
+  max_episode_decisions: 10000
+  periodic_gate_period: 4

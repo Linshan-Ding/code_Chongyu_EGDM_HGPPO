@@ -1,0 +1,125 @@
+phase_i:
+  # Phase I is deliberately limited to the paper's curriculum Stage I.
+  stage_name: fixed_configuration_warmup
+
+  runtime:
+    device: auto
+    optimizer_schedule: hold_start_until_phase_j
+    scenario_pool: [D1]
+    max_episode_decisions: 10000
+    log_csv: result/phase_i_train_log.csv
+
+  # IMPLEMENTATION CHOICE: graph normalization statistics are collected only
+  # from online training-distribution instances using a non-learning greedy
+  # fixed-configuration dispatcher. They are never fitted on val/test data.
+  normalization:
+    collection_policy: greedy_fixed_configuration
+    episodes: 4
+    max_graphs: 256
+
+  # Diagnostic settings only. They do NOT replace the paper Table 9 values in
+  # configs/algo.yaml; they make the disposable smoke command cheap enough to test.
+  smoke:
+    iterations: 2
+    parallel_envs: 2
+    rollout_events: 16
+    training_seed: 0
+    scale_pool: [S]
+    scenario_pool: [D1]
+    normalization_episodes: 1
+    normalization_max_graphs: 48
+    max_episode_decisions: 2000
+    log_csv: result/phase_i_smoke_log.csv
+
+phase_j:
+  # Phase J owns the complete four-stage curriculum, fixed validation,
+  # checkpoint/resume, best-model restoration, and global LR/entropy annealing.
+  runtime:
+    device: auto
+    run_root: result/runs
+    max_episode_decisions: 10000
+    checkpoint_every_iterations: 1
+    restore_best_before_next_stage: true
+
+  # The paper specifies four stages but no numerical iteration/transition budget.
+  # A formal run must therefore provide --stage-iterations a,b,c,d explicitly.
+  curriculum:
+    stage_iterations: null
+    fixed_configuration_warmup:
+      scenario_pool: [D1]
+      load_ratio_pool: [0.65, 0.80, 0.95]
+      due_tightness_pool: [tight, medium, loose]
+    single_resource_reconfiguration:
+      scenario_pool: [D1]
+      load_ratio_pool: [0.65, 0.80]
+      due_tightness_pool: [tight, medium, loose]
+    full_set_reconfiguration:
+      # Stage III introduces the paper's burst/mix-shift dynamics. D5 urgent-order
+      # batches are first included in Stage IV together with multi-scale mixing.
+      scenario_pool: [D1, D2, D3, D4]
+      load_ratio_pool: [0.65, 0.80, 0.95]
+      due_tightness_pool: [tight, medium, loose]
+    multi_scale_joint_finetuning:
+      scenario_pool: [D1, D2, D3, D4, D5]
+      load_ratio_pool: [0.65, 0.80, 0.95]
+      due_tightness_pool: [tight, medium, loose]
+
+  # Training-distribution statistics are fitted once from S/M/L and D1-D5,
+  # never from validation/test files.
+  normalization:
+    scale_pool: [S, M, L]
+    scenario_pool: [D1, D2, D3, D4, D5]
+    episodes: 8
+    max_graphs: 1024
+
+  validation:
+    root: data/instances/val
+    base_seed: 200000
+    instances_per_combination: 1
+    scales: [S, M, L]
+    scenarios: [D1, D2, D3, D4, D5]
+    load_ratios: [0.65, 0.80, 0.95]
+    due_tightness: [tight, medium, loose]
+    every_iterations: 5
+    patience_validations: 10
+    min_delta: 0.0
+    deterministic: true
+    # Stage-specific filters select subsets from one fixed master suite.
+    stage_filters:
+      fixed_configuration_warmup:
+        scales: [S]
+        scenarios: [D1]
+        load_ratios: [0.65, 0.80, 0.95]
+      single_resource_reconfiguration:
+        scales: [S]
+        scenarios: [D1]
+        load_ratios: [0.65, 0.80]
+      full_set_reconfiguration:
+        scales: [M]
+        scenarios: [D1, D2, D3, D4]
+        load_ratios: [0.65, 0.80, 0.95]
+      multi_scale_joint_finetuning:
+        scales: [S, M, L]
+        scenarios: [D1, D2, D3, D4, D5]
+        load_ratios: [0.65, 0.80, 0.95]
+
+  # Diagnostic-only settings. These are intentionally tiny and are not the
+  # paper's formal training protocol.
+  smoke:
+    stage_iterations: [1, 1, 1, 1]
+    parallel_envs: 1
+    rollout_events: 2
+    training_seed: 0
+    normalization_episodes: 1
+    normalization_max_graphs: 12
+    max_episode_decisions: 2500
+    validation_root: result/phase_j_smoke_validation
+    validation_instances_per_combination: 1
+    validation_scales: [S]
+    validation_scenarios: [D1]
+    validation_load_ratios: [0.65]
+    validation_due_tightness: [tight]
+    validation_every_iterations: 999
+    patience_validations: 2
+    validate_at_stage_end: false
+    ppo_epochs_override: 1
