@@ -132,7 +132,9 @@ class DynamicHeteroGraphBuilder:
                 f"instance has {inst.num_stages} stages but graph max_stages={self.max_stages}"
             )
 
-        visible_ops = [op for op in sim.operations if sim.orders[op.order_id].arrived]
+        visible_ops = [op for op in sim.operations if sim.orders[op.order_id].arrived
+                       and not (getattr(self.cfg.env.graph, "drop_completed", False)
+                                and op.status == OperationStatus.DONE)]
         visible_order_ids = {op.order_id for op in visible_ops}
         op_local = {op.operation_id: i for i, op in enumerate(visible_ops)}
 
@@ -745,7 +747,7 @@ class DynamicHeteroGraphBuilder:
         comp_indices: list[torch.Tensor] = []
         comp_cont_tensors: list[torch.Tensor] = []
         comp_bin_tensors: list[torch.Tensor] = []
-        for ops in by_stage.values():
+        for ops in (by_stage.values() if not getattr(self.cfg.env.graph, "sparse_competition", False) else ()):
             n_ops = len(ops)
             if n_ops <= 1:
                 continue

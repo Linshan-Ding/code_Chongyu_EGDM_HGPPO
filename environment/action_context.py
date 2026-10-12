@@ -216,7 +216,9 @@ def build_action_context(sim) -> ActionContext:
     if sim.instance is None:
         raise RuntimeError("simulator must be reset before action-context construction")
     inst = sim.instance
-    visible_ops = [op for op in sim.operations if sim.orders[op.order_id].arrived]
+    visible_ops = [op for op in sim.operations if sim.orders[op.order_id].arrived
+                   and not (getattr(sim.cfg.env.graph, "drop_completed", False)
+                            and op.status == OperationStatus.DONE)]
 
     operation_ids = [op.operation_id for op in visible_ops]
     operation_stage = [op.stage for op in visible_ops]

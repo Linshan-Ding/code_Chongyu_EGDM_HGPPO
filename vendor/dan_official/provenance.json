@@ -1,0 +1,13 @@
+{
+  "repository": "https://github.com/wrqccc/FJSP-DRL",
+  "commit": "2cf81b13f5044451e78cf780f8fb3e7eeac054c1",
+  "files": {
+    "model/attention_layer.py": "a6fec1a17592dcb064ca9d60cfe2e90a5da7b0d4891a8fd5cd37d341b6ce98c7",
+    "model/main_model.py": "3922cb49ead09098eb16264e3ed37b31721f6b167412c7d4dfb08065b8e66cff",
+    "model/sub_layers.py": "da05748f0054a9c5657ac16fe5d114956bcbef3e151f2f48812586db5e7051f3",
+    "model/PPO.py": "e4012da3a72deb05b511d2c364a577238324158235569ebdac2b88c8e169d701",
+    "params.py": "b51858859f7de5c720a57890e1660f2bc31d2321ba0280e189e7a8f0076ddccb",
+    "README.md": "91d350d6a5bccf6f577e09ceda7c6416bd425e7f57a0c8881624068cc7ed5505"
+  },
+  "note": "Unmodified official source; compatibility adapters reside in agent/paper."
+}

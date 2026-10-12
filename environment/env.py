@@ -78,11 +78,10 @@ class AssemblyEnv:
         return build_action_context(self.sim)
 
     def graph(self):
-        """Return the current raw Phase E heterogeneous graph.
+        """Return the current raw heterogeneous graph.
 
-        Continuous features are intentionally raw here.  Training-distribution
-        z-score statistics are fitted separately by GraphContinuousNormalizer so
-        validation/test information can never leak into normalization statistics.
+        The paper policy applies its fixed feature transformation downstream;
+        this environment does not fit normalization statistics on any dataset.
         """
         if self.sim.instance is None:
             raise RuntimeError("call reset() before graph()")

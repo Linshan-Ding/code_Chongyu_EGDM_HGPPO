@@ -129,6 +129,12 @@ def _dispatch(
                     int(assignment.cell_id),
                 )
             chosen, _ = min(options, key=key)
+        elif rule == "WSPT":
+            def key(item):
+                assignment, p = item
+                order = orders[int(env.sim.operations[assignment.operation_id].order_id)]
+                return (float(p) / max(float(order.weight), 1e-9), int(assignment.operation_id), int(assignment.cell_id))
+            chosen, _ = min(options, key=key)
         elif rule == "ATC":
             mean_p = sum(p for _, p in options) / max(1, len(options))
             now = float(env.sim.time)
@@ -136,7 +142,14 @@ def _dispatch(
                 assignment, p = item
                 op = env.sim.operations[assignment.operation_id]
                 order = orders[int(op.order_id)]
-                slack = max(0.0, float(order.due_date) - now - float(p))
+                # New paper adapters opt into beta=1. Historical callers retain
+                # beta=0 and identical behavior. Only the visible order's known
+                # downstream route is used; unreleased orders are never queried.
+                beta = float(getattr(env, "dispatch_beta", 0.0))
+                route = env.sim.instance.product_routes[op.product_type]
+                remaining = sum(env.sim.instance.minimum_processing_time(op.product_type, s)
+                                for s in route[op.route_position + 1:]) if beta else 0.0
+                slack = max(0.0, float(order.due_date) - now - float(p) - beta * remaining)
                 priority = (float(order.weight) / max(float(p), 1e-9)) * math.exp(
                     -slack / max(float(atc_k) * mean_p, 1e-9)
                 )

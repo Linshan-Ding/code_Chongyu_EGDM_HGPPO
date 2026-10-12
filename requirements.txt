@@ -1,7 +1,8 @@
 PyYAML>=6.0
 numpy>=1.26
-# Install the CUDA-enabled PyTorch wheel separately before this file. A generic
-# version bound cannot guarantee RTX 50-series CUDA support or even a GPU wheel.
-pytest>=8.0
+# Install PyTorch separately in the selected environment. The current paper
+# protocol uses CPU only; see README for the optional CPU wheel command.
 scipy>=1.11
 visdom>=0.2.4
+psutil>=5.9
+matplotlib>=3.8

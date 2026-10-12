@@ -11,8 +11,6 @@ internal due-date crossings *without* creating extra policy decision events.
 
 from __future__ import annotations
 
-from math import isclose
-
 from data.schema import AssemblyInstance
 from environment.entities import OrderRuntime
 
@@ -32,7 +30,9 @@ def interval_twt_reward(
 
     if t1 < t0:
         raise ValueError("t1 must be >= t0")
-    if isclose(t1, t0, abs_tol=1e-15):
+    # A positive interval accrues tardiness even at large absolute clock times.
+    # Relative closeness here silently discards real objective contributions.
+    if t1 == t0:
         return 0.0
 
     penalty = 0.0

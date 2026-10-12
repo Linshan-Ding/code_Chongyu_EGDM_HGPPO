@@ -1,0 +1,3443 @@
+{
+  "protocol": "paper-sm100-1",
+  "instances": [
+    {
+      "instance_id": "main_S_D1_ff418b2c8d54",
+      "split": "main",
+      "path": "data/instances/paper_batch_epoch/main/main_S_D1_ff418b2c8d54.csv",
+      "seed": 4282485548,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D1",
+        "load_ratio": 0.65,
+        "relocation_multiplier": 0.5,
+        "instance_parameters": {
+          "S": 4,
+          "M": 7,
+          "H": 5,
+          "R": 4,
+          "J": 35,
+          "V": 3
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "1b4355b43fcfa92140c3fcb733852b3bae55efad38f32f2cb8d863a251474e7d"
+    },
+    {
+      "instance_id": "main_S_D1_4d41d35dfe81",
+      "split": "main",
+      "path": "data/instances/paper_batch_epoch/main/main_S_D1_4d41d35dfe81.csv",
+      "seed": 1296159581,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D1",
+        "load_ratio": 0.65,
+        "relocation_multiplier": 2.0,
+        "instance_parameters": {
+          "S": 4,
+          "M": 7,
+          "H": 5,
+          "R": 4,
+          "J": 35,
+          "V": 3
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "6f8beb96a16bf5fb0047a68f3db8cef09d6b25960dd371494371950a1ff54276"
+    },
+    {
+      "instance_id": "main_S_D1_dae1cef739fb",
+      "split": "main",
+      "path": "data/instances/paper_batch_epoch/main/main_S_D1_dae1cef739fb.csv",
+      "seed": 3672231671,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D1",
+        "load_ratio": 0.95,
+        "relocation_multiplier": 0.5,
+        "instance_parameters": {
+          "S": 4,
+          "M": 7,
+          "H": 5,
+          "R": 4,
+          "J": 35,
+          "V": 3
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "492f150dbad9029a0e6f3dfe3656c57bfa9be4d2c6552d35760517a2f177a8c1"
+    },
+    {
+      "instance_id": "main_S_D1_9eba88a4cfa8",
+      "split": "main",
+      "path": "data/instances/paper_batch_epoch/main/main_S_D1_9eba88a4cfa8.csv",
+      "seed": 2663024804,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D1",
+        "load_ratio": 0.95,
+        "relocation_multiplier": 2.0,
+        "instance_parameters": {
+          "S": 4,
+          "M": 7,
+          "H": 5,
+          "R": 4,
+          "J": 35,
+          "V": 3
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "ced2d085bb4b21e5bdf2842a6b2643af2d9bc14492b0f25a3a5f77067e649429"
+    },
+    {
+      "instance_id": "main_S_D3_b4779a3acd30",
+      "split": "main",
+      "path": "data/instances/paper_batch_epoch/main/main_S_D3_b4779a3acd30.csv",
+      "seed": 3027737146,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D3",
+        "load_ratio": 0.65,
+        "relocation_multiplier": 0.5,
+        "instance_parameters": {
+          "S": 4,
+          "M": 7,
+          "H": 5,
+          "R": 4,
+          "J": 35,
+          "V": 3
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "aa63673cbb03fee420b8f04724805ad656f8fbd188565a598ade38a346bcaa15"
+    },
+    {
+      "instance_id": "main_S_D3_b1359f621201",
+      "split": "main",
+      "path": "data/instances/paper_batch_epoch/main/main_S_D3_b1359f621201.csv",
+      "seed": 2973081442,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D3",
+        "load_ratio": 0.65,
+        "relocation_multiplier": 2.0,
+        "instance_parameters": {
+          "S": 4,
+          "M": 7,
+          "H": 5,
+          "R": 4,
+          "J": 35,
+          "V": 3
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "a0762ab544ce5ebc0ffe7077d953cc5700d96b2711053f5390310868ab3a3100"
+    },
+    {
+      "instance_id": "main_S_D3_621699e16e10",
+      "split": "main",
+      "path": "data/instances/paper_batch_epoch/main/main_S_D3_621699e16e10.csv",
+      "seed": 1645648353,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D3",
+        "load_ratio": 0.95,
+        "relocation_multiplier": 0.5,
+        "instance_parameters": {
+          "S": 4,
+          "M": 7,
+          "H": 5,
+          "R": 4,
+          "J": 35,
+          "V": 3
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "e1929aec3e58ad797543a992842d50f7899a73ab769588ced70ed45436b3ede5"
+    },
+    {
+      "instance_id": "main_S_D3_6650a065561e",
+      "split": "main",
+      "path": "data/instances/paper_batch_epoch/main/main_S_D3_6650a065561e.csv",
+      "seed": 1716559973,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D3",
+        "load_ratio": 0.95,
+        "relocation_multiplier": 2.0,
+        "instance_parameters": {
+          "S": 4,
+          "M": 7,
+          "H": 5,
+          "R": 4,
+          "J": 35,
+          "V": 3
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "f42c1fc0d127f95de7fdd0401c6297249929a07fe58a54279975e314f0859bf4"
+    },
+    {
+      "instance_id": "main_S_D4_f19018c7427b",
+      "split": "main",
+      "path": "data/instances/paper_batch_epoch/main/main_S_D4_f19018c7427b.csv",
+      "seed": 4052752583,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D4",
+        "load_ratio": 0.65,
+        "relocation_multiplier": 0.5,
+        "instance_parameters": {
+          "S": 4,
+          "M": 7,
+          "H": 5,
+          "R": 4,
+          "J": 35,
+          "V": 3
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "aa7cd29079c51f038854ce75ae98c46b19851d0628524b57cfcfe5845b38454b"
+    },
+    {
+      "instance_id": "main_S_D4_0f55b4436b6e",
+      "split": "main",
+      "path": "data/instances/paper_batch_epoch/main/main_S_D4_0f55b4436b6e.csv",
+      "seed": 257274947,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D4",
+        "load_ratio": 0.65,
+        "relocation_multiplier": 2.0,
+        "instance_parameters": {
+          "S": 4,
+          "M": 7,
+          "H": 5,
+          "R": 4,
+          "J": 35,
+          "V": 3
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "8f5b9fc45ddd5a20bae9badfd4d83caba270fafab68741df2e20778141272da5"
+    },
+    {
+      "instance_id": "main_S_D4_308d40442f58",
+      "split": "main",
+      "path": "data/instances/paper_batch_epoch/main/main_S_D4_308d40442f58.csv",
+      "seed": 814563396,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D4",
+        "load_ratio": 0.95,
+        "relocation_multiplier": 0.5,
+        "instance_parameters": {
+          "S": 4,
+          "M": 7,
+          "H": 5,
+          "R": 4,
+          "J": 35,
+          "V": 3
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "9289bca9c5274de91670a43c441766c941a52e4cab29bc2664a34e8eb2330b53"
+    },
+    {
+      "instance_id": "main_S_D4_9f80d177d527",
+      "split": "main",
+      "path": "data/instances/paper_batch_epoch/main/main_S_D4_9f80d177d527.csv",
+      "seed": 2676019575,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D4",
+        "load_ratio": 0.95,
+        "relocation_multiplier": 2.0,
+        "instance_parameters": {
+          "S": 4,
+          "M": 7,
+          "H": 5,
+          "R": 4,
+          "J": 35,
+          "V": 3
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "01c85fe4676b8622536620d5b1a29f408a9587839f9b5c6a64a47e8c8c173321"
+    },
+    {
+      "instance_id": "main_M_D1_040565c84e30",
+      "split": "main",
+      "path": "data/instances/paper_batch_epoch/main/main_M_D1_040565c84e30.csv",
+      "seed": 67462600,
+      "parameters": {
+        "scale": "M",
+        "scenario": "D1",
+        "load_ratio": 0.65,
+        "relocation_multiplier": 0.5,
+        "instance_parameters": {
+          "S": 6,
+          "M": 12,
+          "H": 8,
+          "R": 7,
+          "J": 80,
+          "V": 5
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "66c1628f84e6fa4440025891881138fa16bcdd750f3099daaa463e358808d788"
+    },
+    {
+      "instance_id": "main_M_D1_64c2be373d1f",
+      "split": "main",
+      "path": "data/instances/paper_batch_epoch/main/main_M_D1_64c2be373d1f.csv",
+      "seed": 1690484279,
+      "parameters": {
+        "scale": "M",
+        "scenario": "D1",
+        "load_ratio": 0.65,
+        "relocation_multiplier": 2.0,
+        "instance_parameters": {
+          "S": 6,
+          "M": 12,
+          "H": 8,
+          "R": 7,
+          "J": 80,
+          "V": 5
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "29e39903f13330575178f1a2e05952703b53930332b2988072654dde37d06570"
+    },
+    {
+      "instance_id": "main_M_D1_aaf3b6598332",
+      "split": "main",
+      "path": "data/instances/paper_batch_epoch/main/main_M_D1_aaf3b6598332.csv",
+      "seed": 2868098649,
+      "parameters": {
+        "scale": "M",
+        "scenario": "D1",
+        "load_ratio": 0.95,
+        "relocation_multiplier": 0.5,
+        "instance_parameters": {
+          "S": 6,
+          "M": 12,
+          "H": 8,
+          "R": 7,
+          "J": 80,
+          "V": 5
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "a98c9526915bf403f712caed74d05bd31aa76bb3d4ddefe9ea283c8151aa630c"
+    },
+    {
+      "instance_id": "main_M_D1_c378b259d08d",
+      "split": "main",
+      "path": "data/instances/paper_batch_epoch/main/main_M_D1_c378b259d08d.csv",
+      "seed": 3279467097,
+      "parameters": {
+        "scale": "M",
+        "scenario": "D1",
+        "load_ratio": 0.95,
+        "relocation_multiplier": 2.0,
+        "instance_parameters": {
+          "S": 6,
+          "M": 12,
+          "H": 8,
+          "R": 7,
+          "J": 80,
+          "V": 5
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "fa2ca49a68189dda4dc627f545d77f2aa10c3057868fa33677547c63fa3645fa"
+    },
+    {
+      "instance_id": "main_M_D3_b4428b04d369",
+      "split": "main",
+      "path": "data/instances/paper_batch_epoch/main/main_M_D3_b4428b04d369.csv",
+      "seed": 3024259844,
+      "parameters": {
+        "scale": "M",
+        "scenario": "D3",
+        "load_ratio": 0.65,
+        "relocation_multiplier": 0.5,
+        "instance_parameters": {
+          "S": 6,
+          "M": 12,
+          "H": 8,
+          "R": 7,
+          "J": 80,
+          "V": 5
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "b63201607f197867093d90a2495ae8870ac5be7ec9c8d798d844e85c8e598979"
+    },
+    {
+      "instance_id": "main_M_D3_bd669460da4e",
+      "split": "main",
+      "path": "data/instances/paper_batch_epoch/main/main_M_D3_bd669460da4e.csv",
+      "seed": 3177616480,
+      "parameters": {
+        "scale": "M",
+        "scenario": "D3",
+        "load_ratio": 0.65,
+        "relocation_multiplier": 2.0,
+        "instance_parameters": {
+          "S": 6,
+          "M": 12,
+          "H": 8,
+          "R": 7,
+          "J": 80,
+          "V": 5
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "6f85991a3184c1f45d40b96135e4b0c234c3e6abc66b1801b0187e83feeb26a6"
+    },
+    {
+      "instance_id": "main_M_D3_a63bf807283c",
+      "split": "main",
+      "path": "data/instances/paper_batch_epoch/main/main_M_D3_a63bf807283c.csv",
+      "seed": 2788947975,
+      "parameters": {
+        "scale": "M",
+        "scenario": "D3",
+        "load_ratio": 0.95,
+        "relocation_multiplier": 0.5,
+        "instance_parameters": {
+          "S": 6,
+          "M": 12,
+          "H": 8,
+          "R": 7,
+          "J": 80,
+          "V": 5
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "30c234c9eb5cbb968516dc5fc5442ec87319142ee4440a9d28178a79d317527b"
+    },
+    {
+      "instance_id": "main_M_D3_ddf025145470",
+      "split": "main",
+      "path": "data/instances/paper_batch_epoch/main/main_M_D3_ddf025145470.csv",
+      "seed": 3723502868,
+      "parameters": {
+        "scale": "M",
+        "scenario": "D3",
+        "load_ratio": 0.95,
+        "relocation_multiplier": 2.0,
+        "instance_parameters": {
+          "S": 6,
+          "M": 12,
+          "H": 8,
+          "R": 7,
+          "J": 80,
+          "V": 5
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "bc75de3b3d08bdf63db027ac41ce3e39c865b7b6846e950d00d87c93c5e71a17"
+    },
+    {
+      "instance_id": "main_M_D4_0acf9c6b8068",
+      "split": "main",
+      "path": "data/instances/paper_batch_epoch/main/main_M_D4_0acf9c6b8068.csv",
+      "seed": 181378155,
+      "parameters": {
+        "scale": "M",
+        "scenario": "D4",
+        "load_ratio": 0.65,
+        "relocation_multiplier": 0.5,
+        "instance_parameters": {
+          "S": 6,
+          "M": 12,
+          "H": 8,
+          "R": 7,
+          "J": 80,
+          "V": 5
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "3d4ea2f92ee0d511d0e2608e0ed2366dd83e6cab2236c8e51692a4e97c08054b"
+    },
+    {
+      "instance_id": "main_M_D4_9bef13fbfb27",
+      "split": "main",
+      "path": "data/instances/paper_batch_epoch/main/main_M_D4_9bef13fbfb27.csv",
+      "seed": 2616136699,
+      "parameters": {
+        "scale": "M",
+        "scenario": "D4",
+        "load_ratio": 0.65,
+        "relocation_multiplier": 2.0,
+        "instance_parameters": {
+          "S": 6,
+          "M": 12,
+          "H": 8,
+          "R": 7,
+          "J": 80,
+          "V": 5
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "8b75b1736aa24a426f95dd9e584f8438e55689b8e0a2b17782b839764985897b"
+    },
+    {
+      "instance_id": "main_M_D4_8ac00828b6b2",
+      "split": "main",
+      "path": "data/instances/paper_batch_epoch/main/main_M_D4_8ac00828b6b2.csv",
+      "seed": 2327840808,
+      "parameters": {
+        "scale": "M",
+        "scenario": "D4",
+        "load_ratio": 0.95,
+        "relocation_multiplier": 0.5,
+        "instance_parameters": {
+          "S": 6,
+          "M": 12,
+          "H": 8,
+          "R": 7,
+          "J": 80,
+          "V": 5
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "ce6372da9a2730b7aaf035b888d2c242670851c072833ebfaa5d4f1c82a717b9"
+    },
+    {
+      "instance_id": "main_M_D4_367923680a3b",
+      "split": "main",
+      "path": "data/instances/paper_batch_epoch/main/main_M_D4_367923680a3b.csv",
+      "seed": 913908584,
+      "parameters": {
+        "scale": "M",
+        "scenario": "D4",
+        "load_ratio": 0.95,
+        "relocation_multiplier": 2.0,
+        "instance_parameters": {
+          "S": 6,
+          "M": 12,
+          "H": 8,
+          "R": 7,
+          "J": 80,
+          "V": 5
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "4e9213ee2764e6a25407830e0c875415c24feaaf37336ea63ed8d8bb132bacf3"
+    },
+    {
+      "instance_id": "main_L_D1_d21c8087bbbc",
+      "split": "generalization",
+      "path": "data/instances/paper_batch_epoch/main/main_L_D1_d21c8087bbbc.csv",
+      "seed": 3525083271,
+      "parameters": {
+        "scale": "L",
+        "scenario": "D1",
+        "load_ratio": 0.65,
+        "relocation_multiplier": 0.5,
+        "instance_parameters": {
+          "S": 8,
+          "M": 18,
+          "H": 12,
+          "R": 10,
+          "J": 160,
+          "V": 8
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "ed498eefec9b9df407ad926d26d76cbde7dfd1d9a42aba99b99cceea2cdc2a52",
+      "storage_split": "main"
+    },
+    {
+      "instance_id": "main_L_D1_c3805093384e",
+      "split": "generalization",
+      "path": "data/instances/paper_batch_epoch/main/main_L_D1_c3805093384e.csv",
+      "seed": 3279966355,
+      "parameters": {
+        "scale": "L",
+        "scenario": "D1",
+        "load_ratio": 0.65,
+        "relocation_multiplier": 2.0,
+        "instance_parameters": {
+          "S": 8,
+          "M": 18,
+          "H": 12,
+          "R": 10,
+          "J": 160,
+          "V": 8
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "aa19aa3b38051e1cb3bff19246d4751a7e4ebc37093af78e3f195b76ad0b63f1",
+      "storage_split": "main"
+    },
+    {
+      "instance_id": "main_L_D1_9059ea841ff3",
+      "split": "generalization",
+      "path": "data/instances/paper_batch_epoch/main/main_L_D1_9059ea841ff3.csv",
+      "seed": 2421811844,
+      "parameters": {
+        "scale": "L",
+        "scenario": "D1",
+        "load_ratio": 0.95,
+        "relocation_multiplier": 0.5,
+        "instance_parameters": {
+          "S": 8,
+          "M": 18,
+          "H": 12,
+          "R": 10,
+          "J": 160,
+          "V": 8
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "69a56ca83785df6281b52153bb0024576794fee411792be4fdfcd686510f9c56",
+      "storage_split": "main"
+    },
+    {
+      "instance_id": "main_L_D1_a15d82bd96c6",
+      "split": "generalization",
+      "path": "data/instances/paper_batch_epoch/main/main_L_D1_a15d82bd96c6.csv",
+      "seed": 2707260093,
+      "parameters": {
+        "scale": "L",
+        "scenario": "D1",
+        "load_ratio": 0.95,
+        "relocation_multiplier": 2.0,
+        "instance_parameters": {
+          "S": 8,
+          "M": 18,
+          "H": 12,
+          "R": 10,
+          "J": 160,
+          "V": 8
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "2fafab748020f1e33792a8fa5150ef393382e1c318db9db3f9e3257676f836ef",
+      "storage_split": "main"
+    },
+    {
+      "instance_id": "main_L_D3_dc3bbea24259",
+      "split": "generalization",
+      "path": "data/instances/paper_batch_epoch/main/main_L_D3_dc3bbea24259.csv",
+      "seed": 3694902946,
+      "parameters": {
+        "scale": "L",
+        "scenario": "D3",
+        "load_ratio": 0.65,
+        "relocation_multiplier": 0.5,
+        "instance_parameters": {
+          "S": 8,
+          "M": 18,
+          "H": 12,
+          "R": 10,
+          "J": 160,
+          "V": 8
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "b1249ed093dcae1875a29ddc4e14ef53d409a3470e7b716c30838b52bcc63f06",
+      "storage_split": "main"
+    },
+    {
+      "instance_id": "main_L_D3_c2852c483955",
+      "split": "generalization",
+      "path": "data/instances/paper_batch_epoch/main/main_L_D3_c2852c483955.csv",
+      "seed": 3263507528,
+      "parameters": {
+        "scale": "L",
+        "scenario": "D3",
+        "load_ratio": 0.65,
+        "relocation_multiplier": 2.0,
+        "instance_parameters": {
+          "S": 8,
+          "M": 18,
+          "H": 12,
+          "R": 10,
+          "J": 160,
+          "V": 8
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "6e0435e36f09cb7d1cb766a9e0d9723ba6deab6c6588f51acc032e106cf87db4",
+      "storage_split": "main"
+    },
+    {
+      "instance_id": "main_L_D3_6106e90152f8",
+      "split": "generalization",
+      "path": "data/instances/paper_batch_epoch/main/main_L_D3_6106e90152f8.csv",
+      "seed": 1627842817,
+      "parameters": {
+        "scale": "L",
+        "scenario": "D3",
+        "load_ratio": 0.95,
+        "relocation_multiplier": 0.5,
+        "instance_parameters": {
+          "S": 8,
+          "M": 18,
+          "H": 12,
+          "R": 10,
+          "J": 160,
+          "V": 8
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "30240207d32250aef57b27a9b6e7ec26f46ddedc5c1760a67f642a0fec616cb5",
+      "storage_split": "main"
+    },
+    {
+      "instance_id": "main_L_D3_863d721cd834",
+      "split": "generalization",
+      "path": "data/instances/paper_batch_epoch/main/main_L_D3_863d721cd834.csv",
+      "seed": 2252173852,
+      "parameters": {
+        "scale": "L",
+        "scenario": "D3",
+        "load_ratio": 0.95,
+        "relocation_multiplier": 2.0,
+        "instance_parameters": {
+          "S": 8,
+          "M": 18,
+          "H": 12,
+          "R": 10,
+          "J": 160,
+          "V": 8
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "2c0520481ddb2ecbd8f33395894b581de736d1fb8bd1d6430dfde255854bb2e9",
+      "storage_split": "main"
+    },
+    {
+      "instance_id": "main_L_D4_b46f23784762",
+      "split": "generalization",
+      "path": "data/instances/paper_batch_epoch/main/main_L_D4_b46f23784762.csv",
+      "seed": 3027182456,
+      "parameters": {
+        "scale": "L",
+        "scenario": "D4",
+        "load_ratio": 0.65,
+        "relocation_multiplier": 0.5,
+        "instance_parameters": {
+          "S": 8,
+          "M": 18,
+          "H": 12,
+          "R": 10,
+          "J": 160,
+          "V": 8
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "3291ed14476f79680687cfdf38ea91c3f4787b4f2f9bc8b60823ceb3262a6c03",
+      "storage_split": "main"
+    },
+    {
+      "instance_id": "main_L_D4_a1c28d440e8a",
+      "split": "generalization",
+      "path": "data/instances/paper_batch_epoch/main/main_L_D4_a1c28d440e8a.csv",
+      "seed": 2713881924,
+      "parameters": {
+        "scale": "L",
+        "scenario": "D4",
+        "load_ratio": 0.65,
+        "relocation_multiplier": 2.0,
+        "instance_parameters": {
+          "S": 8,
+          "M": 18,
+          "H": 12,
+          "R": 10,
+          "J": 160,
+          "V": 8
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "96191d210750d789175a69d6fa60408fca3c59903e098a992d366d4d928e6648",
+      "storage_split": "main"
+    },
+    {
+      "instance_id": "main_L_D4_adc06471be89",
+      "split": "generalization",
+      "path": "data/instances/paper_batch_epoch/main/main_L_D4_adc06471be89.csv",
+      "seed": 2915066993,
+      "parameters": {
+        "scale": "L",
+        "scenario": "D4",
+        "load_ratio": 0.95,
+        "relocation_multiplier": 0.5,
+        "instance_parameters": {
+          "S": 8,
+          "M": 18,
+          "H": 12,
+          "R": 10,
+          "J": 160,
+          "V": 8
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "0e2094b218824ff4ffe3a6c76b19c900c01a1c88f92ffd1993ac690ea08ffb63",
+      "storage_split": "main"
+    },
+    {
+      "instance_id": "main_L_D4_fc04f0b571ac",
+      "split": "generalization",
+      "path": "data/instances/paper_batch_epoch/main/main_L_D4_fc04f0b571ac.csv",
+      "seed": 4228182197,
+      "parameters": {
+        "scale": "L",
+        "scenario": "D4",
+        "load_ratio": 0.95,
+        "relocation_multiplier": 2.0,
+        "instance_parameters": {
+          "S": 8,
+          "M": 18,
+          "H": 12,
+          "R": 10,
+          "J": 160,
+          "V": 8
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "a979861113618772665c7a6c6866ee8db80a0fbbba8233acde92cf25d0c82884",
+      "storage_split": "main"
+    },
+    {
+      "instance_id": "validation_S_D1_05386a9f644c",
+      "split": "validation",
+      "path": "data/instances/paper_batch_epoch/validation/validation_S_D1_05386a9f644c.csv",
+      "seed": 87583391,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D1",
+        "load_ratio": 0.725,
+        "relocation_multiplier": 1.0,
+        "instance_parameters": {
+          "S": 4,
+          "M": 7,
+          "H": 5,
+          "R": 4,
+          "J": 35,
+          "V": 3
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "e91c1c28ba63f249dcc56fabcd46faf011300d8e010c8c075f2eb51f8da908d4"
+    },
+    {
+      "instance_id": "validation_S_D1_cb006f6079ff",
+      "split": "validation",
+      "path": "data/instances/paper_batch_epoch/validation/validation_S_D1_cb006f6079ff.csv",
+      "seed": 3405803360,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D1",
+        "load_ratio": 0.875,
+        "relocation_multiplier": 1.0,
+        "instance_parameters": {
+          "S": 4,
+          "M": 7,
+          "H": 5,
+          "R": 4,
+          "J": 35,
+          "V": 3
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "00a7adfe751e51c4a611bbe62b0dc073190951524d2f01dbfa3ec8be9f872685"
+    },
+    {
+      "instance_id": "validation_S_D3_5fa810942029",
+      "split": "pilot",
+      "path": "data/instances/paper_batch_epoch/pilot/validation_S_D3_5fa810942029.csv",
+      "seed": 1604849812,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D3",
+        "load_ratio": 0.725,
+        "relocation_multiplier": 1.0,
+        "instance_parameters": {
+          "S": 4,
+          "M": 7,
+          "H": 5,
+          "R": 4,
+          "J": 35,
+          "V": 3
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "fb3b12ae526c956c8f841bdfcd2f7a3eb3562f28a40057ec966e0925fc54a82e"
+    },
+    {
+      "instance_id": "validation_S_D3_1bdef4041026",
+      "split": "validation",
+      "path": "data/instances/paper_batch_epoch/validation/validation_S_D3_1bdef4041026.csv",
+      "seed": 467596292,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D3",
+        "load_ratio": 0.875,
+        "relocation_multiplier": 1.0,
+        "instance_parameters": {
+          "S": 4,
+          "M": 7,
+          "H": 5,
+          "R": 4,
+          "J": 35,
+          "V": 3
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "457afd7b903da59118a1b5d0c526d844b72a0000a9d1b4e2b28e16c0474fbbd6"
+    },
+    {
+      "instance_id": "validation_S_D4_7b1cac3bf99e",
+      "split": "validation",
+      "path": "data/instances/paper_batch_epoch/validation/validation_S_D4_7b1cac3bf99e.csv",
+      "seed": 2065476667,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D4",
+        "load_ratio": 0.725,
+        "relocation_multiplier": 1.0,
+        "instance_parameters": {
+          "S": 4,
+          "M": 7,
+          "H": 5,
+          "R": 4,
+          "J": 35,
+          "V": 3
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "37c09294028eaf146bca49e74178bf2d6f5ada9fb408b37b2ccffdda6a1093c1"
+    },
+    {
+      "instance_id": "validation_S_D4_71dd94b24211",
+      "split": "validation",
+      "path": "data/instances/paper_batch_epoch/validation/validation_S_D4_71dd94b24211.csv",
+      "seed": 1910346930,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D4",
+        "load_ratio": 0.875,
+        "relocation_multiplier": 1.0,
+        "instance_parameters": {
+          "S": 4,
+          "M": 7,
+          "H": 5,
+          "R": 4,
+          "J": 35,
+          "V": 3
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "10862767ded5181ae13ded9ee5f33add34335f50aee14af0aa38514f7d73b7c0"
+    },
+    {
+      "instance_id": "validation_M_D1_e013c469cb95",
+      "split": "validation",
+      "path": "data/instances/paper_batch_epoch/validation/validation_M_D1_e013c469cb95.csv",
+      "seed": 3759391849,
+      "parameters": {
+        "scale": "M",
+        "scenario": "D1",
+        "load_ratio": 0.725,
+        "relocation_multiplier": 1.0,
+        "instance_parameters": {
+          "S": 6,
+          "M": 12,
+          "H": 8,
+          "R": 7,
+          "J": 80,
+          "V": 5
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "c97f379fee44b1b0b5aa6d4a6d6f34949ab0aafcebd399c93b272b286b42cf4f"
+    },
+    {
+      "instance_id": "validation_M_D1_9eee99c66353",
+      "split": "validation",
+      "path": "data/instances/paper_batch_epoch/validation/validation_M_D1_9eee99c66353.csv",
+      "seed": 2666437062,
+      "parameters": {
+        "scale": "M",
+        "scenario": "D1",
+        "load_ratio": 0.875,
+        "relocation_multiplier": 1.0,
+        "instance_parameters": {
+          "S": 6,
+          "M": 12,
+          "H": 8,
+          "R": 7,
+          "J": 80,
+          "V": 5
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "584c6bd04ad22b711a55e6c4e795d9364b7de189c14d13450add64bc4334e2dc"
+    },
+    {
+      "instance_id": "validation_M_D3_1b424c3f1612",
+      "split": "pilot",
+      "path": "data/instances/paper_batch_epoch/pilot/validation_M_D3_1b424c3f1612.csv",
+      "seed": 457329727,
+      "parameters": {
+        "scale": "M",
+        "scenario": "D3",
+        "load_ratio": 0.725,
+        "relocation_multiplier": 1.0,
+        "instance_parameters": {
+          "S": 6,
+          "M": 12,
+          "H": 8,
+          "R": 7,
+          "J": 80,
+          "V": 5
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "6f3e9d8353b3023057f72ae0ce9ed4a5f6c70f0ff737f7a618667444539a90d0"
+    },
+    {
+      "instance_id": "validation_M_D3_8081cd589e3d",
+      "split": "validation",
+      "path": "data/instances/paper_batch_epoch/validation/validation_M_D3_8081cd589e3d.csv",
+      "seed": 2155990360,
+      "parameters": {
+        "scale": "M",
+        "scenario": "D3",
+        "load_ratio": 0.875,
+        "relocation_multiplier": 1.0,
+        "instance_parameters": {
+          "S": 6,
+          "M": 12,
+          "H": 8,
+          "R": 7,
+          "J": 80,
+          "V": 5
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "73c54472dabd925206ce8b69edac8cd435acc1fc09768c8cbb26d67fb79660df"
+    },
+    {
+      "instance_id": "validation_M_D4_442f6987eaf8",
+      "split": "validation",
+      "path": "data/instances/paper_batch_epoch/validation/validation_M_D4_442f6987eaf8.csv",
+      "seed": 1143957895,
+      "parameters": {
+        "scale": "M",
+        "scenario": "D4",
+        "load_ratio": 0.725,
+        "relocation_multiplier": 1.0,
+        "instance_parameters": {
+          "S": 6,
+          "M": 12,
+          "H": 8,
+          "R": 7,
+          "J": 80,
+          "V": 5
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "ee5e2dbd327079f16619277058e8cd7e5b97c3555fd6579eb5fa0d17228f28ac"
+    },
+    {
+      "instance_id": "validation_M_D4_f73629e8e414",
+      "split": "validation",
+      "path": "data/instances/paper_batch_epoch/validation/validation_M_D4_f73629e8e414.csv",
+      "seed": 4147522024,
+      "parameters": {
+        "scale": "M",
+        "scenario": "D4",
+        "load_ratio": 0.875,
+        "relocation_multiplier": 1.0,
+        "instance_parameters": {
+          "S": 6,
+          "M": 12,
+          "H": 8,
+          "R": 7,
+          "J": 80,
+          "V": 5
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "75496a1d04684934b43a50d80c9e6c479579794161cc8d9ea7a12751fd36b5b7"
+    },
+    {
+      "instance_id": "tiny_S_D1_958cf1dd9a9d",
+      "split": "tiny",
+      "path": "data/instances/paper_batch_epoch/tiny/tiny_S_D1_958cf1dd9a9d.csv",
+      "seed": 2509042141,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D1",
+        "load_ratio": 0.65,
+        "relocation_multiplier": 1.0,
+        "instance_parameters": {
+          "S": 2,
+          "M": 4,
+          "H": 3,
+          "R": 2,
+          "J": 4,
+          "V": 2
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "e7d58842746b36eba2ccef472ce47fe7bf2814a550de25537935960d50259618"
+    },
+    {
+      "instance_id": "tiny_S_D1_3baed38db2b2",
+      "split": "tiny",
+      "path": "data/instances/paper_batch_epoch/tiny/tiny_S_D1_3baed38db2b2.csv",
+      "seed": 1001313165,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D1",
+        "load_ratio": 0.95,
+        "relocation_multiplier": 1.0,
+        "instance_parameters": {
+          "S": 2,
+          "M": 4,
+          "H": 3,
+          "R": 2,
+          "J": 4,
+          "V": 2
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "3c204c830a81ceadbee2a95c73c23676932d79b31b4d259c7ad13bfa39980f85"
+    },
+    {
+      "instance_id": "tiny_S_D1_2d44b6d73129",
+      "split": "tiny",
+      "path": "data/instances/paper_batch_epoch/tiny/tiny_S_D1_2d44b6d73129.csv",
+      "seed": 759477975,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D1",
+        "load_ratio": 0.65,
+        "relocation_multiplier": 1.0,
+        "instance_parameters": {
+          "S": 3,
+          "M": 6,
+          "H": 4,
+          "R": 3,
+          "J": 4,
+          "V": 2
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "6ae2102c8f22b6a7cc4998905cd1daee9ea893d86af42c31ea1f56e5e690aa5d"
+    },
+    {
+      "instance_id": "tiny_S_D1_338c2ae6f60d",
+      "split": "tiny",
+      "path": "data/instances/paper_batch_epoch/tiny/tiny_S_D1_338c2ae6f60d.csv",
+      "seed": 864824038,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D1",
+        "load_ratio": 0.95,
+        "relocation_multiplier": 1.0,
+        "instance_parameters": {
+          "S": 3,
+          "M": 6,
+          "H": 4,
+          "R": 3,
+          "J": 4,
+          "V": 2
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "9ab369a74ca27de22628bb411e6edd6f410be87715b40da1292b4368272a3bf1"
+    },
+    {
+      "instance_id": "tiny_S_D1_2617925fda25",
+      "split": "tiny",
+      "path": "data/instances/paper_batch_epoch/tiny/tiny_S_D1_2617925fda25.csv",
+      "seed": 639079007,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D1",
+        "load_ratio": 0.65,
+        "relocation_multiplier": 1.0,
+        "instance_parameters": {
+          "S": 2,
+          "M": 4,
+          "H": 3,
+          "R": 2,
+          "J": 6,
+          "V": 2
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "34a73da785f543d24d6329154ef9a2a17befb1032ac3cbb8aedbb1afe1f3165b"
+    },
+    {
+      "instance_id": "tiny_S_D1_b3028f66411b",
+      "split": "tiny",
+      "path": "data/instances/paper_batch_epoch/tiny/tiny_S_D1_b3028f66411b.csv",
+      "seed": 3003289446,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D1",
+        "load_ratio": 0.95,
+        "relocation_multiplier": 1.0,
+        "instance_parameters": {
+          "S": 2,
+          "M": 4,
+          "H": 3,
+          "R": 2,
+          "J": 6,
+          "V": 2
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "14848b25c83627238c596b809cc851839ef80690ac8279723a526b22c73f0f54"
+    },
+    {
+      "instance_id": "tiny_S_D1_771bcc9ca2d8",
+      "split": "tiny",
+      "path": "data/instances/paper_batch_epoch/tiny/tiny_S_D1_771bcc9ca2d8.csv",
+      "seed": 1998310556,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D1",
+        "load_ratio": 0.65,
+        "relocation_multiplier": 1.0,
+        "instance_parameters": {
+          "S": 3,
+          "M": 6,
+          "H": 4,
+          "R": 3,
+          "J": 6,
+          "V": 2
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "613369ae4a188b8423f028d3144c3644c4fca541f4adb98ae91b103e1f93f7e3"
+    },
+    {
+      "instance_id": "tiny_S_D1_8ca87324d949",
+      "split": "tiny",
+      "path": "data/instances/paper_batch_epoch/tiny/tiny_S_D1_8ca87324d949.csv",
+      "seed": 2359849764,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D1",
+        "load_ratio": 0.95,
+        "relocation_multiplier": 1.0,
+        "instance_parameters": {
+          "S": 3,
+          "M": 6,
+          "H": 4,
+          "R": 3,
+          "J": 6,
+          "V": 2
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "5bef99fd89e77fd692daaf811594e9a1d72aa639541d2b38bb537c8de59b2b63"
+    },
+    {
+      "instance_id": "train_S_D1_7635c9d7f13f",
+      "split": "train",
+      "seed": 1983236567,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D1",
+        "load_ratio": 0.7,
+        "relocation_multiplier": 0.75,
+        "instance_parameters": {
+          "S": 4,
+          "M": 7,
+          "H": 5,
+          "R": 4,
+          "J": 35,
+          "V": 3
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_S_D1_7635c9d7f13f.csv",
+      "sha256": "db272329fde802048d79d56b3b4f45262a89ecb23a08f0b9ae591106b868e125"
+    },
+    {
+      "instance_id": "train_S_D1_0c4ae01c9fe6",
+      "split": "train",
+      "seed": 206233628,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D1",
+        "load_ratio": 0.7,
+        "relocation_multiplier": 1.25,
+        "instance_parameters": {
+          "S": 4,
+          "M": 7,
+          "H": 5,
+          "R": 4,
+          "J": 35,
+          "V": 3
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_S_D1_0c4ae01c9fe6.csv",
+      "sha256": "fce82bbbb9cbd82a06fffc90b58586df7a9f9d928f821a8279ba76f866c4e499"
+    },
+    {
+      "instance_id": "train_S_D1_b1a1c3afb83b",
+      "split": "train",
+      "seed": 2980168623,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D1",
+        "load_ratio": 0.8,
+        "relocation_multiplier": 0.75,
+        "instance_parameters": {
+          "S": 4,
+          "M": 7,
+          "H": 5,
+          "R": 4,
+          "J": 35,
+          "V": 3
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_S_D1_b1a1c3afb83b.csv",
+      "sha256": "0c952343d1864b94bedeb27550e5ca8da53de26df655a4011e39a3e53746000d"
+    },
+    {
+      "instance_id": "train_S_D1_1fd73fec8790",
+      "split": "train",
+      "seed": 534200300,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D1",
+        "load_ratio": 0.8,
+        "relocation_multiplier": 1.25,
+        "instance_parameters": {
+          "S": 4,
+          "M": 7,
+          "H": 5,
+          "R": 4,
+          "J": 35,
+          "V": 3
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_S_D1_1fd73fec8790.csv",
+      "sha256": "f102c0da52715b6eaf4afa5bcae42bee703f712ea69d92fcf8ced11baa03063b"
+    },
+    {
+      "instance_id": "train_S_D1_3ffb7037026f",
+      "split": "train",
+      "seed": 1073442871,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D1",
+        "load_ratio": 0.9,
+        "relocation_multiplier": 0.75,
+        "instance_parameters": {
+          "S": 4,
+          "M": 7,
+          "H": 5,
+          "R": 4,
+          "J": 35,
+          "V": 3
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_S_D1_3ffb7037026f.csv",
+      "sha256": "f4c8f949057b3040dd443b7cb61c8e2947170f36ac2b6c48d5915edc93f38b3d"
+    },
+    {
+      "instance_id": "train_S_D1_3c4e23b85fa7",
+      "split": "train",
+      "seed": 1011753912,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D1",
+        "load_ratio": 0.9,
+        "relocation_multiplier": 1.25,
+        "instance_parameters": {
+          "S": 4,
+          "M": 7,
+          "H": 5,
+          "R": 4,
+          "J": 35,
+          "V": 3
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_S_D1_3c4e23b85fa7.csv",
+      "sha256": "358d575402ecae87c860fd238ef1c9e8e52742a2690064e8430cd8cdc7f1f9fd"
+    },
+    {
+      "instance_id": "train_S_D3_7b100bbfa5d0",
+      "split": "train",
+      "seed": 2064649151,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D3",
+        "load_ratio": 0.7,
+        "relocation_multiplier": 0.75,
+        "instance_parameters": {
+          "S": 4,
+          "M": 7,
+          "H": 5,
+          "R": 4,
+          "J": 35,
+          "V": 3
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_S_D3_7b100bbfa5d0.csv",
+      "sha256": "463686653808b07237dea4795c4909f3a2118b76a01b87da6f91a56cfe4af748"
+    },
+    {
+      "instance_id": "train_S_D3_5daa6f19a2a3",
+      "split": "train",
+      "seed": 1571450649,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D3",
+        "load_ratio": 0.7,
+        "relocation_multiplier": 1.25,
+        "instance_parameters": {
+          "S": 4,
+          "M": 7,
+          "H": 5,
+          "R": 4,
+          "J": 35,
+          "V": 3
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_S_D3_5daa6f19a2a3.csv",
+      "sha256": "5c067d9236758f44b9ed9e0141ecab952b3e2cded75c83ecc17a37abe8837947"
+    },
+    {
+      "instance_id": "train_S_D3_7425564eb5ec",
+      "split": "train",
+      "seed": 1948603982,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D3",
+        "load_ratio": 0.8,
+        "relocation_multiplier": 0.75,
+        "instance_parameters": {
+          "S": 4,
+          "M": 7,
+          "H": 5,
+          "R": 4,
+          "J": 35,
+          "V": 3
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_S_D3_7425564eb5ec.csv",
+      "sha256": "ccf71fb72a5b022762d59aa7e15cd64ce8c8e6efbb2078929c52406a31fc3e77"
+    },
+    {
+      "instance_id": "train_S_D3_0fdf98c33b72",
+      "split": "train",
+      "seed": 266311875,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D3",
+        "load_ratio": 0.8,
+        "relocation_multiplier": 1.25,
+        "instance_parameters": {
+          "S": 4,
+          "M": 7,
+          "H": 5,
+          "R": 4,
+          "J": 35,
+          "V": 3
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_S_D3_0fdf98c33b72.csv",
+      "sha256": "c79144062cb6ad5a60ca742cebdb0e1b3302d923d8d65ecefce2dc984b945e04"
+    },
+    {
+      "instance_id": "train_S_D3_9b76b8b9713e",
+      "split": "train",
+      "seed": 2608249017,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D3",
+        "load_ratio": 0.9,
+        "relocation_multiplier": 0.75,
+        "instance_parameters": {
+          "S": 4,
+          "M": 7,
+          "H": 5,
+          "R": 4,
+          "J": 35,
+          "V": 3
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_S_D3_9b76b8b9713e.csv",
+      "sha256": "3678b6f47a6e22afe11d8e76d18f3bd4e52230109c55f566f26c6d70791bfbc3"
+    },
+    {
+      "instance_id": "train_S_D3_dc77decd2990",
+      "split": "train",
+      "seed": 3698843341,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D3",
+        "load_ratio": 0.9,
+        "relocation_multiplier": 1.25,
+        "instance_parameters": {
+          "S": 4,
+          "M": 7,
+          "H": 5,
+          "R": 4,
+          "J": 35,
+          "V": 3
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_S_D3_dc77decd2990.csv",
+      "sha256": "9bd96f910c5425bec39cd6ed0134d3561979828684d39aee46d41e1cfa2911e0"
+    },
+    {
+      "instance_id": "train_S_D4_ce320827887a",
+      "split": "train",
+      "seed": 3459385383,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D4",
+        "load_ratio": 0.7,
+        "relocation_multiplier": 0.75,
+        "instance_parameters": {
+          "S": 4,
+          "M": 7,
+          "H": 5,
+          "R": 4,
+          "J": 35,
+          "V": 3
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_S_D4_ce320827887a.csv",
+      "sha256": "25f4a3f896e6f3470bf6d1e7cbf6448312bc7a74998b90d61768a3c2d265d4e0"
+    },
+    {
+      "instance_id": "train_S_D4_2dce4de572a0",
+      "split": "train",
+      "seed": 768495077,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D4",
+        "load_ratio": 0.7,
+        "relocation_multiplier": 1.25,
+        "instance_parameters": {
+          "S": 4,
+          "M": 7,
+          "H": 5,
+          "R": 4,
+          "J": 35,
+          "V": 3
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_S_D4_2dce4de572a0.csv",
+      "sha256": "930f5396bb7bf4d3e49122f069111e5fa572f2009f6ea65b7f85d19d32826680"
+    },
+    {
+      "instance_id": "train_S_D4_017f03eb9795",
+      "split": "train",
+      "seed": 25101291,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D4",
+        "load_ratio": 0.8,
+        "relocation_multiplier": 0.75,
+        "instance_parameters": {
+          "S": 4,
+          "M": 7,
+          "H": 5,
+          "R": 4,
+          "J": 35,
+          "V": 3
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_S_D4_017f03eb9795.csv",
+      "sha256": "f2991becd400ac66ecdf793fea68a3c5596494b761a67d063c16e7e5d5ebae26"
+    },
+    {
+      "instance_id": "train_S_D4_f803fd20b326",
+      "split": "train",
+      "seed": 4161010976,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D4",
+        "load_ratio": 0.8,
+        "relocation_multiplier": 1.25,
+        "instance_parameters": {
+          "S": 4,
+          "M": 7,
+          "H": 5,
+          "R": 4,
+          "J": 35,
+          "V": 3
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_S_D4_f803fd20b326.csv",
+      "sha256": "6568bf3e29414b3e870fe0be9c68401bedb358041a526658e63c1efee214205a"
+    },
+    {
+      "instance_id": "train_S_D4_97f33aa211e9",
+      "split": "train",
+      "seed": 2549299874,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D4",
+        "load_ratio": 0.9,
+        "relocation_multiplier": 0.75,
+        "instance_parameters": {
+          "S": 4,
+          "M": 7,
+          "H": 5,
+          "R": 4,
+          "J": 35,
+          "V": 3
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_S_D4_97f33aa211e9.csv",
+      "sha256": "fd9d5dc451b929402eaa6ff38ca0af299110dd6eeee7c67a56877e94cfde454b"
+    },
+    {
+      "instance_id": "train_S_D4_a39cd4040322",
+      "split": "train",
+      "seed": 2744964100,
+      "parameters": {
+        "scale": "S",
+        "scenario": "D4",
+        "load_ratio": 0.9,
+        "relocation_multiplier": 1.25,
+        "instance_parameters": {
+          "S": 4,
+          "M": 7,
+          "H": 5,
+          "R": 4,
+          "J": 35,
+          "V": 3
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_S_D4_a39cd4040322.csv",
+      "sha256": "4be954b51789e14af37f7fab1b5a2b3f9e274f9d7bb319475ac2c580a625578f"
+    },
+    {
+      "instance_id": "train_M_D1_e1f47b07d807",
+      "split": "train",
+      "seed": 3790895879,
+      "parameters": {
+        "scale": "M",
+        "scenario": "D1",
+        "load_ratio": 0.7,
+        "relocation_multiplier": 0.75,
+        "instance_parameters": {
+          "S": 6,
+          "M": 12,
+          "H": 8,
+          "R": 7,
+          "J": 80,
+          "V": 5
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_M_D1_e1f47b07d807.csv",
+      "sha256": "da3db7e83c107e0ff73e29c2d0d8707d02579a7f95ff7e1af1ab5ab0786206ea"
+    },
+    {
+      "instance_id": "train_M_D1_e00dc8771a14",
+      "split": "train",
+      "seed": 3758999671,
+      "parameters": {
+        "scale": "M",
+        "scenario": "D1",
+        "load_ratio": 0.7,
+        "relocation_multiplier": 1.25,
+        "instance_parameters": {
+          "S": 6,
+          "M": 12,
+          "H": 8,
+          "R": 7,
+          "J": 80,
+          "V": 5
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_M_D1_e00dc8771a14.csv",
+      "sha256": "684fb594a68a8d1f5aa253cb66d57f002631d1136ca2c6108a630d74331047b3"
+    },
+    {
+      "instance_id": "train_M_D1_023f3671fe53",
+      "split": "train",
+      "seed": 37697137,
+      "parameters": {
+        "scale": "M",
+        "scenario": "D1",
+        "load_ratio": 0.8,
+        "relocation_multiplier": 0.75,
+        "instance_parameters": {
+          "S": 6,
+          "M": 12,
+          "H": 8,
+          "R": 7,
+          "J": 80,
+          "V": 5
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_M_D1_023f3671fe53.csv",
+      "sha256": "75947c0284f8f6d943935983f7b6a90a745dea9c1edc591c15dd522738f24c3b"
+    },
+    {
+      "instance_id": "train_M_D1_f7f44a8a437c",
+      "split": "train",
+      "seed": 4159982218,
+      "parameters": {
+        "scale": "M",
+        "scenario": "D1",
+        "load_ratio": 0.8,
+        "relocation_multiplier": 1.25,
+        "instance_parameters": {
+          "S": 6,
+          "M": 12,
+          "H": 8,
+          "R": 7,
+          "J": 80,
+          "V": 5
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_M_D1_f7f44a8a437c.csv",
+      "sha256": "a1c22af832a24bd07bd64ea602ec7b93d5ada7e5403284448b8d8c8f5d4fa392"
+    },
+    {
+      "instance_id": "train_M_D1_0b986858ba07",
+      "split": "train",
+      "seed": 194537560,
+      "parameters": {
+        "scale": "M",
+        "scenario": "D1",
+        "load_ratio": 0.9,
+        "relocation_multiplier": 0.75,
+        "instance_parameters": {
+          "S": 6,
+          "M": 12,
+          "H": 8,
+          "R": 7,
+          "J": 80,
+          "V": 5
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_M_D1_0b986858ba07.csv",
+      "sha256": "6157d5ad3661ed7a05da2e63e2cfcbb79537aabc6fd7671a995424a304108310"
+    },
+    {
+      "instance_id": "train_M_D1_7fe5902a2a58",
+      "split": "train",
+      "seed": 2145751082,
+      "parameters": {
+        "scale": "M",
+        "scenario": "D1",
+        "load_ratio": 0.9,
+        "relocation_multiplier": 1.25,
+        "instance_parameters": {
+          "S": 6,
+          "M": 12,
+          "H": 8,
+          "R": 7,
+          "J": 80,
+          "V": 5
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_M_D1_7fe5902a2a58.csv",
+      "sha256": "e2f0c4c9fb9c2f04c0d1414391fd0f361622e915e41b6ecbe287072d244e6d47"
+    },
+    {
+      "instance_id": "train_M_D3_7bf7cb8a00d6",
+      "split": "train",
+      "seed": 2079837066,
+      "parameters": {
+        "scale": "M",
+        "scenario": "D3",
+        "load_ratio": 0.7,
+        "relocation_multiplier": 0.75,
+        "instance_parameters": {
+          "S": 6,
+          "M": 12,
+          "H": 8,
+          "R": 7,
+          "J": 80,
+          "V": 5
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_M_D3_7bf7cb8a00d6.csv",
+      "sha256": "bd835f842ee0123a72c4b9dc61089765e16ccae8dd7ffd05ec3c52b7ea7213fe"
+    },
+    {
+      "instance_id": "train_M_D3_acb85863b256",
+      "split": "train",
+      "seed": 2897762403,
+      "parameters": {
+        "scale": "M",
+        "scenario": "D3",
+        "load_ratio": 0.7,
+        "relocation_multiplier": 1.25,
+        "instance_parameters": {
+          "S": 6,
+          "M": 12,
+          "H": 8,
+          "R": 7,
+          "J": 80,
+          "V": 5
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_M_D3_acb85863b256.csv",
+      "sha256": "6d3aa519527381163bcce821e10bc2cf80512c7e2cb46b60f5045fde6a63273c"
+    },
+    {
+      "instance_id": "train_M_D3_39d160511fde",
+      "split": "train",
+      "seed": 970022993,
+      "parameters": {
+        "scale": "M",
+        "scenario": "D3",
+        "load_ratio": 0.8,
+        "relocation_multiplier": 0.75,
+        "instance_parameters": {
+          "S": 6,
+          "M": 12,
+          "H": 8,
+          "R": 7,
+          "J": 80,
+          "V": 5
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_M_D3_39d160511fde.csv",
+      "sha256": "9545bb0f227aade65f897a65489cd1a99cfca3f9c40bd9899811286b8f874fcc"
+    },
+    {
+      "instance_id": "train_M_D3_9241b1d760e3",
+      "split": "train",
+      "seed": 2453778903,
+      "parameters": {
+        "scale": "M",
+        "scenario": "D3",
+        "load_ratio": 0.8,
+        "relocation_multiplier": 1.25,
+        "instance_parameters": {
+          "S": 6,
+          "M": 12,
+          "H": 8,
+          "R": 7,
+          "J": 80,
+          "V": 5
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_M_D3_9241b1d760e3.csv",
+      "sha256": "30c3447f906b4e937ad53dbf0649a091d6c7fd973bf9c1a8f899309c8185d8c6"
+    },
+    {
+      "instance_id": "train_M_D3_61039564be18",
+      "split": "train",
+      "seed": 1627624804,
+      "parameters": {
+        "scale": "M",
+        "scenario": "D3",
+        "load_ratio": 0.9,
+        "relocation_multiplier": 0.75,
+        "instance_parameters": {
+          "S": 6,
+          "M": 12,
+          "H": 8,
+          "R": 7,
+          "J": 80,
+          "V": 5
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_M_D3_61039564be18.csv",
+      "sha256": "88acfe11452a4c9a7945a1ae00be4af85ce63683012e23b4c11f6a8ce609a2df"
+    },
+    {
+      "instance_id": "train_M_D3_ced145fb4f48",
+      "split": "train",
+      "seed": 3469821435,
+      "parameters": {
+        "scale": "M",
+        "scenario": "D3",
+        "load_ratio": 0.9,
+        "relocation_multiplier": 1.25,
+        "instance_parameters": {
+          "S": 6,
+          "M": 12,
+          "H": 8,
+          "R": 7,
+          "J": 80,
+          "V": 5
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_M_D3_ced145fb4f48.csv",
+      "sha256": "66354c8117efff86c018a30aefdc231ff6cab7e0ea8ccb691c06149e11a08b03"
+    },
+    {
+      "instance_id": "train_M_D4_09d9f9f15c46",
+      "split": "train",
+      "seed": 165280241,
+      "parameters": {
+        "scale": "M",
+        "scenario": "D4",
+        "load_ratio": 0.7,
+        "relocation_multiplier": 0.75,
+        "instance_parameters": {
+          "S": 6,
+          "M": 12,
+          "H": 8,
+          "R": 7,
+          "J": 80,
+          "V": 5
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_M_D4_09d9f9f15c46.csv",
+      "sha256": "112c922a7d60f14ee1afe4e314d1a755001814435877fca8ad91efc4028370d2"
+    },
+    {
+      "instance_id": "train_M_D4_5a2e37016f15",
+      "split": "train",
+      "seed": 1512978177,
+      "parameters": {
+        "scale": "M",
+        "scenario": "D4",
+        "load_ratio": 0.7,
+        "relocation_multiplier": 1.25,
+        "instance_parameters": {
+          "S": 6,
+          "M": 12,
+          "H": 8,
+          "R": 7,
+          "J": 80,
+          "V": 5
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_M_D4_5a2e37016f15.csv",
+      "sha256": "5cc002efaa96960c72485df45a229c23a7c5446b955e4acf0a80fcc0efbe0d26"
+    },
+    {
+      "instance_id": "train_M_D4_de5836bc5242",
+      "split": "train",
+      "seed": 3730323132,
+      "parameters": {
+        "scale": "M",
+        "scenario": "D4",
+        "load_ratio": 0.8,
+        "relocation_multiplier": 0.75,
+        "instance_parameters": {
+          "S": 6,
+          "M": 12,
+          "H": 8,
+          "R": 7,
+          "J": 80,
+          "V": 5
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_M_D4_de5836bc5242.csv",
+      "sha256": "628f06c11e48c4fcd97c413c9e0206f6378595e20ff29c68c226f72fe02a28ec"
+    },
+    {
+      "instance_id": "train_M_D4_3e5498d5f4f4",
+      "split": "train",
+      "seed": 1045731541,
+      "parameters": {
+        "scale": "M",
+        "scenario": "D4",
+        "load_ratio": 0.8,
+        "relocation_multiplier": 1.25,
+        "instance_parameters": {
+          "S": 6,
+          "M": 12,
+          "H": 8,
+          "R": 7,
+          "J": 80,
+          "V": 5
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_M_D4_3e5498d5f4f4.csv",
+      "sha256": "f89809011951ab630430976d05b5fc1faa5da16e760d70b069bef17374bcbe94"
+    },
+    {
+      "instance_id": "train_M_D4_e8759ff04fa1",
+      "split": "train",
+      "seed": 3900022768,
+      "parameters": {
+        "scale": "M",
+        "scenario": "D4",
+        "load_ratio": 0.9,
+        "relocation_multiplier": 0.75,
+        "instance_parameters": {
+          "S": 6,
+          "M": 12,
+          "H": 8,
+          "R": 7,
+          "J": 80,
+          "V": 5
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_M_D4_e8759ff04fa1.csv",
+      "sha256": "1a903fcf564887ec4a4f768a9a1958f67fa3ccd07b63aaac22e579618317edf1"
+    },
+    {
+      "instance_id": "train_M_D4_a90fcfc79683",
+      "split": "train",
+      "seed": 2836385735,
+      "parameters": {
+        "scale": "M",
+        "scenario": "D4",
+        "load_ratio": 0.9,
+        "relocation_multiplier": 1.25,
+        "instance_parameters": {
+          "S": 6,
+          "M": 12,
+          "H": 8,
+          "R": 7,
+          "J": 80,
+          "V": 5
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_M_D4_a90fcfc79683.csv",
+      "sha256": "8f1e79fb9a2a3fddad2dc772f9fa052a5a44e2099c43cc8d2f9413049725a41c"
+    }
+  ],
+  "generator_config": {
+    "problem_name": "egdm_hgppo_hrc_reconfiguration_scheduling",
+    "parallel_cells_per_stage": [
+      1,
+      3
+    ],
+    "min_multi_cell_stage_ratio": 0.3,
+    "route_stage_coverage": [
+      0.7,
+      1.0
+    ],
+    "scales": {
+      "S": {
+        "num_stages": 4,
+        "total_cells": [
+          5,
+          7
+        ],
+        "orders": [
+          15,
+          35
+        ],
+        "workers": [
+          3,
+          5
+        ],
+        "robots": [
+          2,
+          4
+        ],
+        "product_types": [
+          3,
+          3
+        ]
+      },
+      "M": {
+        "num_stages": 6,
+        "total_cells": [
+          8,
+          12
+        ],
+        "orders": [
+          40,
+          80
+        ],
+        "workers": [
+          5,
+          8
+        ],
+        "robots": [
+          4,
+          7
+        ],
+        "product_types": [
+          4,
+          5
+        ]
+      },
+      "L": {
+        "num_stages": 8,
+        "total_cells": [
+          12,
+          18
+        ],
+        "orders": [
+          90,
+          160
+        ],
+        "workers": [
+          8,
+          12
+        ],
+        "robots": [
+          6,
+          10
+        ],
+        "product_types": [
+          6,
+          8
+        ]
+      },
+      "XL": {
+        "num_stages": 10,
+        "total_cells": [
+          18,
+          24
+        ],
+        "orders": [
+          180,
+          300
+        ],
+        "workers": [
+          12,
+          16
+        ],
+        "robots": [
+          9,
+          13
+        ],
+        "product_types": [
+          8,
+          10
+        ]
+      }
+    },
+    "base_process_time_minutes": [
+      8.0,
+      25.0
+    ],
+    "worker_efficiency": [
+      0.8,
+      1.2
+    ],
+    "robot_efficiency": [
+      0.85,
+      1.3
+    ],
+    "hr_synergy_factor": [
+      0.65,
+      0.9
+    ],
+    "worker_skill_density_choices": [
+      0.6,
+      0.75,
+      0.9
+    ],
+    "robot_capability_density_choices": [
+      0.5,
+      0.65,
+      0.8
+    ],
+    "hr_compatibility_rate": [
+      0.7,
+      1.0
+    ],
+    "load_ratio_choices": [
+      0.65,
+      0.8,
+      0.95
+    ],
+    "order_weight": {
+      "values": [
+        1,
+        2,
+        4
+      ],
+      "probabilities": [
+        0.6,
+        0.3,
+        0.1
+      ]
+    },
+    "due_date_factor": {
+      "tight": [
+        1.3,
+        1.7
+      ],
+      "medium": [
+        1.7,
+        2.1
+      ],
+      "loose": [
+        2.1,
+        2.6
+      ]
+    },
+    "relocation_time_minutes": {
+      "adjacent_cells": [
+        1.0,
+        3.0
+      ],
+      "cross_stage": [
+        3.0,
+        8.0
+      ],
+      "sensitivity_multiplier": [
+        0.5,
+        2.0
+      ]
+    },
+    "minimum_dwell_time_minutes": {
+      "candidates": [
+        0.0,
+        5.0,
+        10.0
+      ],
+      "training_default": 5.0
+    },
+    "initial_configuration": "load_balancing_heuristic_with_random_perturbation",
+    "dynamic_scenarios": {
+      "D1": {
+        "name": "steady",
+        "arrival_process": "stationary_poisson",
+        "product_mix": "fixed",
+        "purpose": "baseline_performance_and_scaling"
+      },
+      "D2": {
+        "name": "arrival_burst",
+        "arrival_process": "mid_horizon_intensity_increase_50_to_100_percent",
+        "product_mix": "fixed",
+        "purpose": "response_to_short_term_backlog"
+      },
+      "D3": {
+        "name": "product_mix_shift",
+        "arrival_process": "stationary",
+        "product_mix": "dominant_product_switch_A_to_B_mid_horizon",
+        "purpose": "adaptation_to_bottleneck_migration"
+      },
+      "D4": {
+        "name": "dual_shock",
+        "arrival_process": "intensity_changes",
+        "product_mix": "two_structural_changes",
+        "purpose": "robustness_under_complex_dynamics"
+      },
+      "D5": {
+        "name": "urgent_orders",
+        "arrival_process": "normal_flow_with_high_weight_batch",
+        "product_mix": "local_change",
+        "purpose": "due_date_weight_driven_response"
+      }
+    },
+    "training_scales": [
+      "S",
+      "M",
+      "L"
+    ],
+    "zero_shot_generalization_scale": "XL",
+    "evaluation_protocol": {
+      "fixed_validation_instances": true,
+      "fixed_test_instances": true,
+      "test_instances_per_combination_min": 1,
+      "small_scale_exact_reference": true
+    },
+    "implementation_choices": {
+      "arrival_rate_calibration": "work_content_over_effective_parallel_servers",
+      "same_stage_cells_are_adjacent": true,
+      "initial_configuration_perturbation_rate": 0.15,
+      "scenario_timing_basis": "order_index_fraction",
+      "base_product_mix": "uniform",
+      "d2_burst_start_ratio": 0.4,
+      "d2_burst_end_ratio": 0.7,
+      "d2_burst_multiplier": [
+        1.5,
+        2.0
+      ],
+      "d3_mix_switch_ratio": 0.5,
+      "d3_dominant_product_sequence": [
+        0,
+        1
+      ],
+      "dominant_product_share": 0.7,
+      "d4_change_ratios": [
+        0.33,
+        0.67
+      ],
+      "d4_arrival_rate_multipliers": [
+        1.0,
+        1.75,
+        1.25
+      ],
+      "d4_dominant_product_sequence": [
+        0,
+        1,
+        2
+      ],
+      "d5_urgent_batch_fraction": 0.1,
+      "d5_urgent_batch_center_ratio": 0.5,
+      "d5_urgent_arrival_rate_multiplier": 3.0,
+      "d5_urgent_dominant_product": 1
+    }
+  },
+  "counts": {
+    "pilot": 2,
+    "train": 36,
+    "validation": 10,
+    "main": 24,
+    "generalization": 12,
+    "tiny": 8
+  },
+  "inactive_instances": [],
+  "removed_instances": [
+    {
+      "instance_id": "xl_XL_D1_cbfdddfaaf47",
+      "split": "xl",
+      "path": "data/instances/paper_batch_epoch/xl/xl_XL_D1_cbfdddfaaf47.csv",
+      "seed": 3422412282,
+      "parameters": {
+        "scale": "XL",
+        "scenario": "D1",
+        "load_ratio": 0.65,
+        "relocation_multiplier": 0.5,
+        "instance_parameters": {
+          "S": 10,
+          "M": 24,
+          "H": 16,
+          "R": 13,
+          "J": 300,
+          "V": 10
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "18f7a9812c67e511cb446b5db93c0ec0e74915ced5161cdd22bd8228e777791b",
+      "status": "removed",
+      "reason": "XL excluded from the approved SM100 experiment"
+    },
+    {
+      "instance_id": "xl_XL_D1_aea20e13f595",
+      "split": "xl",
+      "path": "data/instances/paper_batch_epoch/xl/xl_XL_D1_aea20e13f595.csv",
+      "seed": 2929856019,
+      "parameters": {
+        "scale": "XL",
+        "scenario": "D1",
+        "load_ratio": 0.65,
+        "relocation_multiplier": 2.0,
+        "instance_parameters": {
+          "S": 10,
+          "M": 24,
+          "H": 16,
+          "R": 13,
+          "J": 300,
+          "V": 10
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "61a5dff462b218b63a2f6198c36aa038ad651506275fa4a198f54af1d0385b93",
+      "status": "removed",
+      "reason": "XL excluded from the approved SM100 experiment"
+    },
+    {
+      "instance_id": "xl_XL_D1_8c61eff595a6",
+      "split": "xl",
+      "path": "data/instances/paper_batch_epoch/xl/xl_XL_D1_8c61eff595a6.csv",
+      "seed": 2355228661,
+      "parameters": {
+        "scale": "XL",
+        "scenario": "D1",
+        "load_ratio": 0.95,
+        "relocation_multiplier": 0.5,
+        "instance_parameters": {
+          "S": 10,
+          "M": 24,
+          "H": 16,
+          "R": 13,
+          "J": 300,
+          "V": 10
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "e07c650689787c2e515fa5b676cec9ee6a6c44849d004246072695eba78c699d",
+      "status": "removed",
+      "reason": "XL excluded from the approved SM100 experiment"
+    },
+    {
+      "instance_id": "xl_XL_D1_3c9787585f70",
+      "split": "xl",
+      "path": "data/instances/paper_batch_epoch/xl/xl_XL_D1_3c9787585f70.csv",
+      "seed": 1016563544,
+      "parameters": {
+        "scale": "XL",
+        "scenario": "D1",
+        "load_ratio": 0.95,
+        "relocation_multiplier": 2.0,
+        "instance_parameters": {
+          "S": 10,
+          "M": 24,
+          "H": 16,
+          "R": 13,
+          "J": 300,
+          "V": 10
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "53fe2fb65d2bae762f1acff1d6caad4596d7d4cbacf0d3e3fa55fb9712bed2cb",
+      "status": "removed",
+      "reason": "XL excluded from the approved SM100 experiment"
+    },
+    {
+      "instance_id": "xl_XL_D3_426afad48afd",
+      "split": "xl",
+      "path": "data/instances/paper_batch_epoch/xl/xl_XL_D3_426afad48afd.csv",
+      "seed": 1114307284,
+      "parameters": {
+        "scale": "XL",
+        "scenario": "D3",
+        "load_ratio": 0.65,
+        "relocation_multiplier": 0.5,
+        "instance_parameters": {
+          "S": 10,
+          "M": 24,
+          "H": 16,
+          "R": 13,
+          "J": 300,
+          "V": 10
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "d0ce420e045189e2699a9f5f5fe17176e8933c71940346a71464349bc65fb076",
+      "status": "removed",
+      "reason": "XL excluded from the approved SM100 experiment"
+    },
+    {
+      "instance_id": "xl_XL_D3_e8c26cc63a48",
+      "split": "xl",
+      "path": "data/instances/paper_batch_epoch/xl/xl_XL_D3_e8c26cc63a48.csv",
+      "seed": 3905055942,
+      "parameters": {
+        "scale": "XL",
+        "scenario": "D3",
+        "load_ratio": 0.65,
+        "relocation_multiplier": 2.0,
+        "instance_parameters": {
+          "S": 10,
+          "M": 24,
+          "H": 16,
+          "R": 13,
+          "J": 300,
+          "V": 10
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "f8659a785f5817a2e8828c81bd6575532d2577190b419c019504c90fe647a82c",
+      "status": "removed",
+      "reason": "XL excluded from the approved SM100 experiment"
+    },
+    {
+      "instance_id": "xl_XL_D3_36437b55e3bf",
+      "split": "xl",
+      "path": "data/instances/paper_batch_epoch/xl/xl_XL_D3_36437b55e3bf.csv",
+      "seed": 910392149,
+      "parameters": {
+        "scale": "XL",
+        "scenario": "D3",
+        "load_ratio": 0.95,
+        "relocation_multiplier": 0.5,
+        "instance_parameters": {
+          "S": 10,
+          "M": 24,
+          "H": 16,
+          "R": 13,
+          "J": 300,
+          "V": 10
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "bf48df099e827bd0bf36516ea812bb92d618866edc8ff94821b50b4595a5a2fb",
+      "status": "removed",
+      "reason": "XL excluded from the approved SM100 experiment"
+    },
+    {
+      "instance_id": "xl_XL_D3_1796cd60d907",
+      "split": "xl",
+      "path": "data/instances/paper_batch_epoch/xl/xl_XL_D3_1796cd60d907.csv",
+      "seed": 395758944,
+      "parameters": {
+        "scale": "XL",
+        "scenario": "D3",
+        "load_ratio": 0.95,
+        "relocation_multiplier": 2.0,
+        "instance_parameters": {
+          "S": 10,
+          "M": 24,
+          "H": 16,
+          "R": 13,
+          "J": 300,
+          "V": 10
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "ab728cd2924eb6749f4d8aa4baeb33d30b24fbf94d2df53b25d0aa947336e897",
+      "status": "removed",
+      "reason": "XL excluded from the approved SM100 experiment"
+    },
+    {
+      "instance_id": "xl_XL_D4_660bed87ab79",
+      "split": "xl",
+      "path": "data/instances/paper_batch_epoch/xl/xl_XL_D4_660bed87ab79.csv",
+      "seed": 1712057735,
+      "parameters": {
+        "scale": "XL",
+        "scenario": "D4",
+        "load_ratio": 0.65,
+        "relocation_multiplier": 0.5,
+        "instance_parameters": {
+          "S": 10,
+          "M": 24,
+          "H": 16,
+          "R": 13,
+          "J": 300,
+          "V": 10
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "8c03e009ea11be39d172be16e61669b6e0e467fd8d5f7eb36755920948bf49cc",
+      "status": "removed",
+      "reason": "XL excluded from the approved SM100 experiment"
+    },
+    {
+      "instance_id": "xl_XL_D4_4b491d863b15",
+      "split": "xl",
+      "path": "data/instances/paper_batch_epoch/xl/xl_XL_D4_4b491d863b15.csv",
+      "seed": 1263082886,
+      "parameters": {
+        "scale": "XL",
+        "scenario": "D4",
+        "load_ratio": 0.65,
+        "relocation_multiplier": 2.0,
+        "instance_parameters": {
+          "S": 10,
+          "M": 24,
+          "H": 16,
+          "R": 13,
+          "J": 300,
+          "V": 10
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "59cdd1bddf3f3473b2ac3f3801952b661772a255340234c8bbdc9a0476aad673",
+      "status": "removed",
+      "reason": "XL excluded from the approved SM100 experiment"
+    },
+    {
+      "instance_id": "xl_XL_D4_6bf500acf18c",
+      "split": "xl",
+      "path": "data/instances/paper_batch_epoch/xl/xl_XL_D4_6bf500acf18c.csv",
+      "seed": 1811218604,
+      "parameters": {
+        "scale": "XL",
+        "scenario": "D4",
+        "load_ratio": 0.95,
+        "relocation_multiplier": 0.5,
+        "instance_parameters": {
+          "S": 10,
+          "M": 24,
+          "H": 16,
+          "R": 13,
+          "J": 300,
+          "V": 10
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "8fca2195db7193c7acc8b6472de0d7f23374f4c421df612341bd0ba8bfd47d92",
+      "status": "removed",
+      "reason": "XL excluded from the approved SM100 experiment"
+    },
+    {
+      "instance_id": "xl_XL_D4_17de0be7ab65",
+      "split": "xl",
+      "path": "data/instances/paper_batch_epoch/xl/xl_XL_D4_17de0be7ab65.csv",
+      "seed": 400428007,
+      "parameters": {
+        "scale": "XL",
+        "scenario": "D4",
+        "load_ratio": 0.95,
+        "relocation_multiplier": 2.0,
+        "instance_parameters": {
+          "S": 10,
+          "M": 24,
+          "H": 16,
+          "R": 13,
+          "J": 300,
+          "V": 10
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "966e426d99cb5127238d6e2c05ece643ad25a1a8b319ff9bcb80c60b16407415",
+      "status": "removed",
+      "reason": "XL excluded from the approved SM100 experiment"
+    },
+    {
+      "instance_id": "validation_L_D1_415515eeb08e",
+      "split": "validation",
+      "path": "data/instances/paper_batch_epoch/validation/validation_L_D1_415515eeb08e.csv",
+      "seed": 1096095214,
+      "parameters": {
+        "scale": "L",
+        "scenario": "D1",
+        "load_ratio": 0.725,
+        "relocation_multiplier": 1.0,
+        "instance_parameters": {
+          "S": 8,
+          "M": 18,
+          "H": 12,
+          "R": 10,
+          "J": 160,
+          "V": 8
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "251c0d7acc2351a0e9e4ac4399b65b822c5e4e026e251ae85aa23fdeb53248a9",
+      "status": "removed",
+      "reason": "Retired L training/development file deleted by user-approved repository cleanup; not part of the 92 active instances"
+    },
+    {
+      "instance_id": "validation_L_D1_abaeea5ac275",
+      "split": "validation",
+      "path": "data/instances/paper_batch_epoch/validation/validation_L_D1_abaeea5ac275.csv",
+      "seed": 2880367194,
+      "parameters": {
+        "scale": "L",
+        "scenario": "D1",
+        "load_ratio": 0.875,
+        "relocation_multiplier": 1.0,
+        "instance_parameters": {
+          "S": 8,
+          "M": 18,
+          "H": 12,
+          "R": 10,
+          "J": 160,
+          "V": 8
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "d123ee130e729ac5b7cc2619123043ed1158f36ded8f015971e5af5a9f5b306f",
+      "status": "removed",
+      "reason": "Retired L training/development file deleted by user-approved repository cleanup; not part of the 92 active instances"
+    },
+    {
+      "instance_id": "validation_L_D3_e5b5a06a5c72",
+      "split": "pilot",
+      "path": "data/instances/paper_batch_epoch/pilot/validation_L_D3_e5b5a06a5c72.csv",
+      "seed": 3853885546,
+      "parameters": {
+        "scale": "L",
+        "scenario": "D3",
+        "load_ratio": 0.725,
+        "relocation_multiplier": 1.0,
+        "instance_parameters": {
+          "S": 8,
+          "M": 18,
+          "H": 12,
+          "R": 10,
+          "J": 160,
+          "V": 8
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "8411eb4bcc4d94648fe5410a060ba07689dc08c99f4569f41bd40a0485031d43",
+      "status": "removed",
+      "reason": "Retired L training/development file deleted by user-approved repository cleanup; not part of the 92 active instances"
+    },
+    {
+      "instance_id": "validation_L_D3_85f48b2a07cf",
+      "split": "validation",
+      "path": "data/instances/paper_batch_epoch/validation/validation_L_D3_85f48b2a07cf.csv",
+      "seed": 2247396138,
+      "parameters": {
+        "scale": "L",
+        "scenario": "D3",
+        "load_ratio": 0.875,
+        "relocation_multiplier": 1.0,
+        "instance_parameters": {
+          "S": 8,
+          "M": 18,
+          "H": 12,
+          "R": 10,
+          "J": 160,
+          "V": 8
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "774ec60438a7064e49599a9173245ea6c7844781d9ad22b3f8fd6b270d116594",
+      "status": "removed",
+      "reason": "Retired L training/development file deleted by user-approved repository cleanup; not part of the 92 active instances"
+    },
+    {
+      "instance_id": "validation_L_D4_9723694ddd13",
+      "split": "validation",
+      "path": "data/instances/paper_batch_epoch/validation/validation_L_D4_9723694ddd13.csv",
+      "seed": 2535680333,
+      "parameters": {
+        "scale": "L",
+        "scenario": "D4",
+        "load_ratio": 0.725,
+        "relocation_multiplier": 1.0,
+        "instance_parameters": {
+          "S": 8,
+          "M": 18,
+          "H": 12,
+          "R": 10,
+          "J": 160,
+          "V": 8
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "74171a02d627010a5753175d2cc56472d348f17808855cd6014134eb1385be69",
+      "status": "removed",
+      "reason": "Retired L training/development file deleted by user-approved repository cleanup; not part of the 92 active instances"
+    },
+    {
+      "instance_id": "validation_L_D4_6d35a0d476be",
+      "split": "validation",
+      "path": "data/instances/paper_batch_epoch/validation/validation_L_D4_6d35a0d476be.csv",
+      "seed": 1832231124,
+      "parameters": {
+        "scale": "L",
+        "scenario": "D4",
+        "load_ratio": 0.875,
+        "relocation_multiplier": 1.0,
+        "instance_parameters": {
+          "S": 8,
+          "M": 18,
+          "H": 12,
+          "R": 10,
+          "J": 160,
+          "V": 8
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "sha256": "d90f35f4f6b741aa856c88a4382647e1b9242c46c33649a07e4a2b2559121b57",
+      "status": "removed",
+      "reason": "Retired L training/development file deleted by user-approved repository cleanup; not part of the 92 active instances"
+    },
+    {
+      "instance_id": "train_L_D1_c7520c102562",
+      "split": "train",
+      "seed": 3344043024,
+      "parameters": {
+        "scale": "L",
+        "scenario": "D1",
+        "load_ratio": 0.7,
+        "relocation_multiplier": 0.75,
+        "instance_parameters": {
+          "S": 8,
+          "M": 18,
+          "H": 12,
+          "R": 10,
+          "J": 160,
+          "V": 8
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_L_D1_c7520c102562.csv",
+      "sha256": "e1d64b1e3b3fc2951335fe9577fed7774a83598eb2c3bb288a2e13a897bf7834",
+      "status": "removed",
+      "reason": "Retired L training/development file deleted by user-approved repository cleanup; not part of the 92 active instances"
+    },
+    {
+      "instance_id": "train_L_D1_681398c14afa",
+      "split": "train",
+      "seed": 1746114753,
+      "parameters": {
+        "scale": "L",
+        "scenario": "D1",
+        "load_ratio": 0.7,
+        "relocation_multiplier": 1.25,
+        "instance_parameters": {
+          "S": 8,
+          "M": 18,
+          "H": 12,
+          "R": 10,
+          "J": 160,
+          "V": 8
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_L_D1_681398c14afa.csv",
+      "sha256": "b1b02da2d144d7240c8e3fbffc84c00b0f50d22f4490b285646d65cc3deb3af8",
+      "status": "removed",
+      "reason": "Retired L training/development file deleted by user-approved repository cleanup; not part of the 92 active instances"
+    },
+    {
+      "instance_id": "train_L_D1_5998155abb71",
+      "split": "train",
+      "seed": 1503139162,
+      "parameters": {
+        "scale": "L",
+        "scenario": "D1",
+        "load_ratio": 0.8,
+        "relocation_multiplier": 0.75,
+        "instance_parameters": {
+          "S": 8,
+          "M": 18,
+          "H": 12,
+          "R": 10,
+          "J": 160,
+          "V": 8
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_L_D1_5998155abb71.csv",
+      "sha256": "dad0eca15b8a04c63103bfc145f01ffe22b07dc944ad9bac0f6b1e1c229361c4",
+      "status": "removed",
+      "reason": "Retired L training/development file deleted by user-approved repository cleanup; not part of the 92 active instances"
+    },
+    {
+      "instance_id": "train_L_D1_e7e5dbc91965",
+      "split": "train",
+      "seed": 3890600905,
+      "parameters": {
+        "scale": "L",
+        "scenario": "D1",
+        "load_ratio": 0.8,
+        "relocation_multiplier": 1.25,
+        "instance_parameters": {
+          "S": 8,
+          "M": 18,
+          "H": 12,
+          "R": 10,
+          "J": 160,
+          "V": 8
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_L_D1_e7e5dbc91965.csv",
+      "sha256": "5cd6746d3455d2d14a03d951938efb088380af6f490433eb5924ad65bb7c735a",
+      "status": "removed",
+      "reason": "Retired L training/development file deleted by user-approved repository cleanup; not part of the 92 active instances"
+    },
+    {
+      "instance_id": "train_L_D1_65de1691f82b",
+      "split": "train",
+      "seed": 1709053585,
+      "parameters": {
+        "scale": "L",
+        "scenario": "D1",
+        "load_ratio": 0.9,
+        "relocation_multiplier": 0.75,
+        "instance_parameters": {
+          "S": 8,
+          "M": 18,
+          "H": 12,
+          "R": 10,
+          "J": 160,
+          "V": 8
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_L_D1_65de1691f82b.csv",
+      "sha256": "f057a6469606e2359dbe61e24a95f22ea27b68af1d498d5497ab034e7d21a64a",
+      "status": "removed",
+      "reason": "Retired L training/development file deleted by user-approved repository cleanup; not part of the 92 active instances"
+    },
+    {
+      "instance_id": "train_L_D1_66fe1201cf9c",
+      "split": "train",
+      "seed": 1727926785,
+      "parameters": {
+        "scale": "L",
+        "scenario": "D1",
+        "load_ratio": 0.9,
+        "relocation_multiplier": 1.25,
+        "instance_parameters": {
+          "S": 8,
+          "M": 18,
+          "H": 12,
+          "R": 10,
+          "J": 160,
+          "V": 8
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_L_D1_66fe1201cf9c.csv",
+      "sha256": "e480c62ad5f42aa406c7d92195d397f34fa9dc1165f847777408875ee3edf655",
+      "status": "removed",
+      "reason": "Retired L training/development file deleted by user-approved repository cleanup; not part of the 92 active instances"
+    },
+    {
+      "instance_id": "train_L_D3_e51e1fb66f0e",
+      "split": "train",
+      "seed": 3843956662,
+      "parameters": {
+        "scale": "L",
+        "scenario": "D3",
+        "load_ratio": 0.7,
+        "relocation_multiplier": 0.75,
+        "instance_parameters": {
+          "S": 8,
+          "M": 18,
+          "H": 12,
+          "R": 10,
+          "J": 160,
+          "V": 8
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_L_D3_e51e1fb66f0e.csv",
+      "sha256": "5edbcd1ca9be7ae68011a023f418fc5678121a4d189b01050a036fc85b64166b",
+      "status": "removed",
+      "reason": "Retired L training/development file deleted by user-approved repository cleanup; not part of the 92 active instances"
+    },
+    {
+      "instance_id": "train_L_D3_e981729afe00",
+      "split": "train",
+      "seed": 3917574810,
+      "parameters": {
+        "scale": "L",
+        "scenario": "D3",
+        "load_ratio": 0.7,
+        "relocation_multiplier": 1.25,
+        "instance_parameters": {
+          "S": 8,
+          "M": 18,
+          "H": 12,
+          "R": 10,
+          "J": 160,
+          "V": 8
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_L_D3_e981729afe00.csv",
+      "sha256": "f4ba7bca499a82143ccaac1a9d7644196ec8dd244c67fda49ca3e34417a0363d",
+      "status": "removed",
+      "reason": "Retired L training/development file deleted by user-approved repository cleanup; not part of the 92 active instances"
+    },
+    {
+      "instance_id": "train_L_D3_8a59a8af97e2",
+      "split": "train",
+      "seed": 2321131695,
+      "parameters": {
+        "scale": "L",
+        "scenario": "D3",
+        "load_ratio": 0.8,
+        "relocation_multiplier": 0.75,
+        "instance_parameters": {
+          "S": 8,
+          "M": 18,
+          "H": 12,
+          "R": 10,
+          "J": 160,
+          "V": 8
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_L_D3_8a59a8af97e2.csv",
+      "sha256": "f8ac576bf8d12225b5a69a9bf917a07d8ae74e44b4817e89ded7d27dc2a35a26",
+      "status": "removed",
+      "reason": "Retired L training/development file deleted by user-approved repository cleanup; not part of the 92 active instances"
+    },
+    {
+      "instance_id": "train_L_D3_6fcedbc740f7",
+      "split": "train",
+      "seed": 1875827655,
+      "parameters": {
+        "scale": "L",
+        "scenario": "D3",
+        "load_ratio": 0.8,
+        "relocation_multiplier": 1.25,
+        "instance_parameters": {
+          "S": 8,
+          "M": 18,
+          "H": 12,
+          "R": 10,
+          "J": 160,
+          "V": 8
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_L_D3_6fcedbc740f7.csv",
+      "sha256": "7692932ff6af6f0ecaaa592f90f5c5d83d437cea7cc0f85a8d4348d4c22d69a4",
+      "status": "removed",
+      "reason": "Retired L training/development file deleted by user-approved repository cleanup; not part of the 92 active instances"
+    },
+    {
+      "instance_id": "train_L_D3_396a6eec2218",
+      "split": "train",
+      "seed": 963276524,
+      "parameters": {
+        "scale": "L",
+        "scenario": "D3",
+        "load_ratio": 0.9,
+        "relocation_multiplier": 0.75,
+        "instance_parameters": {
+          "S": 8,
+          "M": 18,
+          "H": 12,
+          "R": 10,
+          "J": 160,
+          "V": 8
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_L_D3_396a6eec2218.csv",
+      "sha256": "28baca58e6319e4aff68fc8710c0ca0509b4d0d0657418b3a7a15a42a8c524c0",
+      "status": "removed",
+      "reason": "Retired L training/development file deleted by user-approved repository cleanup; not part of the 92 active instances"
+    },
+    {
+      "instance_id": "train_L_D3_bc689f0ca3e0",
+      "split": "train",
+      "seed": 3160973068,
+      "parameters": {
+        "scale": "L",
+        "scenario": "D3",
+        "load_ratio": 0.9,
+        "relocation_multiplier": 1.25,
+        "instance_parameters": {
+          "S": 8,
+          "M": 18,
+          "H": 12,
+          "R": 10,
+          "J": 160,
+          "V": 8
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_L_D3_bc689f0ca3e0.csv",
+      "sha256": "17044be0422bc8ddd94cd203be721f355d8d313344d32a4dfe4e26d3fb448aa2",
+      "status": "removed",
+      "reason": "Retired L training/development file deleted by user-approved repository cleanup; not part of the 92 active instances"
+    },
+    {
+      "instance_id": "train_L_D4_f31a5501ca98",
+      "split": "train",
+      "seed": 4078589185,
+      "parameters": {
+        "scale": "L",
+        "scenario": "D4",
+        "load_ratio": 0.7,
+        "relocation_multiplier": 0.75,
+        "instance_parameters": {
+          "S": 8,
+          "M": 18,
+          "H": 12,
+          "R": 10,
+          "J": 160,
+          "V": 8
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_L_D4_f31a5501ca98.csv",
+      "sha256": "54c811d28c2f94ea0b04b9f1c4b3a18de7e22b23fd73471439117d6055f21ecf",
+      "status": "removed",
+      "reason": "Retired L training/development file deleted by user-approved repository cleanup; not part of the 92 active instances"
+    },
+    {
+      "instance_id": "train_L_D4_892fb90a3383",
+      "split": "train",
+      "seed": 2301606154,
+      "parameters": {
+        "scale": "L",
+        "scenario": "D4",
+        "load_ratio": 0.7,
+        "relocation_multiplier": 1.25,
+        "instance_parameters": {
+          "S": 8,
+          "M": 18,
+          "H": 12,
+          "R": 10,
+          "J": 160,
+          "V": 8
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_L_D4_892fb90a3383.csv",
+      "sha256": "4705aa0a1d42b7bbfd899791cddef0c163e8a49620d78a8c17c934ebdb9ab10d",
+      "status": "removed",
+      "reason": "Retired L training/development file deleted by user-approved repository cleanup; not part of the 92 active instances"
+    },
+    {
+      "instance_id": "train_L_D4_ee7708a08248",
+      "split": "train",
+      "seed": 4000778400,
+      "parameters": {
+        "scale": "L",
+        "scenario": "D4",
+        "load_ratio": 0.8,
+        "relocation_multiplier": 0.75,
+        "instance_parameters": {
+          "S": 8,
+          "M": 18,
+          "H": 12,
+          "R": 10,
+          "J": 160,
+          "V": 8
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_L_D4_ee7708a08248.csv",
+      "sha256": "5f5c65013cb0e0dfc39086bb7a4910a2cbb26a5fcbb180ab344b00afcc5d998b",
+      "status": "removed",
+      "reason": "Retired L training/development file deleted by user-approved repository cleanup; not part of the 92 active instances"
+    },
+    {
+      "instance_id": "train_L_D4_d922cd4b6641",
+      "split": "train",
+      "seed": 3642936651,
+      "parameters": {
+        "scale": "L",
+        "scenario": "D4",
+        "load_ratio": 0.8,
+        "relocation_multiplier": 1.25,
+        "instance_parameters": {
+          "S": 8,
+          "M": 18,
+          "H": 12,
+          "R": 10,
+          "J": 160,
+          "V": 8
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_L_D4_d922cd4b6641.csv",
+      "sha256": "6195c7168d19d650c2bb72965346c05652ab9eb7bd2debf5e2543994bc8cfc3a",
+      "status": "removed",
+      "reason": "Retired L training/development file deleted by user-approved repository cleanup; not part of the 92 active instances"
+    },
+    {
+      "instance_id": "train_L_D4_7118728b43ea",
+      "split": "train",
+      "seed": 1897427595,
+      "parameters": {
+        "scale": "L",
+        "scenario": "D4",
+        "load_ratio": 0.9,
+        "relocation_multiplier": 0.75,
+        "instance_parameters": {
+          "S": 8,
+          "M": 18,
+          "H": 12,
+          "R": 10,
+          "J": 160,
+          "V": 8
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_L_D4_7118728b43ea.csv",
+      "sha256": "2dc4a3dfc2b383e5ea2de74a8f5e3973ab8e3db6631c5dc2f7914d181b9b3825",
+      "status": "removed",
+      "reason": "Retired L training/development file deleted by user-approved repository cleanup; not part of the 92 active instances"
+    },
+    {
+      "instance_id": "train_L_D4_1811c370a50e",
+      "split": "train",
+      "seed": 403817328,
+      "parameters": {
+        "scale": "L",
+        "scenario": "D4",
+        "load_ratio": 0.9,
+        "relocation_multiplier": 1.25,
+        "instance_parameters": {
+          "S": 8,
+          "M": 18,
+          "H": 12,
+          "R": 10,
+          "J": 160,
+          "V": 8
+        },
+        "due_tightness": "medium",
+        "worker_skill_density": 0.75,
+        "robot_capability_density": 0.65
+      },
+      "path": "data/instances/paper_batch_epoch/train/train_L_D4_1811c370a50e.csv",
+      "sha256": "a04cb25db2e3d6e685e6f195a8f742acccc5e17fc05e53a6725f5e4162930708",
+      "status": "removed",
+      "reason": "Retired L training/development file deleted by user-approved repository cleanup; not part of the 92 active instances"
+    }
+  ]
+}
