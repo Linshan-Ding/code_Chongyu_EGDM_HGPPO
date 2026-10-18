@@ -1,0 +1,62 @@
+[
+  {
+    "claim": "dynamic graph",
+    "control": "mlp",
+    "evidence": {
+      "control": "mlp",
+      "wins": 19,
+      "ties": 0,
+      "losses": 11,
+      "missing": 0,
+      "mean_improvement_pct": 9.736949191524896,
+      "win_rate": 0.6333333333333333
+    },
+    "verdict": "directionally_supported",
+    "limitation": "Descriptive paired direction only; not a statistical significance or novelty claim."
+  },
+  {
+    "claim": "relation distinction",
+    "control": "shared_relation",
+    "evidence": {
+      "control": "shared_relation",
+      "wins": 15,
+      "ties": 0,
+      "losses": 15,
+      "missing": 0,
+      "mean_improvement_pct": -4.4049149579353015,
+      "win_rate": 0.5
+    },
+    "verdict": "not_supported",
+    "limitation": "Descriptive paired direction only; not a statistical significance or novelty claim."
+  },
+  {
+    "claim": "learned event gate",
+    "control": "periodic_gate",
+    "evidence": {
+      "control": "periodic_gate",
+      "wins": 15,
+      "ties": 0,
+      "losses": 15,
+      "missing": 0,
+      "mean_improvement_pct": -6.459243659586609,
+      "win_rate": 0.5
+    },
+    "verdict": "not_supported",
+    "limitation": "Descriptive paired direction only; not a statistical significance or novelty claim."
+  },
+  {
+    "claim": "rule prior support",
+    "control": "no_rule_prior",
+    "evidence": {
+      "control": "no_rule_prior",
+      "wins": 20,
+      "ties": 0,
+      "losses": 10,
+      "missing": 0,
+      "mean_improvement_pct": 10.519177665958777,
+      "win_rate": 0.6666666666666666
+    },
+    "verdict": "directionally_supported",
+    "limitation": "Descriptive paired direction only; not a statistical significance or novelty claim."
+  }
+]

@@ -1,0 +1,14 @@
+﻿method,kind,split,level,complete,expected,mean_twt
+full,latest,validation,1.0,30,30,15869.195477862928
+mlp,latest,validation,1.0,30,30,17904.23262693551
+shared_relation,latest,validation,1.0,30,30,16079.596082447637
+periodic_gate,latest,validation,1.0,30,30,14788.374663263787
+no_rule_prior,latest,validation,1.0,30,30,18683.99802714094
+gat,latest,validation,1.0,30,30,13727.40456379405
+dan,latest,validation,1.0,30,30,13680.955211785042
+Fixed-EDD,fixed,validation,1.0,10,10,21606.495151088922
+Fixed-ATC,fixed,validation,1.0,10,10,13917.298810474129
+Periodic-ATC,fixed,validation,1.0,10,10,13022.033099574597
+RH-MILP,fixed,validation,1.0,10,10,18568.480349889225
+RH-ALNS,fixed,validation,1.0,30,30,13848.6088121425
+Opportunity-ATC,fixed,validation,1.0,10,10,22670.14418385171
