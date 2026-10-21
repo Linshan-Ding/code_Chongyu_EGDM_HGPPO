@@ -1,4 +1,6 @@
-# Pilot Results
+# Pilot Results (protocol paper-sm100-1, superseded)
+
+These numbers were produced under the previous protocol `paper-sm100-1` (one case per epoch, eight episodes, per-event GAE, entropy bonus, no validation). They are kept as the diagnostic basis for the `paper-sm100-2` refactor described in `docs/refactor-sm100-2.md`; they are not comparable with runs of the current protocol.
 
 This directory contains the compact, reviewable output of the EGDM-HGPPO pilot experiment.
 

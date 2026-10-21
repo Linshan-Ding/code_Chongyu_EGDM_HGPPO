@@ -1,15 +1,13 @@
-# SM100 实现说明
+# SM100-2 实现说明
 
-`run_31_paper.py` 是唯一入口，协议/检查点为 `paper-sm100-1`。科学身份由源码、科学配置与活动数据ID/参数/哈希构成，排除磁盘路径、工作进程数、更新线程、Visdom端口和运行编号；运行编号仍是任务命名空间的一部分。CPU和8环境是默认执行约束。
+`run_31_paper.py` 是唯一入口，协议/检查点为 `paper-sm100-2`。科学身份由源码、科学配置与活动数据 ID/参数/哈希构成，排除磁盘路径、工作进程数、更新线程、设备、Visdom 端口和运行编号；运行编号仍是任务命名空间的一部分。
 
-`matrix` 提前定义训练/结束评测作业；`pilot-joint`/`formal`只训练，`evaluate-final`只做结束评测；支持方法、种子、作业ID筛选。运行编号默认run01，重复实验必须显式使用另一编号，不按结果优劣自动选择。
+`matrix` 提前定义训练/结束评测作业；`pilot-joint`/`formal` 只训练，`evaluate-final` 只做结束评测；支持方法、种子、作业 ID 筛选。每个学习任务生成 `latest` 与 `best` 两种检查点的回放作业。
 
-`train` 不接收非空验证列表；epoch0仅保存初始可恢复状态。8条完整回合成功且PPO更新完成后原子保存latest.pt，再发布epoch明细和CSV。提交记录包含实例访问序号，旧best机制移除。严格校验策略版本、科学参数、实例和源码，工作进程异常传播。路径变化不影响签名；不保证跨硬件浮点逐位一致。
+训练循环（`agent/paper/train.py`）：`rollout.update_plan` 给出本次更新的 (算例, 复制) 槽位；`rollout.Pool.collect` 由持久 worker 采样，每条回合记录锚点 TWT、相对 TWT、门控比例、迁移数、决策与仿真耗时；`ppo.PPO.update` 按 `advantage_mode` 计算优势，损失 = PPO 裁剪项 + β_t·KL(π‖先验) − 熵系数·H，`target_kl` 提前停止，学习率按更新数调度；到期时 `Pool.validate` 在 worker 内对开发算例做确定性贪心评估，写 `evaluations.csv`/`validation_summary.csv`，改善则原子保存 `best.pt`。只有完整回合与 PPO 更新成功后才原子保存 `latest.pt` 并发布 `epochs/NNNNNN.json`。
 
-结果每方法/种子/运行隔离。机器锁、活跃worker身份、监督日志、Visdom服务及基准缓存留在_local/主机；foreign PID不当作本机进程。训练结束封存artifact.json；collect验证封存文件、注册、检查点签名和预算。相同内容幂等，异内容留存双方并标为冲突，不静默覆盖。不导入最终评测到另一硬件冒充统一计时。
+决策模型（`agent/paper/candidates.py`、`dispatch.py`、`network.py`）：候选方案 v2 由 LCR / 压力 / 交期加权三准则生成并过滤负收益；`Network.select` 选方案，`Network.dispatch` 逐步选派工（ATC 先验 + 零初始化残差），`policies.learned_action` 合成物理动作；`Transition.action` 为 (方案索引, 派工选择元组)，`evaluate_actions` 据存储的派工步重算联合对数概率、熵与先验散度。
 
-最终评测使用完成预算后的latest.pt，所有结束评测在登记的汇总主机执行，模型回放在新进程运行。正式训练/测试需完整且数值通过的预实验报告，以及用户显式生成的可移植授权记录。
+设备：`device: cuda` 时学习器网络与 PPO 更新在 GPU 上进行（图批在 `graph.move_graph` 中搬运），采样 worker、回放与 DAN 始终在 CPU；检查点与下发给 worker 的权重为 CPU 张量。`scripts/run_31_paper.py` 在 `device: cpu` 时隐藏加速器。本轮改动在 CPU 上验证，GPU 路径按同一代码路径实现但尚未在本机实测。
 
-报告分训练尾统计、开发评估、正式主测试、L跨规模、消融、附录强参考与机理诊断。训练尾统计严格核对每例100次顺序，取第91至100次的80条回合；不把失败丢弃后求平均。Visdom从原子提交读取，以全局epoch/原始TWT展示逐例均值与标准差；不混入不同实例的最终测试点。
-
-验收只运行测试和短冒烟，S/M各一次八回合更新、7种学习实现微型更新与3次末次回放、全部规则/启发式、可移植结果导入、Visdom断线补绘及离线导出。长预实验和正式训练由用户后续启动。
+结果每方法/种子/运行隔离，封存、导入、冲突隔离与此前相同。报告新增 `validation-curves.csv`、`facets.csv`、`comparisons-best.csv`；配对比较含按算例配对的 Wilcoxon p 值；准入只看 `latest`。

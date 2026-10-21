@@ -110,6 +110,7 @@ def tardiness_potential(
     operations,
     current_time: float,
     eta: float,
+    mode: str = "legacy",
 ) -> float:
     """Paper Eq. (16) potential using only already-arrived orders.
 
@@ -150,11 +151,15 @@ def tardiness_potential(
     for runtime, data in zip(orders, instance.orders, strict=True):
         if not runtime.arrived or runtime.completed:
             continue
-        predicted_lateness = max(
-            0.0,
-            float(current_time)
-            + float(remaining_by_order.get(runtime.order_id, 0.0))
-            - float(data.due_date),
-        )
+        remaining = float(remaining_by_order.get(runtime.order_id, 0.0))
+        if mode == "future_only":
+            # Lateness still to come: the part already charged by the exact
+            # tardiness integral, max(0, t - d), is excluded so that no spike
+            # refunds it at completion.  Still a potential (zero at the end).
+            predicted_lateness = max(0.0, remaining - max(0.0, float(data.due_date) - float(current_time)))
+        elif mode == "legacy":
+            predicted_lateness = max(0.0, float(current_time) + remaining - float(data.due_date))
+        else:
+            raise ValueError(f"unknown potential mode: {mode}")
         potential -= eta * float(data.weight) * predicted_lateness
     return float(potential)

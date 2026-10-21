@@ -29,12 +29,17 @@ def write_trajectory(path, records, signature):
             obs = r.observation
             if hasattr(obs, "prior"):
                 candidates = dict(identifiers=obs.identifiers, prior=obs.prior.tolist(), groups=obs.groups.tolist(),
-                    features=obs.features.tolist(), stages=obs.stages.tolist(), state=obs.state.tolist())
+                    features=obs.features.tolist(), stages=obs.stages.tolist(), state=obs.state.tolist(),
+                    dispatch=[dict(identifiers=[list(x) for x in s.identifiers], prior=s.prior.tolist(), atc=s.atc, choice=s.choice)
+                              for s in getattr(obs, "dispatch_steps", [])])
             else:
                 candidates = dict(tokens=[dict(sources=t.sources, targets=t.targets, pairs=t.pairs.tolist(),
                                                identifiers=t.identifiers) for t in obs.tokens])
+            action = list(r.action) if isinstance(r.action, tuple) else r.action
+            if isinstance(action, list) and len(action) == 2 and isinstance(action[1], tuple):
+                action = [action[0], list(action[1])]
             emit(dict(epoch=r.episode, env_id=r.env_id, event=r.event, instance_id=r.instance_id,
-                policy_version=r.version, action_index=r.action, logp=r.logp, value=r.value, reward=r.reward,
+                policy_version=r.version, action_index=action, logp=r.logp, value=r.value, reward=r.reward,
                 done=r.done, choice=r.choice, details=r.details, candidates=candidates))
     return dict(events=len(records), content_sha256=digest.hexdigest(), compressed_bytes=path.stat().st_size)
 

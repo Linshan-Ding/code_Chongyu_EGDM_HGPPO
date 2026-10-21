@@ -11,6 +11,7 @@ def phi(env):
         env.sim.operations,
         env.sim.time,
         float(env.cfg.env.reward.potential_eta),
+        str(getattr(env.cfg.env.reward, "potential_mode", "legacy")),
     )
 
 class WorkerFailure(RuntimeError):

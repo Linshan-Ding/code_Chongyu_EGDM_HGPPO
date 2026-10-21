@@ -9,6 +9,7 @@ from .storage import read_json
 from .config import ROOT, digest, project_config
 
 COUNTS = dict(pilot=2, train=36, validation=10, main=24, generalization=12, tiny=8)
+DATA_PROTOCOLS = ("paper-sm100-1", "paper-sm100-2")
 PILOT = {
     "validation_S_D3_5fa810942029": "fb3b12ae526c956c8f841bdfcd2f7a3eb3562f28a40057ec966e0925fc54a82e",
     "validation_M_D3_1b424c3f1612": "6f3e9d8353b3023057f72ae0ce9ed4a5f6c70f0ff737f7a618667444539a90d0",
@@ -20,7 +21,9 @@ def registered_manifest(options):
     if not target.exists():
         raise FileNotFoundError("The registered fixed-data manifest is required; refuse to redraw a dataset")
     manifest = read_json(target)
-    if manifest["protocol"] != options["protocol"]:
+    # The frozen case registry is shared by the training protocols that use it
+    # unchanged; the registry file itself is never rewritten for a new protocol.
+    if manifest["protocol"] not in DATA_PROTOCOLS or options["protocol"] not in DATA_PROTOCOLS:
         raise ValueError("Manifest protocol mismatch")
     records = manifest["instances"]
     if Counter(r["split"] for r in records) != COUNTS or manifest["counts"] != COUNTS:

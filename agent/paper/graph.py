@@ -10,6 +10,15 @@ def squash(x):
     return x.sign() * x.abs().log1p()
 
 
+def move_graph(graph, device):
+    """Copy a (batched) heterogeneous graph to the learner device."""
+    return replace(graph, nodes={k: v.to(device) for k, v in graph.nodes.items()},
+                   edges={k: v.to(device) for k, v in graph.edges.items()},
+                   gate_continuous=graph.gate_continuous.to(device), event_type_multihot=graph.event_type_multihot.to(device),
+                   reconfigure_feasible=graph.reconfigure_feasible.to(device), decision_time=graph.decision_time.to(device),
+                   decision_index=graph.decision_index.to(device))
+
+
 def with_reservations(graph, state=None):
     """Explicit transit-to-reserved-cell relations, using only current state."""
     if ("worker", "reserved_at", "cell") in graph.edges:
@@ -56,8 +65,12 @@ class GraphEncoder(nn.Module):
         self.edge_scores = nn.ModuleList([nn.ModuleList([nn.Linear(len(self.edge_names), 1, bias=False) for _ in range(count)]) for _ in range(options["layers"])])
         self.norms = nn.ModuleList([nn.ModuleDict({t: nn.LayerNorm(d) for t in self.types}) for _ in range(options["layers"])])
 
+    @property
+    def device(self):
+        return next(self.parameters()).device
+
     def node_matrix(self, store):
-        x = torch.zeros((store.num_nodes, len(self.node_names)))
+        x = torch.zeros((store.num_nodes, len(self.node_names)), device=store.continuous.device)
         for prefix, names, values in (("c:", store.continuous_names, squash(store.continuous)), ("b:", store.binary_names, store.binary)):
             for j, n in enumerate(names):
                 x[:, self.node_names.index(prefix + n)] = values[:, j]
@@ -66,7 +79,7 @@ class GraphEncoder(nn.Module):
         return x
 
     def edge_matrix(self, store):
-        x = torch.zeros((store.num_edges, len(self.edge_names)))
+        x = torch.zeros((store.num_edges, len(self.edge_names)), device=store.edge_index.device)
         for prefix, names, values in (("c:", store.continuous_names, squash(store.continuous)), ("b:", store.binary_names, store.binary)):
             for j, n in enumerate(names):
                 x[:, self.edge_names.index(prefix + n)] = values[:, j]
@@ -74,6 +87,8 @@ class GraphEncoder(nn.Module):
 
     def forward(self, graphs):
         g = batch_heterographs([with_reservations(g) for g in graphs], validate=False)
+        if self.device.type != "cpu":
+            g = move_graph(g, self.device)
         nodes = {t: self.input(self.node_matrix(s)) if self.method == "gat" else
                  self.inputs[t](replace(s, continuous=squash(s.continuous))) for t, s in g.nodes.items()}
         edges = {r: self.edge_matrix(s) for r, s in g.edges.items()}
@@ -94,9 +109,9 @@ class GraphEncoder(nn.Module):
                 target_ids.append(dst + offsets[r[2]])
                 messages.append(m)
                 logits.append(score)
-                relation_ids.append(torch.full((len(src),), rid, dtype=torch.long))
+                relation_ids.append(torch.full((len(src),), rid, dtype=torch.long, device=joined.device))
             aggregate = torch.zeros_like(joined)
-            counts = torch.zeros((len(joined), 1))
+            counts = torch.zeros((len(joined), 1), device=joined.device)
             if messages:
                 dst, rid = torch.cat(target_ids), torch.cat(relation_ids)
                 # Shared-relation retains typed neighborhoods; GAT normalizes over
@@ -110,6 +125,6 @@ class GraphEncoder(nn.Module):
                        counts[offsets[t]:offsets[t] + len(x)].clamp_min(1))) for t, x in nodes.items()}
         pooled = []
         for t, x in nodes.items():
-            sums = torch.zeros((len(graphs), self.dim)).index_add_(0, g.nodes[t].batch, x)
+            sums = torch.zeros((len(graphs), self.dim), device=x.device).index_add_(0, g.nodes[t].batch, x)
             pooled.append(sums / (g.nodes[t].ptr[1:] - g.nodes[t].ptr[:-1]).clamp_min(1)[:, None])
         return torch.cat(pooled, -1), nodes, g

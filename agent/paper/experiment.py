@@ -49,5 +49,5 @@ def hardware(options):
     return dict(host_id=host_id(), platform=platform.platform(), processor=platform.processor(),
                 logical_cpus=psutil.cpu_count(), physical_cpus=psutil.cpu_count(logical=False),
                 ram_bytes=psutil.virtual_memory().total, python=sys.version, torch=torch.__version__,
-                numpy=numpy.__version__, device="cpu", workers=options["workers"],
+                numpy=numpy.__version__, device=options.get("device", "cpu"), workers=options["workers"],
                 environments=options["environments"], update_threads=options["update_threads"])

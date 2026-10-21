@@ -46,6 +46,17 @@ class Policy:
 def learned_action(network, env, options, generator=None, deterministic=False):
     if network.method == "dan":
         return network.act(env, options, generator, deterministic)
-    observation = Builder(env, options).build(network.method)
+    builder = Builder(env, options)
+    observation = builder.build(network.method)
     index, logp, value, details = network.select(observation, generator, deterministic)
-    return observation, index, observation.actions[index], logp, value, details
+    action = observation.actions[index]
+    if getattr(network, "learned_dispatch", False):
+        steps, schedule, dispatch_logp, atc_steps = network.dispatch(observation, index, builder, generator, deterministic)
+        observation.dispatch_steps = steps
+        action = CompositeAction(action.reconfigure, action.worker_assignments, action.robot_assignments, schedule)
+        logp += dispatch_logp
+        details.update(dispatch_logp=dispatch_logp, dispatch_steps=len(steps), dispatch_atc_steps=atc_steps,
+                       joint_logp=logp, choices=max([details["choices"]] + [len(s.options) for s in steps]),
+                       dispatch=[(s.identifiers[s.choice], s.choice == s.atc) for s in steps])
+        index = (index, tuple(s.choice for s in steps))
+    return observation, index, action, logp, value, details

@@ -1,3 +1,4 @@
+import contextlib
 import hashlib
 import json
 import time
@@ -15,11 +16,13 @@ from .policies import Policy, learned_action
 from .storage import write_json, preserve_file
 
 
-def evaluate(instance, options, output, *, method="full", seed=0, network=None, baseline=None, timing_scope="in_process"):
+def evaluate(instance, options, output, *, method="full", seed=0, network=None, baseline=None, timing_scope="in_process", trace=True):
     output = Path(output)
     output.parent.mkdir(parents=True, exist_ok=True)
     preserve_file(output)
-    preserve_file(output.with_suffix(".trace.jsonl"))
+    write_trace = bool(trace)
+    if write_trace:
+        preserve_file(output.with_suffix(".trace.jsonl"))
     env = AssemblyEnv(project_config(options))
     env.reset(instance)
     policy = None if network is not None else Policy(method, options, seed)
@@ -37,7 +40,8 @@ def evaluate(instance, options, output, *, method="full", seed=0, network=None, 
                beta=1.0 if method != "dan" else None)
     begin, anchors, gates = time.perf_counter(), 0, 0
     try:
-        with output.with_suffix(".trace.jsonl").open("w", encoding="utf-8") as stream, torch.no_grad():
+        stream_context = output.with_suffix(".trace.jsonl").open("w", encoding="utf-8") if write_trace else contextlib.nullcontext()
+        with stream_context as stream, torch.no_grad():
             for event in range(options["event_limit"]):
                 start = time.perf_counter()
                 if network is not None:
@@ -59,8 +63,9 @@ def evaluate(instance, options, output, *, method="full", seed=0, network=None, 
                 _, _, done, info = env.step(action)
                 base += info["reward_twt"]
                 shaping += info["reward_shaping"]
-                stream.write(json.dumps(dict(canonical, event=event, event_types=event_types, details=details,
-                                             reward_twt=info["reward_twt"], reward_shaping=info["reward_shaping"])) + "\n")
+                if stream is not None:
+                    stream.write(json.dumps(dict(canonical, event=event, event_types=event_types, details=details,
+                                                 reward_twt=info["reward_twt"], reward_shaping=info["reward_shaping"])) + "\n")
                 row["decisions"] += 1
                 if done:
                     row.update(twt=info["twt"], reward_error=abs(base + info["twt"]), shaping_error=abs(shaping + initial_phi))
@@ -85,3 +90,22 @@ def selection_score(results, baselines):
     failures = sum(not r["feasible"] for r in results)
     score = sum(r["twt"] / max(baselines[r["instance_id"]], 1.) for r in results if r["feasible"]) / max(1, len(results) - failures)
     return failures, score
+
+
+def rule_twt(instance, options, method="Periodic-ATC", seed=0):
+    """TWT of a rule policy on one case without writing evidence files (worker-side baselines)."""
+    env = AssemblyEnv(project_config(options))
+    env.reset(instance)
+    policy = Policy(method, options, seed)
+    policy.reset(env)
+    initial_phi, base, shaping = phi(env), 0., 0.
+    for _ in range(options["event_limit"]):
+        _, _, done, info = env.step(policy.act(env))
+        base += info["reward_twt"]
+        shaping += info["reward_shaping"]
+        if done:
+            feasible = abs(base + info["twt"]) <= options["reward_tolerance"] and abs(shaping + initial_phi) <= options["reward_tolerance"]
+            if not feasible:
+                raise RuntimeError(f"{method} baseline violated the reward identity on {instance.instance_id}")
+            return float(info["twt"])
+    raise RuntimeError(f"{method} baseline exceeded the event limit on {instance.instance_id}")

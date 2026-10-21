@@ -4,6 +4,7 @@ import socket
 import time
 from collections import defaultdict
 from pathlib import Path
+import numpy as np
 from .visdom_transport import client, send_figure, verify_service, number, horizontal
 from .storage import read_csv, read_json, write_json, committed_bundles
 from .rollout import batch_summary
@@ -27,8 +28,9 @@ def figures(folder):
     baselines = read_json(folder / "baselines.json")
     bundles = committed_bundles(folder)
     eps = [r for b in bundles for r in b["episodes"]]
-    evals = [r for b in bundles for r in b["evaluations"]]
+    evals = [r for b in bundles for r in b.get("evaluations", [])]
     logs = [r for b in bundles for r in b["summaries"]]
+    validations = [r for b in bundles for r in b.get("validation_summaries", [])]
     # Audit every displayed batch against its raw N records, never partial means.
     for b in bundles:
         if b["summaries"]:
@@ -37,47 +39,66 @@ def figures(folder):
             if any(summary[k] != v for k, v in recomputed.items()):
                 raise ValueError("Committed curve differs from raw complete episodes")
     all_failures = [read_json(p) for p in sorted((folder / "failures").glob("*.json"))]
-    failures = [r for r in all_failures if "instance_id" in r]
-    job_failures = [r for r in all_failures if "instance_id" not in r]
-    # Only instances represented in this training job; no cross-scale raw average.
+    failures = [r for r in all_failures if "instance_id" in r or "instances" in r]
+    job_failures = [r for r in all_failures if "instance_id" not in r and "instances" not in r]
     output = {}
-    for iid in sorted(set(baselines) | {r["instance_id"] for r in eps + failures}):
+    trained = sorted({r["instance_id"] for r in eps})
+    # One panel per training case: the per-update mean of that case's replicates.
+    for iid in trained:
         episodes = [r for r in eps if r["instance_id"] == iid]
-        evaluations = [r for r in evals if r["instance_id"] == iid]
-        means = [r for r in logs if r["instance_id"] == iid]
-        failed = [r for r in failures if r["instance_id"] == iid]
-        maximum = max([int(r["epoch"]) for r in episodes + evaluations + failed] + [0])
+        by_epoch = defaultdict(list)
+        for r in episodes:
+            by_epoch[int(r["epoch"])].append(float(r["twt"]))
+        means = [dict(epoch=e, mean_twt=float(np.mean(v)), std_twt=float(np.std(v))) for e, v in sorted(by_epoch.items())]
+        failed = [r for r in failures if iid in (r.get("instances") or [r.get("instance_id")])]
+        maximum = max([int(r["epoch"]) for r in episodes + failed] + [0])
         b = baselines[iid]
         band = [dict(r, lower=r["mean_twt"] - r["std_twt"], upper=r["mean_twt"] + r["std_twt"]) for r in means]
         lower = dict(trace(band, "lower", "Mean - std (population)", mode="lines"), line=dict(width=0), showlegend=False)
         upper = dict(trace(band, "upper", "Training mean ± std (not CI)", mode="lines"),
                      fill="tonexty", fillcolor="rgba(31,119,180,0.18)", line=dict(width=0))
         mean_trace = trace(means, "mean_twt", "Batch mean TWT (pre-update frozen policy)")
-        # A single epoch has no horizontal band area; retain its visible spread.
+        # A single update has no horizontal band area; retain its visible spread.
         if len(means) == 1:
             mean_trace["error_y"] = dict(type="data", array=[means[0]["std_twt"]], visible=True)
         traces = [lower, upper, trace(episodes, "twt", "Raw complete rollouts (pre-update)", True, "markers"),
-                  mean_trace,
-                  horizontal(b, "Periodic-ATC beta=1", maximum), horizontal(.95 * b, "5% improvement target", maximum)]
-        failed += [r for r in evaluations if not r["feasible"]]
+                  mean_trace, horizontal(b, "Periodic-ATC beta=1", maximum), horizontal(.95 * b, "5% improvement target", maximum)]
         if failed:
             traces.append(dict(type="scatter", mode="markers", name="FAILED (baseline marker, not objective)",
                 x=[int(r["epoch"]) for r in failed], y=[b] * len(failed), text=[r.get("failure", "") for r in failed],
                 marker=dict(symbol="x", color="red", size=12)))
         output[iid + "_TWT"] = dict(data=traces, layout=dict(title=f"{folder.name} | {iid}",
-            xaxis=dict(title="Training epoch"), yaxis=dict(title="TWT"), showlegend=True))
+            xaxis=dict(title="Training update"), yaxis=dict(title="TWT"), showlegend=True))
         output[iid + "_auxiliary"] = dict(data=[trace(episodes, k, k, True) for k in
             ("gate_fraction", "moves", "travel", "anchor_fraction")],
-            layout=dict(title=f"{iid} | behavior and gap", xaxis=dict(title="Training epoch"), yaxis=dict(title="Value")))
+            layout=dict(title=f"{iid} | behavior", xaxis=dict(title="Training update"), yaxis=dict(title="Value")))
+    # Greedy development curve: the only convergence evidence that excludes exploration noise.
+    if validations or evals:
+        maximum = max([int(r["epoch"]) for r in validations + evals] + [0])
+        traces = [trace(validations, "rel_twt_geomean", "Greedy validation: geomean TWT / Periodic-ATC"),
+                  trace(validations, "best_rel_twt_geomean", "Best so far", mode="lines"),
+                  horizontal(1., "Periodic-ATC beta=1", maximum), horizontal(.95, "5% improvement target", maximum)]
+        for iid in sorted({r["instance_id"] for r in evals}):
+            traces.append(trace([r for r in evals if r["instance_id"] == iid], "rel_twt", f"{iid} (greedy)", True, "lines"))
+        failed = [r for r in evals if not r["feasible"]]
+        if failed:
+            traces.append(dict(type="scatter", mode="markers", name="FAILED validation case (marker, not objective)",
+                x=[int(r["epoch"]) for r in failed], y=[1.] * len(failed), text=[r.get("failure", "") for r in failed],
+                marker=dict(symbol="x", color="red", size=12)))
+        output["validation_rel_TWT"] = dict(data=traces, layout=dict(title=f"{folder.name} | greedy development validation",
+            xaxis=dict(title="Training update"), yaxis=dict(title="TWT / Periodic-ATC TWT"), showlegend=True))
+    output["training_rel_TWT"] = dict(data=[trace(logs, "rel_twt_geomean", "Sampled batch geomean TWT / Periodic-ATC"),
+        trace(logs, "gate_rate", "gate rate (sampled)"), trace(logs, "anchor_rate", "anchor rate (sampled)")],
+        layout=dict(title=f"{folder.name} | relative training batch", xaxis=dict(title="Training update"), yaxis=dict(title="Value")))
     output["diagnostics"] = dict(data=[trace(logs, k, k) for k in
-        ("policy_loss", "value_loss", "kl", "entropy", "actor_grad_norm", "critic_grad_norm", "events_per_second", "failures")],
-        layout=dict(title=f"{folder.name} | training diagnostics", xaxis=dict(title="Training epoch"), yaxis=dict(title="Value")))
+        ("policy_loss", "value_loss", "kl", "kl_prior", "entropy", "clip_fraction", "actor_lr", "actor_grad_norm", "critic_grad_norm", "events_per_second", "failures")],
+        layout=dict(title=f"{folder.name} | training diagnostics", xaxis=dict(title="Training update"), yaxis=dict(title="Value")))
     if job_failures:
         last_epoch = max([b["epoch"] for b in bundles] + [0])
         output["job_failures"] = dict(data=[dict(type="scatter", mode="markers", name="Job failure (not TWT)",
             x=[last_epoch] * len(job_failures), y=[1] * len(job_failures),
             text=[r.get("failure", "Unknown job failure") for r in job_failures], marker=dict(symbol="x", color="red"))],
-            layout=dict(title=folder.name + " | job-level failures", xaxis=dict(title="Last committed epoch (marker)"),
+            layout=dict(title=folder.name + " | job-level failures", xaxis=dict(title="Last committed update (marker)"),
                         yaxis=dict(title="Failure marker")))
     return output
 
@@ -112,7 +133,7 @@ def export(options, *, render=True):
                         axis.errorbar(t["x"], t["y"], yerr=t["error_y"]["array"], fmt=style, capsize=4, label=t["name"])
                     else:
                         axis.plot(t["x"], t["y"], style, label=t["name"])
-                axis.set(xlabel="Training epoch", ylabel=fig["layout"]["yaxis"]["title"], title=fig["layout"]["title"])
+                axis.set(xlabel="Training update", ylabel=fig["layout"]["yaxis"]["title"], title=fig["layout"]["title"])
                 axis.legend(fontsize=7)
                 chart.tight_layout()
                 chart.savefig(output.with_suffix(".png"), dpi=150)
