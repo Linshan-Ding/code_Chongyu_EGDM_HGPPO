@@ -1,7 +1,19 @@
-"""Balanced case visits, with a separate final-evaluation phase."""
+"""Balanced case visits over seeded cycles, with a separate final-evaluation phase."""
 from .config import LEARNERS, RULES, ALIASES
 from .data import rows
 from .experiment import suite_root, protocol_hash, token
+
+PILOT_LOADS = (0.7, 0.9)
+PILOT_RELOCATION = 1.25
+
+
+def pilot_training_cases(train_rows):
+    """Pilot v2 learns on twelve registered training cases: S/M x D1/D3/D4 x two loads."""
+    chosen = [r for r in train_rows if r['parameters']['relocation_multiplier'] == PILOT_RELOCATION
+              and r['parameters']['load_ratio'] in PILOT_LOADS]
+    if len(chosen) != 12:
+        raise ValueError('Pilot v2 expects exactly twelve registered training cases')
+    return chosen
 
 
 def matrix(options, suite):
@@ -11,32 +23,38 @@ def matrix(options, suite):
     by['pilot'].sort(key=lambda r: ('S', 'M').index(r['parameters']['scale']))
     by['train'].sort(key=lambda r: (r['parameters']['load_ratio'], r['parameters']['relocation_multiplier'],
         ('D1', 'D3', 'D4').index(r['parameters']['scenario']), ('S', 'M').index(r['parameters']['scale'])))
+    by['validation'].sort(key=lambda r: (('S', 'M').index(r['parameters']['scale']), r['instance_id']))
     root = suite_root(options, suite)
     run_id = token(options['run_id'])
-    visits = options['formal_epochs_per_instance'] if suite == 'formal' else options['pilot_epochs_per_instance']
+    updates = options['formal_updates'] if suite == 'formal' else options['pilot_updates']
+    k, n = options['instances_per_update'], options['episodes_per_instance']
+    pilot_cases = pilot_training_cases(by['train'])
     if suite == 'pilot-single':
-        configurations = [('full', [r], [x for x in by['validation'] if x['parameters']['scale'] == r['parameters']['scale']], r['parameters']['scale']) for r in by['pilot']]
+        configurations = [('full', [c for c in pilot_cases if c['parameters']['scale'] == scale],
+                           [x for x in by['validation'] if x['parameters']['scale'] == scale],
+                           [x for x in by['validation'] if x['parameters']['scale'] == scale], scale) for scale in ('S', 'M')]
     elif suite in ('pilot-joint', 'formal'):
-        configurations = [(m, by['train'] if suite == 'formal' else by['pilot'],
+        configurations = [(m, by['train'] if suite == 'formal' else pilot_cases, by['validation'],
             by['main'] + by['generalization'] if suite == 'formal' else by['validation'], 'joint') for m in LEARNERS]
     else:
         raise ValueError(suite)
     jobs = []
-    for method, training, evaluation, tag in configurations:
+    for method, training, validation, evaluation, tag in configurations:
         for seed in options['seeds']:
             tid = f'train_{method}_{tag}_s{seed}'
             rid = run_id + ('_' + tag if suite == 'pilot-single' else '')
             folder = root / method / f'seed_{seed}' / rid
-            budget = len(training) * visits
             base = dict(suite=suite, method=method, seed=seed, run_id=rid, events=None,
-                        budget_epochs=budget, budget_episodes=budget * options['environments'],
+                        budget_epochs=updates, budget_episodes=updates * options['environments'],
                         environments_per_epoch=options['environments'])
             jobs.append(dict(base, id=tid, kind='train', phase='train', output=str(folder), depends=[],
-                training=training, validation=[], case_batches={r['instance_id']: visits for r in training}))
-            for repeat in range(options['replays']):
-                jobs.append(dict(base, id=f'replay_{method}_{tag}_s{seed}_latest_{repeat}', kind='replay', phase='evaluate',
-                    output=str(folder / 'final' / f'repeat_{repeat}'), depends=[tid], training_job=tid,
-                    checkpoint_kind='latest', repeat=repeat, evaluation=evaluation))
+                training=training, validation=validation,
+                expected_visits={r['instance_id']: updates * k / len(training) for r in training}))
+            for kind in ('latest', 'best'):
+                for repeat in range(options['replays']):
+                    jobs.append(dict(base, id=f'replay_{method}_{tag}_s{seed}_{kind}_{repeat}', kind='replay', phase='evaluate',
+                        output=str(folder / 'final' / kind / f'repeat_{repeat}'), depends=[tid], training_job=tid,
+                        checkpoint_kind=kind, repeat=repeat, evaluation=evaluation))
     if suite != 'pilot-single':
         evaluation = by['main'] + by['generalization'] if suite == 'formal' else by['validation']
         for method in RULES:
@@ -50,8 +68,10 @@ def matrix(options, suite):
                     output=str(root / 'tiny-reference' / 'seed_0' / run_id)))
     return dict(protocol=options['protocol'], protocol_hash=protocol_hash(options), run_id=run_id,
         epoch_semantics=options['epoch_semantics'], suite=suite, jobs=jobs,
+        update=dict(instances_per_update=k, episodes_per_instance=n, updates=updates),
         aliases={'no_graph': 'mlp (same implementation and result; not independent evidence)'},
-        selection_data='none: final committed model only', source_selection='All registered methods retained')
+        selection_data='development split only: best.pt is selected on registered validation cases; latest.pt is the final model',
+        source_selection='All registered methods retained')
 
 
 def select_jobs(plan, *, phase, methods=None, seeds=None, job_ids=None):

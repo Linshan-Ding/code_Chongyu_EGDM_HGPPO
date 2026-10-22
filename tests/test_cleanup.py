@@ -70,22 +70,29 @@ class CleanupTests(unittest.TestCase):
 
     def test_matrix_counts_and_missing_reports(self):
         from agent.paper.report import report
-        for suite, jobs, epochs, episodes in [('pilot-single',24,600,4800),('pilot-joint',92,4200,33600),('formal',93,75600,604800)]:
+        o = self.options
+        per_learner = 1 + 2 * o['replays']
+        from agent.paper.config import LEARNERS
+        learners = 3 * len(LEARNERS)
+        expected = {'pilot-single': (6 * per_learner, 6 * o['pilot_updates']),
+                    'pilot-joint': (learners * per_learner + 8, learners * o['pilot_updates']),
+                    'formal': (learners * per_learner + 9, learners * o['formal_updates'])}
+        for suite, (jobs, epochs) in expected.items():
             plan = matrix(self.options, suite)
             training = [j for j in plan['jobs'] if j['kind']=='train']
             self.assertEqual(len(plan['jobs']), jobs)
             self.assertEqual(sum(j['budget_epochs'] for j in training), epochs)
-            self.assertEqual(sum(j['budget_episodes'] for j in training), episodes)
+            self.assertEqual(sum(j['budget_episodes'] for j in training), epochs * o['environments'])
             with tempfile.TemporaryDirectory(dir=ROOT / 'result') as tmp:
                 result = report(dict(self.options, result_root=tmp), suite)
                 self.assertFalse(result['complete'])
                 self.assertTrue(all(r['status']=='missing' for r in result['all_results']))
 
     def test_reject_pre_cleanup_checkpoints(self):
-        self.assertEqual(FORMAT, 'paper-sm100-1')
+        self.assertEqual(FORMAT, 'paper-sm100-2')
         with tempfile.TemporaryDirectory(dir=ROOT / 'result') as tmp:
             path = Path(tmp) / 'legacy.pt'
-            torch.save(dict(format='paper-batch-epoch-2', signature='same'), path)
+            torch.save(dict(format='paper-sm100-1', signature='same'), path)
             with self.assertRaises(ValueError):
                 load_checkpoint(path, 'same')
 

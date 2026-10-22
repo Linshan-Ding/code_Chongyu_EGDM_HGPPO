@@ -855,3 +855,34 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+
+def perturb_arrivals(instance, seed: int, fraction: float = 0.5):
+    """Training-time arrival jitter of a registered case (the stored file is never changed).
+
+    Every release time moves by a seeded uniform offset within ``fraction`` of the
+    mean inter-arrival gap; the order's due date shifts by the same offset, so due
+    tightness, routes, resources and weights are untouched. Orders are re-sorted and
+    re-indexed as the schema requires. The anchor baseline must be recomputed on the
+    perturbed case; replicates sharing ``seed`` share the same arrival stream.
+    """
+    import copy
+    from data.schema import OrderData
+    rng = np.random.default_rng(int(seed) % (2**32))
+    orders = sorted(instance.orders, key=lambda o: (o.release_time, o.order_id))
+    releases = np.asarray([o.release_time for o in orders], dtype=float)
+    gap = float(np.mean(np.diff(releases))) if len(releases) > 1 else 1.0
+    offsets = rng.uniform(-fraction * gap, fraction * gap, size=len(orders))
+    moved = []
+    for order, delta in zip(orders, offsets.tolist()):
+        release = max(0.0, order.release_time + delta)
+        shift = release - order.release_time
+        moved.append(OrderData(order_id=order.order_id, product_type=order.product_type, release_time=release,
+                               due_date=order.due_date + shift, weight=order.weight))
+    moved.sort(key=lambda o: (o.release_time, o.order_id))
+    renumbered = [OrderData(order_id=i, product_type=o.product_type, release_time=o.release_time,
+                            due_date=o.due_date, weight=o.weight) for i, o in enumerate(moved)]
+    perturbed = copy.deepcopy(instance)
+    perturbed.orders = renumbered
+    perturbed.generation_meta = dict(perturbed.generation_meta or {}, arrival_perturbation=dict(seed=int(seed), fraction=fraction))
+    return perturbed

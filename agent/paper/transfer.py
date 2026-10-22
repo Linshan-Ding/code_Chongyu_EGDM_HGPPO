@@ -16,7 +16,8 @@ def artifact_files(folder):
     folder = Path(folder).resolve()
     files = {}
     for p in sorted(folder.rglob('*')):
-        if p.is_symlink() or p.is_junction() or not p.resolve().is_relative_to(folder):
+        # Path.is_junction exists from Python 3.12; older interpreters have no junctions.
+        if p.is_symlink() or getattr(p, 'is_junction', lambda: False)() or not p.resolve().is_relative_to(folder):
             raise ValueError('Result packages may not contain links or external paths')
         rel = p.relative_to(folder)
         if p.is_file() and rel.parts[0] not in ('final', 'curves') and rel.as_posix() != 'artifact.json':
@@ -39,7 +40,7 @@ def validate_training(options, job, folder, *, require_complete=False):
         raise ValueError('Run registration/source/scientific configuration/data/budget mismatch')
     snapshot = read_json(folder / 'config_snapshot.json')
     baselines = read_json(folder / 'baselines.json')
-    expected = signature(options, job['method'], job['seed'], job['training'], [], baselines)
+    expected = signature(options, job['method'], job['seed'], job['training'], job.get('validation', []), baselines)
     if snapshot['signature'] != expected or snapshot['source']['digest'] != source_manifest()['digest']:
         raise ValueError('Invalid portable checkpoint signature')
     if snapshot['target_epochs'] != job['budget_epochs'] or snapshot['instance_order'] != [r['instance_id'] for r in job['training']]:

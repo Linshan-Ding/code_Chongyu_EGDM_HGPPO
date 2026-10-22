@@ -126,6 +126,7 @@ class Network(nn.Module):
         self.actor = official_classes()["Actor"](3, 40, 64, 1)
         self.critic = nn.Sequential(nn.Linear(16, 64), nn.Tanh(), nn.Linear(64, 64), nn.Tanh())
         self.value = PopArt(64, options["popart_beta"])
+        self.use_critic = options.get("advantage_mode", "gae") == "gae" or options.get("critic", "auxiliary") != "none"
 
     def actor_parameters(self):
         return list(self.actor_encoder.parameters()) + list(self.actor.parameters())
@@ -144,7 +145,7 @@ class Network(nn.Module):
         x = torch.stack([torch.cat((e["global_op"], e["global_cell"])) for e in es])
         return self.value(self.critic(x))
 
-    def evaluate_actions(self, observations, actions):
+    def evaluate_actions(self, observations, actions, need_values=True):
         es = self.actor_encoder([o.graph for o in observations])
         logs, entropies = [], []
         for e, obs, sequence in zip(es, observations, actions):
@@ -158,7 +159,9 @@ class Network(nn.Module):
                 raise ValueError("DAN prefix replay length mismatch")
             logs.append(lp)
             entropies.append(entropy)
-        return torch.stack(logs), torch.stack(entropies), self.normalized_values(observations)
+        # DAN has no candidate prior: its divergence term is identically zero.
+        values = self.normalized_values(observations) if need_values else None
+        return torch.stack(logs), torch.stack(entropies), torch.zeros(len(observations)), values
 
     @torch.no_grad()
     def act(self, env, options, generator=None, deterministic=False):
@@ -189,7 +192,7 @@ class Network(nn.Module):
             sequence.append(a)
             prefix += (legal[a][0],)
         obs = Observation(graph, tokens)
-        value = float(self.value.denormalize(self.normalized_values([obs]))[0])
+        value = float(self.value.denormalize(self.normalized_values([obs]))[0]) if self.use_critic else 0.0
         details = dict(gate=int(bool(ws or rs)), gate_logp=0., conditional_logp=logp, joint_logp=logp,
                        candidate="Periodic-DAN", anchor=False, choices=max([len(t.sources) for t in tokens] + [1]))
         return obs, sequence, CompositeAction(bool(ws or rs), ws, rs, prefix), logp, value, details

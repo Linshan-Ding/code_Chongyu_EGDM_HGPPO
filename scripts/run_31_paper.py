@@ -7,9 +7,24 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 os.environ.setdefault("OMP_NUM_THREADS", "1")
 os.environ.setdefault("MKL_NUM_THREADS", "1")
+
+
+def _configured_device(argv):
+    """Read the execution device before torch is imported; CPU runs hide every accelerator."""
+    import yaml
+    path = ROOT / "configs/paper.yaml"
+    if "--config" in argv:
+        path = Path(argv[argv.index("--config") + 1])
+    try:
+        return str(yaml.safe_load(path.read_text("utf-8")).get("device", "cpu"))
+    except Exception:
+        return "cpu"
+
+
+if _configured_device(sys.argv) != "cuda":
+    os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 
 def main():

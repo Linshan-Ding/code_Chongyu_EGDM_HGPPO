@@ -85,7 +85,7 @@ def status(options):
         if attempts:
             started = read_json(attempts[-1])
             completed = [read_json(f) for f in (attempts[-1].parent / "environment-results").glob("*.json")]
-            progress["latest_attempt"] = dict(epoch=started["epoch"], instance_id=started["instance_id"],
+            progress["latest_attempt"] = dict(epoch=started["epoch"], instances=started.get("instances", started.get("instance_id")),
                 returned_environments=len(completed), feasible_environments=sum(r["feasible"] for r in completed),
                 committed=started["epoch"] <= progress["epoch"], path=str(attempts[-1].parent))
         for worker in progress.get("workers", []):
@@ -97,8 +97,10 @@ def status(options):
 def spawn(arguments, output, detached=False):
     output = Path(output)
     output.parent.mkdir(parents=True, exist_ok=True)
+    # Child processes inherit the parent's accelerator visibility; replays and
+    # the dashboard are CPU-only by construction of their own code paths.
     kwargs = dict(cwd=ROOT, stdin=subprocess.DEVNULL, close_fds=True,
-                  env=dict(os.environ, CUDA_VISIBLE_DEVICES="-1", OMP_NUM_THREADS="1", MKL_NUM_THREADS="1"))
+                  env=dict(os.environ, OMP_NUM_THREADS="1", MKL_NUM_THREADS="1"))
     if os.name == "nt":
         kwargs["creationflags"] = subprocess.CREATE_NO_WINDOW
         if detached:
@@ -135,12 +137,21 @@ def replay_job(options, job, training_job):
     snapshot = read_json(folder / "config_snapshot.json")
     if snapshot["source"]["digest"] != source_manifest()["digest"]:
         raise ValueError("Replay source differs from training source")
-    if job["checkpoint_kind"] != "latest":
-        raise ValueError("Only final committed policies may be evaluated")
+    kind = job["checkpoint_kind"]
+    if kind not in ("latest", "best"):
+        raise ValueError("Only the final committed policy or the development-selected policy may be evaluated")
     if "budget_epochs" in training_job:
         payload = validate_training(options, training_job, folder, require_complete=True)
     else:  # Engineering fixtures use no registered long-training budget.
         payload = load_checkpoint(folder / "latest.pt", snapshot["signature"])
+    if kind == "best":
+        # Selected on the registered development split only, never on main/L.
+        if not (folder / "best.pt").exists():
+            raise FileNotFoundError("No development-selected checkpoint was written by this training job")
+        best = load_checkpoint(folder / "best.pt", snapshot["signature"])
+        if best.get("kind") != "best_validation_policy" or best["epoch"] > payload["epoch"]:
+            raise ValueError("Invalid development-selected checkpoint")
+        payload = dict(best, events=payload["events"])
     reference = load(training_job["training"][0])
     env = AssemblyEnv(project_config(options))
     env.reset(reference)
@@ -152,10 +163,11 @@ def replay_job(options, job, training_job):
         b = baseline(options, row)
         result = evaluate(load(row), options, output / f"{row['instance_id']}.json", method=job["method"], seed=job["seed"],
                           network=network, baseline=b, timing_scope="independent_process")
-        results.append(dict(result, instance=row, checkpoint_kind=job["checkpoint_kind"],
+        results.append(dict(result, instance=row, checkpoint_kind=kind,
                             selected_events=payload["events"], trained_events=read_json(folder / "progress.json")["committed_events"],
                             epoch=payload["epoch"], selected_episodes=payload["epoch"] * options["environments"],
-                            trained_episodes=read_json(folder / "progress.json")["committed_episodes"]))
+                            trained_episodes=read_json(folder / "progress.json")["committed_episodes"],
+                            selection=payload.get("validation")))
     preserve_file(output / "results.json")
     write_json(output / "results.json", results)
 
@@ -163,12 +175,12 @@ def replay_job(options, job, training_job):
 def execute_job(options, job, plan, resume):
     output = ROOT / job["output"]
     if job["kind"] == "train":
-        cases = {r["instance_id"]: r for r in job["training"]}
+        cases = {r["instance_id"]: r for r in job["training"] + job.get("validation", [])}
         bs = {iid: baseline(options, row) for iid, row in cases.items()}
-        sig = signature(options, job["method"], job["seed"], job["training"], job["validation"], bs)
+        sig = signature(options, job["method"], job["seed"], job["training"], job.get("validation", []), bs)
         write_json(output / "baselines.json", bs)
         result = train(options, job["method"], job["seed"], [load(r) for r in job["training"]],
-            [], bs, output, job["budget_epochs"], sig, resume)
+            [load(r) for r in job.get("validation", [])], bs, output, job["budget_epochs"], sig, resume)
         write_json(output / "training-result.json", result)
     elif job["kind"] == "replay":
         # Each repeat is a fresh interpreter, running alone after its training job.

@@ -9,7 +9,8 @@ from environment.reward import _processing_remaining_time
 from environment.state import CompositeAction, ResourceAssignment
 STAGE_DIM = 12
 GLOBAL_DIM = 6
-ACTION_DIM = 12
+ACTION_DIM = 15
+CRITERIA = ("lcr", "pressure", "due")
 
 
 class EventView:
@@ -79,20 +80,43 @@ class ResourceFeatures:
                 for s in route[op.route_position + 1 :]
             )
         self.mix = self.count / np.maximum(1, self.count.sum(axis=1, keepdims=True))
+        # Due-weighted work: late or heavy orders raise the pressure of their stage.
+        self.work_weighted = np.zeros(n)
+        for op in self.visible.operations:
+            if op.status.value == "DONE":
+                continue
+            remaining = self.lower[(op.product_type, op.stage)]
+            if op.status.value == "PROCESSING":
+                remaining = _processing_remaining_time(self.instance, self.sim.operations[op.operation_id], self.sim.time)
+            order = self.orders[op.order_id]
+            slack = order.due_date - self.sim.time - remaining - self.after[op.operation_id]
+            self.work_weighted[op.stage] += remaining * float(order.weight) * (2.0 if slack < 0 else 1.0)
+        self.transit_aware = bool(self.options.get("transit_aware_features", False))
         self.base_capacity, self.base_pressure = self.pressures((), ())
 
-    def pressures(self, workers, robots):
+    def pressures(self, workers, robots, weighted=False):
         wc = [c.configured_worker for c in self.visible.cells]
         rc = [c.configured_robot for c in self.visible.cells]
         for cell in self.visible.cells:
             if cell.reserved_worker is not None or cell.reserved_robot is not None:
                 wc[cell.cell_id] = rc[cell.cell_id] = None
-        for assignments, cfg in ((workers, wc), (robots, rc)):
+        weight = {}
+        period = max(float(self.options["period_minutes"]), 1e-9)
+        for assignments, cfg, resources, times in ((workers, wc, self.sim.workers, self.instance.worker_relocation_time),
+                                                   (robots, rc, self.sim.robots, self.instance.robot_relocation_time)):
             for a in assignments:
                 for c, rid in enumerate(cfg):
                     if rid == a.resource_id:
                         cfg[c] = None
+                if a.target_cell < 0:
+                    continue
                 cfg[a.target_cell] = a.resource_id
+                source = resources[a.resource_id].physical_cell
+                if self.transit_aware and source is not None and source != a.target_cell:
+                    # A moving resource serves its target only after it arrives;
+                    # discount its capacity by the share of the planning period lost.
+                    travel = float(times[a.resource_id][source][a.target_cell])
+                    weight[a.target_cell] = min(weight.get(a.target_cell, 1.0), max(0.0, 1.0 - travel / period))
         capacity = np.zeros(self.instance.num_stages)
         for c in self.visible.cells:
             w, r = wc[c.cell_id], rc[c.cell_id]
@@ -106,8 +130,9 @@ class ResourceFeatures:
                 else:
                     p = self.instance.processing_time_hr(product, c.stage, w, r)
                 if p is not None:
-                    capacity[c.stage] += q * self.lower[(product, c.stage)] / p
-        return capacity, self.work / np.maximum(1, capacity)
+                    capacity[c.stage] += weight.get(c.cell_id, 1.0) * q * self.lower[(product, c.stage)] / p
+        work = self.work_weighted if weighted else self.work
+        return capacity, work / np.maximum(1, capacity)
 
     def opportunity(self):
         workers, robots = (), ()
@@ -269,7 +294,7 @@ class ResourceFeatures:
         ]
         return signed_log(rows), signed_log(global_values)
 
-    def action_features(self, action):
+    def action_features(self, action, criteria=()):
         plan = validate_composite_action(self.sim, action)
         changes = plan.worker_changes + plan.robot_changes
         _, pressure = self.pressures(
@@ -301,5 +326,8 @@ class ResourceFeatures:
                 sum(self.after[x.operation_id] for x in starts),
                 len(action.worker_assignments),
                 len(action.robot_assignments),
+                float("lcr" in criteria),
+                float("pressure" in criteria),
+                float("due" in criteria),
             ]
         )

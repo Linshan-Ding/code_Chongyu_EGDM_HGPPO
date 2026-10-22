@@ -1,16 +1,37 @@
-protocol: paper-sm100-1
-epoch_semantics: same_instance_complete_batch_v1
+protocol: paper-sm100-2
+epoch_semantics: multi_instance_update_v2
 result_root: result/paper_sm100
 data_manifest: data/instances/paper_batch_epoch/manifest.json
+# Execution (never part of the scientific identity).
 device: cpu
-seeds: [0, 1, 2]
 workers: 8
-environments: 8
 update_threads: 4
+visdom_port: 8097
+monitor_seconds: 5
+run_id: run01
+seeds: [0, 1, 2]
+# One update = instances_per_update cases x episodes_per_instance complete episodes,
+# sampled with a frozen policy, followed by one PPO cycle.
+instances_per_update: 8
+episodes_per_instance: 8
+pilot_updates: 150
+formal_updates: 600
+validation_every_updates: 10
+validation_split: validation
+tail_epochs: 10
+replays: 3
+# Network.
 hidden: 64
 layers: 2
+# Returns and advantages.
 gamma: 1.0
 gae_lambda: 0.95
+advantage_mode: self_critical
+group_center: true
+critic: none
+popart_beta: 0.01
+value_clip: false
+# PPO update discipline.
 clip: 0.2
 ppo_update_epochs: 3
 minibatch: 512
@@ -18,31 +39,45 @@ microbatch: 128
 save_full_rollouts: false
 actor_lr: 0.0003
 critic_lr: 0.0003
+lr_warmup_updates: 10
+lr_final_ratio: 0.1
+target_kl: 0.02
 max_grad_norm: 0.5
-entropy: 0.01
-popart_beta: 0.01
+# Regularisation: KL to the method's own candidate prior replaces the entropy bonus.
+entropy: 0.0
+entropy_dan: 0.01
+kl_prior_coef_start: 1.0
+kl_prior_coef_end: 0.01
+kl_anneal_updates: 100
+# Reward shaping and state features.
 potential_eta: 1.0
+potential_mode: future_only
+transit_aware_features: true
+# Candidate plans and dispatch.
 anchor_prior: 0.9
 period_minutes: 10.0
 short_period_minutes: 5.0
 travel_penalty: 0.05
 max_moves: 2
+candidate_version: v2
 single_candidates: 8
 pair_candidates: 4
-max_candidates: 15
+max_candidates: 24
+candidate_max_moves: 3
+allow_unconfigure: false
+learned_dispatch: true
+dispatch_prior: 0.9
+gate_trigger_mode: every_event
+reconfiguration_budget: null
+train_instance_perturbation: none
 atc_k: 2.0
 dispatch_beta: 1.0
-pilot_epochs_per_instance: 100
-formal_epochs_per_instance: 100
-tail_epochs: 10
-run_id: run01
-replays: 3
+# Episode limits and identities.
 event_limit: 20000
 reward_tolerance: 0.00001
+# Rule and search baselines.
 milp_seconds: 0.20
 milp_moves: 3
 alns_iterations: 40
 alns_moves: 4
 reference_seconds: 60.0
-visdom_port: 8097
-monitor_seconds: 5

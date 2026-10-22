@@ -24,8 +24,9 @@ def smoke(options, skip_display=False):
     prepare(options)
     root = ROOT / options["result_root"] / "smoke" / str(time.time_ns())
     root.mkdir(parents=True)
-    o = dict(options, result_root=str(root), workers=2, environments=8,
-             update_threads=1, minibatch=32, microbatch=16)
+    # One case x eight complete episodes per update, two workers, small minibatches.
+    o = dict(options, result_root=str(root), workers=2, instances_per_update=1, episodes_per_instance=8,
+             environments=8, update_threads=1, minibatch=32, microbatch=16)
     config = root / "options.yaml"
     config.write_text(yaml.safe_dump(o), "utf-8")
     torch.set_num_threads(1)
@@ -47,7 +48,7 @@ def smoke(options, skip_display=False):
         done("complete matrices")
         # Exactly one eight-episode batch plus one PPO cycle at each scale.
         # Initial evaluation also verifies the complete anchor action trace.
-        scale_options = dict(options, result_root=str(root))
+        scale_options = dict(o, update_threads=options["update_threads"])
         for row in rows(o, "pilot"):
             instance = load(row)
             torch.set_num_threads(scale_options["update_threads"])
@@ -69,26 +70,34 @@ def smoke(options, skip_display=False):
             done("complete batch update and zero-residual trace " + row["parameters"]["scale"],
                  baseline_twt=baseline["twt"], trace=baseline["trace_sha256"], summary=bundles[1]["summaries"][0])
         tiny = rows(o, "tiny")[0]
+        development = rows(o, "tiny")[1]
         instance = load(tiny)
+        dev_instance = load(development)
         b = evaluate(instance, o, root / "tiny_baseline.json", method="Periodic-ATC")
-        if not b["feasible"]:
-            raise RuntimeError(b)
-        bs = {instance.instance_id: b["twt"]}
+        bd = evaluate(dev_instance, o, root / "tiny_dev_baseline.json", method="Periodic-ATC")
+        if not b["feasible"] or not bd["feasible"]:
+            raise RuntimeError((b, bd))
+        bs = {instance.instance_id: b["twt"], dev_instance.instance_id: bd["twt"]}
         for method in LEARNERS:
             folder = root / f"train_{method}"
+            # The signature guard admits only the registered development split; the
+            # smoke validates on a second tiny case through the training call directly.
             sig = signature(o, method, 0, [tiny], [], bs)
             write_json(folder / "baselines.json", bs)
-            # Eight complete episodes, one PPO cycle with three internal passes.
-            result = train(o, method, 0, [instance], [], bs, folder, 1, sig)
-            if result["epoch"] != 1 or result["completed_episodes"] != 8:
-                raise AssertionError("smoke epoch budget mismatch")
+            # Eight complete episodes, one PPO cycle with three internal passes, greedy
+            # validation at update 0 and 1, and a development-selected checkpoint.
+            result = train(o, method, 0, [instance], [dev_instance], bs, folder, 1, sig)
+            if result["epoch"] != 1 or result["completed_episodes"] != 8 or result["best"] is None:
+                raise AssertionError("smoke update budget or development selection mismatch")
+            if not (folder / "best.pt").exists() or len(read_json(folder / "epochs" / "000001.json")["validation_summaries"]) != 1:
+                raise AssertionError("smoke validation curve missing")
             before = read_json(folder / "progress.json")
-            train(o, method, 0, [instance], [], bs, folder, 1, sig, resume=True)
+            train(o, method, 0, [instance], [dev_instance], bs, folder, 1, sig, resume=True)
             if read_json(folder / "progress.json") != before:
                 raise AssertionError("Completed-budget resume unexpectedly changed state")
             repeated = []
             training_job = dict(output=str(folder), training=[tiny])
-            for kind, repeats in (("latest", 3),):
+            for kind, repeats in (("latest", 3), ("best", 1)):
                 for repeat in range(repeats):
                     output = root / f"replay_{method}_{kind}_{repeat}"
                     job = dict(method=method, seed=0, checkpoint_kind=kind, repeat=repeat, output=str(output), evaluation=[tiny])

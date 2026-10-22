@@ -16,6 +16,14 @@ from agent.paper.train import signature
 from agent.paper.transfer import seal, collect, job_identity
 
 
+def episode_fixture(epoch, iid, env_id, twt, baseline=1000., group=None):
+    return dict(epoch=epoch, instance_id=iid, instance_index=0, replicate=env_id, group=group or iid, perturbation_seed=None,
+                instance_sha256='hash', initial_state_sha256='initial', policy_version=epoch - 1, env_id=env_id, episode=epoch,
+                action_seed=epoch * 1000 + env_id, baseline_twt=baseline, twt=float(twt), rel_twt=float(twt) / baseline,
+                feasible=True, failure='', episode_events=10, moves=0, travel=0., anchor_fraction=1., gate_fraction=0.,
+                wall_seconds=0., decision_seconds=0., step_seconds=0., trace_sha256='t')
+
+
 class SM100Tests(unittest.TestCase):
     def setUp(self):
         (ROOT / 'result').mkdir(exist_ok=True)
@@ -23,19 +31,23 @@ class SM100Tests(unittest.TestCase):
 
     def test_portable_identity_and_filters(self):
         o = self.options
-        other = dict(o, result_root='Z:/different/result', workers=2, update_threads=2, data_manifest=o['data_manifest'])
+        other = dict(o, result_root='Z:/different/result', workers=2, update_threads=2, device='cuda', data_manifest=o['data_manifest'])
         self.assertEqual(protocol_hash(o), protocol_hash(other))
         self.assertNotEqual(protocol_hash(o), protocol_hash(dict(o, actor_lr=.001)))
+        self.assertNotEqual(protocol_hash(o), protocol_hash(dict(o, candidate_version='v1')))
         plan = matrix(o, 'formal')
         chosen = select_jobs(plan, phase='train', methods=['no_graph'], seeds=[2])
         self.assertEqual([(j['method'], j['seed']) for j in chosen], [('mlp', 2)])
-        self.assertEqual(chosen[0]['budget_epochs'], 3600)
-        self.assertEqual(set(chosen[0]['case_batches'].values()), {100})
+        self.assertEqual(chosen[0]['budget_epochs'], o['formal_updates'])
+        self.assertEqual(chosen[0]['budget_episodes'], o['formal_updates'] * o['environments'])
+        self.assertAlmostEqual(set(chosen[0]['expected_visits'].values()).pop(), o['formal_updates'] * o['instances_per_update'] / 36)
         self.assertTrue(all(r['parameters']['scale'] in ('S', 'M') for r in chosen[0]['training']))
-        self.assertEqual(chosen[0]['validation'], [])
+        self.assertEqual(len(chosen[0]['validation']), 10)
+        self.assertTrue(all(r['split'] == 'validation' for r in chosen[0]['validation']))
         with self.assertRaises(ValueError): select_jobs(plan, phase='train', methods=['unknown'])
         with self.assertRaises(ValueError): settings(evaluation_epochs=2)
         with self.assertRaises(ValueError): settings(pilot_epochs=300)
+        with self.assertRaises(ValueError): settings(formal_epochs_per_instance=100)
         from agent.paper.runtime import alive
         self.assertFalse(alive(dict(host_id='foreign-host', pid=1, created_at=1, command=[])))
 
@@ -49,36 +61,39 @@ class SM100Tests(unittest.TestCase):
             with exclusive_lease(path): pass
 
     def test_tail_is_per_case_and_never_partial_mean(self):
+        o = dict(self.options, instances_per_update=2, episodes_per_instance=4, environments=8, tail_epochs=3)
         with tempfile.TemporaryDirectory(dir=ROOT / 'result') as tmp:
             folder = Path(tmp)
-            cases = rows(self.options, 'pilot')
-            job = dict(method='full', seed=0, output=str(folder), training=cases,
-                       case_batches={r['instance_id']:100 for r in cases})
-            for epoch in range(201):
+            cases = rows(o, 'pilot')
+            ids = [r['instance_id'] for r in cases]
+            job = dict(method='full', seed=0, output=str(folder), training=cases, budget_epochs=5,
+                       expected_visits={iid: 5. for iid in ids})
+            for epoch in range(6):
                 eps, sums = [], []
                 if epoch:
-                    iid = cases[(epoch-1) % 2]['instance_id']
-                    visit = (epoch-1)//2+1
-                    eps = [dict(epoch=epoch, instance_id=iid, instance_sha256='hash', initial_state_sha256='initial',
-                        policy_version=epoch-1, env_id=i, action_seed=epoch*8+i, episode_events=10,
-                        feasible=True, twt=float(1000+visit+i)) for i in range(8)]
-                    sums = [dict(batch_summary(eps,8), epoch=epoch, instance_epoch=visit, instance_id=iid, environments=8)]
-                publish_commit(folder,dict(epoch=epoch,events=epoch*80,policy_version=epoch,progress=dict(committed_episodes=epoch*8),
-                    last_bundle=dict(epoch=epoch,episodes=eps,summaries=sums,evaluations=[])))
-            tail = training_tail(self.options, job)
-            self.assertTrue(all(r['status']=='complete' and r['tail_episodes']==80 for r in tail))
-            self.assertTrue(all(r['mean_twt']==1099. for r in tail))
-            damaged = folder / 'epochs/000199.json'
-            bundle = read_json(damaged); bundle['episodes'][-1]['feasible']=False;write_json(damaged,bundle)
-            self.assertTrue(all(r['mean_twt'] is None for r in training_tail(self.options,job)))
+                    # Both cases appear in every update: four replicates each.
+                    eps = [episode_fixture(epoch, ids[i // 4], i, 1000 + epoch + i) for i in range(8)]
+                    sums = [dict(batch_summary(eps, 8), epoch=epoch, environments=8)]
+                publish_commit(folder, dict(epoch=epoch, events=epoch*80, policy_version=epoch, progress=dict(committed_episodes=epoch*8),
+                    last_bundle=dict(epoch=epoch, episodes=eps, summaries=sums, evaluations=[], validation_summaries=[])))
+            tail = training_tail(o, job)
+            self.assertEqual([r['status'] for r in tail], ['complete', 'complete'])
+            self.assertEqual([r['tail_episodes'] for r in tail], [12, 12])
+            # Last three updates (3, 4, 5): case 0 slots 0-3, case 1 slots 4-7.
+            self.assertAlmostEqual(tail[0]['mean_twt'], np.mean([1000 + e + i for e in (3, 4, 5) for i in range(4)]))
+            self.assertAlmostEqual(tail[1]['mean_twt'], np.mean([1000 + e + i for e in (3, 4, 5) for i in range(4, 8)]))
+            self.assertEqual([r['committed_visits'] for r in tail], [5, 5])
+            damaged = folder / 'epochs/000004.json'
+            bundle = read_json(damaged); bundle['episodes'][-1]['feasible'] = False; write_json(damaged, bundle)
+            self.assertTrue(all(r['mean_twt'] is None and r['status'] == 'invalid' for r in training_tail(o, job)))
 
     def test_transfer_idempotence_conflicts_and_missing(self):
         with tempfile.TemporaryDirectory(dir=ROOT / 'result') as tmp:
             o = dict(self.options, result_root=str(Path(tmp)/'nodeA'))
             dest_options = dict(o, result_root=str(Path(tmp)/'hub'),workers=2)
             job = next(j for j in matrix(o,'pilot-joint')['jobs'] if j['kind']=='train')
-            folder=Path(job['output']); baseline={r['instance_id']:1000. for r in job['training']}
-            sig=signature(o,job['method'],job['seed'],job['training'],[],baseline)
+            folder=Path(job['output']); baseline={r['instance_id']:1000. for r in job['training'] + job['validation']}
+            sig=signature(o,job['method'],job['seed'],job['training'],job['validation'],baseline)
             write_json(folder/'run.json',dict(format=FORMAT,protocol_hash=protocol_hash(o),job=job_identity(job)))
             write_json(folder/'baselines.json',baseline)
             write_json(folder/'config_snapshot.json',dict(signature=sig,source=source_manifest(),options=o,
@@ -99,19 +114,27 @@ class SM100Tests(unittest.TestCase):
             (folder/'progress.json').write_text('{}','utf-8')
             self.assertEqual(len(collect(dest_options,folder)['rejected']),1)
 
-    def test_training_cannot_evaluate_and_formal_is_guarded(self):
+    def test_training_validates_only_on_development_cases_and_formal_is_guarded(self):
         from agent.paper.train import train
         from agent.paper.runtime import check_formal_approval
         with tempfile.TemporaryDirectory(dir=ROOT/'result') as tmp:
-            o=dict(self.options,result_root=tmp,workers=1,update_threads=1,ppo_update_epochs=1,minibatch=32,microbatch=16)
-            case=load(rows(o,'tiny')[0]);bs={case.instance_id:1000.}
+            o=dict(self.options,result_root=tmp,workers=1,update_threads=1,ppo_update_epochs=1,minibatch=32,microbatch=16,
+                   instances_per_update=1,episodes_per_instance=8,environments=8)
+            tiny=rows(o,'tiny');case=load(tiny[0]);bs={case.instance_id:1000.}
             with patch('agent.paper.evaluate.evaluate',side_effect=AssertionError('Training invoked evaluation')):
                 result=train(o,'mlp',0,[case],[],bs,Path(tmp)/'train',1,'fixture')
             self.assertEqual(result['completed_episodes'],8)
             self.assertFalse((Path(tmp)/'train/best.pt').exists())
             self.assertTrue(all(not read_json(p)['evaluations'] for p in (Path(tmp)/'train/epochs').glob('*.json')))
-            with self.assertRaisesRegex(ValueError,'validation'):
-                train(o,'mlp',0,[case],[case],bs,Path(tmp)/'bad',1,'fixture')
+            # Development selection may only read the registered validation split.
+            with self.assertRaisesRegex(ValueError,'development split'):
+                signature(o,'mlp',0,tiny[:1],tiny[1:2],bs)
+            main=[r for r in rows(o,'main')][:1]
+            with self.assertRaisesRegex(ValueError,'development split'):
+                signature(o,'mlp',0,tiny[:1],main,bs)
+            signature(o,'mlp',0,tiny[:1],rows(o,'validation')[:1],bs)
+            with self.assertRaisesRegex(ValueError,'baselines missing'):
+                train(o,'mlp',0,[case],[load(tiny[1])],bs,Path(tmp)/'bad',1,'fixture')
             with self.assertRaisesRegex(RuntimeError,'reviewed pilot'):
                 check_formal_approval(o)
 
@@ -120,14 +143,15 @@ class SM100Tests(unittest.TestCase):
         from agent.paper import runtime
         with tempfile.TemporaryDirectory(dir=ROOT/'result') as tmp:
             a=dict(self.options,result_root=str(Path(tmp)/'node'),workers=1,update_threads=1,
-                   ppo_update_epochs=1,minibatch=32,microbatch=16)
+                   ppo_update_epochs=1,minibatch=32,microbatch=16,instances_per_update=1,episodes_per_instance=8,environments=8)
             b=dict(a,result_root=str(Path(tmp)/'hub'),workers=2)
             tiny=rows(a,'tiny')[0]
             def fixture_plan(options,suite):
                 plan=matrix(options,suite)
                 train_job=next(j for j in plan['jobs'] if j['kind']=='train' and j['method']=='mlp' and j['seed']==0)
-                train_job.update(training=[tiny],validation=[],budget_epochs=1,budget_episodes=8,case_batches={tiny['instance_id']:1})
-                replay=next(j for j in plan['jobs'] if j['kind']=='replay' and j['training_job']==train_job['id'] and j['repeat']==0)
+                train_job.update(training=[tiny],validation=[],budget_epochs=1,budget_episodes=8,expected_visits={tiny['instance_id']:1.})
+                replay=next(j for j in plan['jobs'] if j['kind']=='replay' and j['training_job']==train_job['id']
+                            and j['repeat']==0 and j['checkpoint_kind']=='latest')
                 replay.update(evaluation=[tiny],budget_epochs=1,budget_episodes=8)
                 plan['jobs']=[train_job,replay]
                 return plan

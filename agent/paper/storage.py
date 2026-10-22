@@ -121,12 +121,13 @@ def publish_commit(folder, state, *, rebuild=False):
     if path.exists() and read_json(path) != bundle:
         preserve_file(path)
     write_json(path, bundle)
-    mapping = {"episodes.csv": "episodes", "log.csv": "summaries", "evaluations.csv": "evaluations"}
+    mapping = {"episodes.csv": "episodes", "log.csv": "summaries", "evaluations.csv": "evaluations",
+               "validation_summary.csv": "validation_summaries"}
     if rebuild:
         bundles = [read_json(folder / "epochs" / f"{k:06d}.json") for k in range(state["epoch"] + 1)]
         for filename, key in mapping.items():
             target = folder / filename
-            rows = [r for b in bundles for r in b[key]]
+            rows = [r for b in bundles for r in b.get(key, [])]
             preserve_file(target)
             temp = target.with_suffix(".csv.tmp")
             with temp.open("w", newline="", encoding="utf-8") as f:
@@ -137,7 +138,7 @@ def publish_commit(folder, state, *, rebuild=False):
             os.replace(temp, target)
     else:
         for filename, key in mapping.items():
-            for row in bundle[key]:
+            for row in bundle.get(key, []):
                 append_csv(folder / filename, row)
     progress = state["progress"]
     write_json(folder / "progress.json", progress)

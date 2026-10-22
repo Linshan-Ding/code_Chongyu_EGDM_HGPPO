@@ -100,11 +100,12 @@ class AssemblyEnv:
             getattr(self.cfg.env.reward, "ablation_disable_potential_shaping", False)
         )
         eta_raw = self.cfg.env.reward.potential_eta
+        mode = str(getattr(self.cfg.env.reward, "potential_mode", "legacy"))
         if shaping_enabled and eta_raw is None:
             raise ValueError("potential shaping is enabled but env.reward.potential_eta is null")
         phi_before = (
             tardiness_potential(
-                self.sim.instance, self.sim.orders, self.sim.operations, self.sim.time, float(eta_raw)
+                self.sim.instance, self.sim.orders, self.sim.operations, self.sim.time, float(eta_raw), mode
             )
             if shaping_enabled else 0.0
         )
@@ -132,7 +133,7 @@ class AssemblyEnv:
 
         phi_after = (
             tardiness_potential(
-                self.sim.instance, self.sim.orders, self.sim.operations, self.sim.time, float(eta_raw)
+                self.sim.instance, self.sim.orders, self.sim.operations, self.sim.time, float(eta_raw), mode
             )
             if shaping_enabled else 0.0
         )

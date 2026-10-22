@@ -193,16 +193,22 @@ class DynamicHeteroGraphBuilder:
             "dwell_since_last_reconfiguration_minutes",
             "weighted_due_pressure",
         )
-        gate = torch.tensor(
-            [[
-                _coefficient_of_variation(workloads),
-                max(ratios, default=0.0),
-                float(idle_resources),
-                dwell,
-                float(global_due_pressure),
-            ]],
-            dtype=torch.float32,
-        )
+        gate_values = [
+            _coefficient_of_variation(workloads),
+            max(ratios, default=0.0),
+            float(idle_resources),
+            dwell,
+            float(global_due_pressure),
+        ]
+        if bool(getattr(self.cfg.env.graph, "transit_features", False)):
+            # The cost side of a reconfiguration: resources on the way and the
+            # cells they block are visible to the gate, not only the target gain.
+            moving = [x for x in list(sim.workers) + list(sim.robots) if x.activity == ResourceActivity.RELOCATING]
+            remaining_transit = sum(0.0 if x.busy_until is None else max(0.0, float(x.busy_until - sim.time)) for x in moving)
+            reserved = sum(c.reserved_worker is not None or c.reserved_robot is not None for c in sim.cells)
+            gate_names += ("in_transit_resources", "remaining_transit_minutes", "reserved_cells")
+            gate_values += [float(len(moving)), float(remaining_transit), float(reserved)]
+        gate = torch.tensor([gate_values], dtype=torch.float32)
 
         event_multi = torch.zeros((1, len(EVENT_TYPES)), dtype=torch.float32)
         active_event_types = set(sim.current_event_types)
