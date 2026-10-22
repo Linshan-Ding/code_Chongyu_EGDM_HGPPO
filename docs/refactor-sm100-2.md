@@ -34,8 +34,9 @@ sm100-1 的预实验：7 个学习方法 × 3 种子各 200 epoch（每 epoch �
 
 ## 3. 验收与对照运行
 
-1. `python -m pytest tests -q`（26 项）与 `python scripts/run_31_paper.py smoke`。
-2. 预实验 v2 对照（单卡 GPU 电脑，各 2 种子先行）：
+1. `python -m pytest tests -q` 与 `python scripts/run_31_paper.py smoke`。
+2. 单算例收敛诊断（先于预实验，单卡 GPU 电脑数小时内）：`python scripts/run_31_paper.py single --instance S_D3_rho72p5_tau100 --methods full gat dan --seeds 0 1 2 --updates 100 --episodes 32`。看 `_reports/single01/summary.md`：`full` 的 `best`/`latest` 是否低于 Periodic-ATC 与最强规则（通常是 RH-ALNS 或 Opportunity-ATC），`convergence.csv` 的尾段相对变化是否 < 1%，以及与 `gat`/`dan` 在同一算例上的最终目标值差距。它只是可学习性诊断，不是论文结果。
+3. 预实验 v2 对照（单卡 GPU 电脑，各 2 种子先行）：
 
 | 运行 | 配置 | 预期 |
 |---|---|---|

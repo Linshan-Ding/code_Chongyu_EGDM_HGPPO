@@ -1,6 +1,6 @@
 # SM100-2 实验规格
 
-协议 `paper-sm100-2`；唯一目标 TWT。固定数据注册表（92 个活动算例、36 条已删除记录）与 `paper-sm100-1` 共用，文件与哈希不变。
+协议 `paper-sm100-2`；唯一目标 TWT。固定数据注册表（92 个活动算例、36 条已删除记录）沿用 `paper-sm100-1` 的参数、种子与算例内容；活动算例 ID 改为由设计参数推导的论文可引用命名（见“数据集合与套件”），文件除 ID 字段外不变，哈希随之重新登记。
 
 ## 训练更新的定义
 
@@ -29,6 +29,10 @@
 | main | 24 | 正式主测试（不参与任何选择） |
 | generalization | 12（L） | 正式跨规模测试 |
 | tiny | 8 | 工程与参考解检查 |
+
+算例命名：`<规模>_<场景>_rho<负荷×100>_tau<迁移倍数×100>`，小数点写作 `p`，例如 `S_D3_rho72p5_tau100`（S 规模、场景 D3、负荷 0.725、迁移倍数 1.0）、`M_D1_rho90_tau125`、`L_D4_rho95_tau200`；工程算例为 `tiny_S<工位数>_J<订单数>_rho<负荷×100>`。每个登记设计单元的参数组合唯一，因此 ID 唯一且自解释；`registered_manifest` 核对每个 ID 都等于 `case_id(parameters, split)`。pilot 集合为 `S_D3_rho72p5_tau100` 与 `M_D3_rho72p5_tau100`。已删除的 L/XL 审计记录保留历史 ID。
+
+单算例诊断套件 `single`（`agent/paper/single.py`）：在一个登记算例上以 `instances_per_update` = 1、`episodes_per_instance` = `--episodes` 训练各学习方法，每 `--validation-every` 次更新在同一算例上贪心验证并选 `best.pt`，与全部规则/优化对照同表排名，收敛判据为最后 30% 验证点的相对变化 < 1%。训练与评测算例相同，它只回答“该方法能否在此算例上学到改进、何时收敛”，不构成泛化证据，不进入准入或论断。
 
 预算：`pilot_updates` = 150，`formal_updates` = 600（按实测吞吐修订后登记）。每 `validation_every_updates` = 10 次更新（含更新 0 与末次）在 validation 集合上做确定性贪心评估，记录 `evaluations.csv`、`validation_summary.csv`，几何均值改善时写 `best.pt`。`latest.pt` 为末次模型。两者都进入结束评测与报表；**准入与论断只看 `latest`**，`best` 在开发集上的分数带选择偏差，只在正式主测试/L 上作为无偏结果报告。
 

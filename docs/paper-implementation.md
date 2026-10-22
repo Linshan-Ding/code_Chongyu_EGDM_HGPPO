@@ -4,6 +4,10 @@
 
 `matrix` 提前定义训练/结束评测作业；`pilot-joint`/`formal` 只训练，`evaluate-final` 只做结束评测；支持方法、种子、作业 ID 筛选。每个学习任务生成 `latest` 与 `best` 两种检查点的回放作业。
 
+固定数据（`agent/paper/data.py`）：活动算例 ID 由 `case_id(parameters, split)` 从设计参数推导（`<规模>_<场景>_rho<负荷×100>_tau<迁移倍数×100>`、`tiny_S<工位数>_J<订单数>_rho<负荷×100>`），`registered_manifest` 拒绝任何与参数不一致的 ID；`rename_registry` 是已执行过的一次性迁移（按原参数与种子重生成、逐字段比对、仅 ID 不同、重新登记哈希），不属于日常流程。
+
+单算例诊断（`agent/paper/single.py`，子命令 `single`）：对一个登记算例依次运行全部规则/优化对照、各学习方法的训练（`train` 以该算例同时作训练与验证集，签名另含 `suite=single` 与算例身份）、`latest`/`best` 贪心评测与曲线导出，结果写入 `<protocol_hash>/single/<算例ID>/`，汇总在 `_reports/<run_id>/`。它与 `pilot-*`/`formal` 的结果树、报表和准入完全隔离。
+
 训练循环（`agent/paper/train.py`）：`rollout.update_plan` 给出本次更新的 (算例, 复制) 槽位；`rollout.Pool.collect` 由持久 worker 采样，每条回合记录锚点 TWT、相对 TWT、门控比例、迁移数、决策与仿真耗时；`ppo.PPO.update` 按 `advantage_mode` 计算优势，损失 = PPO 裁剪项 + β_t·KL(π‖先验) − 熵系数·H，`target_kl` 提前停止，学习率按更新数调度；到期时 `Pool.validate` 在 worker 内对开发算例做确定性贪心评估，写 `evaluations.csv`/`validation_summary.csv`，改善则原子保存 `best.pt`。只有完整回合与 PPO 更新成功后才原子保存 `latest.pt` 并发布 `epochs/NNNNNN.json`。
 
 决策模型（`agent/paper/candidates.py`、`dispatch.py`、`network.py`）：候选方案 v2 由 LCR / 压力 / 交期加权三准则生成并过滤负收益；`Network.select` 选方案，`Network.dispatch` 逐步选派工（ATC 先验 + 零初始化残差），`policies.learned_action` 合成物理动作；`Transition.action` 为 (方案索引, 派工选择元组)，`evaluate_actions` 据存储的派工步重算联合对数概率、熵与先验散度。

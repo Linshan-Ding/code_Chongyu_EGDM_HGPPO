@@ -15,7 +15,7 @@
 | generalization | 12（L） | 跨规模测试 |
 | tiny | 8 | 工程与参考解检查 |
 
-92 个活动实例由 manifest 登记，文件与哈希与 `paper-sm100-1` 完全相同；活动实例缺失时只允许原参数、种子重建后通过原 SHA256。`train_instance_perturbation: arrivals` 时训练回合使用算例的到达流扰动（文件不变，锚点 TWT 在 worker 内重新测量）。
+92 个活动实例由 manifest 登记，参数、种子与算例内容沿用 `paper-sm100-1`；活动实例缺失时只允许原参数、种子重建后通过原 SHA256。算例 ID 由设计参数推导、可直接写入论文：`<规模>_<场景>_rho<负荷×100>_tau<迁移倍数×100>`，小数点写作 `p`（如 `S_D3_rho72p5_tau100`、`M_D1_rho90_tau125`、`L_D4_rho95_tau200`）；工程算例为 `tiny_S<工位数>_J<订单数>_rho<负荷×100>`。manifest 登记的 ID 必须与参数推导一致（`agent/paper/data.py: case_id`），否则拒绝加载；两个 pilot 算例的 ID 与哈希另行固定。`train_instance_perturbation: arrivals` 时训练回合使用算例的到达流扰动（文件不变，锚点 TWT 在 worker 内重新测量）。
 
 预实验每方法/种子 150 次更新、9,600 完整回合；正式 600 次更新（按实测吞吐修订后登记）。种子 0/1/2 各自独立训练。当前默认 CPU、8 个工作进程、4 个更新线程；`device: cuda` 时学习器更新在 GPU 上进行，采样仍在 CPU。
 
@@ -50,6 +50,16 @@ $py = 'E:\anaconda3\envs\python3.13\python.exe'
 对照运行用独立配置（协议哈希与结果树各自独立）：`--config configs/paper_RA.yaml`（仅训练层改动：v1 候选、固定 ATC 派工）、`configs/paper_RAB3.yaml`（加触发事件门控与重构预算）、`configs/paper_GAE.yaml`（GAE + 评论家的估计器消融）。
 
 `pilot-single` 是可选诊断：只训练主方法的 S/M 两个独立模型（各 6 个训练算例），不是必跑流程。
+
+## 单算例收敛诊断
+
+在正式预实验之前，可先在一个固定的小算例上检验各学习方法能否收敛、最终目标值能到哪里：
+
+```powershell
+& $py scripts/run_31_paper.py single --instance S_D3_rho72p5_tau100 --methods full gat dan --seeds 0 1 2 --updates 100 --episodes 32
+```
+
+`single` 只用 `--instance` 这一个登记算例：先跑全部规则/优化对照（RH-ALNS 三个算法种子），以 Periodic-ATC 的 TWT 为参照 1.0；再对 `--methods` 中的每个学习方法、每个种子训练 `--updates` 次更新（每次更新为该算例 `--episodes` 条完整回合，默认 32），每 `--validation-every`（默认 5）次更新在同一算例上做一次贪心验证并保存 `best.pt`；结束后对 `latest.pt` 与 `best.pt` 各做一次贪心评测并导出曲线。结果在 `result/paper_sm100/<protocol_hash>/single/<算例ID>/`，汇总在其 `_reports/<run_id>/`（默认 `single01`）：`baselines.csv`、`learners.csv`、`validation-curves.csv`、`convergence.csv`（最后 30% 验证点的相对变化 < 1% 记为收敛）、`ranking.csv` 与 `summary.md`。训练与评测算例相同，这只是可学习性与收敛性诊断，不是泛化证据，也不进入预实验准入或任何论断；`--run-id`、`--workers`、`--config`、`--resume` 与其他子命令同义。
 
 ## 多台电脑并行训练
 

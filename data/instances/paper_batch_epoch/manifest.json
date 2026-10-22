@@ -1,10 +1,10 @@
 {
-  "protocol": "paper-sm100-1",
+  "protocol": "paper-sm100-2",
   "instances": [
     {
-      "instance_id": "main_S_D1_ff418b2c8d54",
+      "instance_id": "S_D1_rho65_tau50",
       "split": "main",
-      "path": "data/instances/paper_batch_epoch/main/main_S_D1_ff418b2c8d54.csv",
+      "path": "data/instances/paper_batch_epoch/main/S_D1_rho65_tau50.csv",
       "seed": 4282485548,
       "parameters": {
         "scale": "S",
@@ -23,12 +23,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "1b4355b43fcfa92140c3fcb733852b3bae55efad38f32f2cb8d863a251474e7d"
+      "sha256": "110534fd3df37516f92ee244f14870b50a3adead141ad4f43f038fac8cea453d"
     },
     {
-      "instance_id": "main_S_D1_4d41d35dfe81",
+      "instance_id": "S_D1_rho65_tau200",
       "split": "main",
-      "path": "data/instances/paper_batch_epoch/main/main_S_D1_4d41d35dfe81.csv",
+      "path": "data/instances/paper_batch_epoch/main/S_D1_rho65_tau200.csv",
       "seed": 1296159581,
       "parameters": {
         "scale": "S",
@@ -47,12 +47,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "6f8beb96a16bf5fb0047a68f3db8cef09d6b25960dd371494371950a1ff54276"
+      "sha256": "6dbfe359d99a0dfba76bdd7418742cd73411a23b2cc5f6498c22f16c20775f0f"
     },
     {
-      "instance_id": "main_S_D1_dae1cef739fb",
+      "instance_id": "S_D1_rho95_tau50",
       "split": "main",
-      "path": "data/instances/paper_batch_epoch/main/main_S_D1_dae1cef739fb.csv",
+      "path": "data/instances/paper_batch_epoch/main/S_D1_rho95_tau50.csv",
       "seed": 3672231671,
       "parameters": {
         "scale": "S",
@@ -71,12 +71,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "492f150dbad9029a0e6f3dfe3656c57bfa9be4d2c6552d35760517a2f177a8c1"
+      "sha256": "0c9c49b7ef826179620ad1657ec51f81281cfb9dab431dbaf31955841497f926"
     },
     {
-      "instance_id": "main_S_D1_9eba88a4cfa8",
+      "instance_id": "S_D1_rho95_tau200",
       "split": "main",
-      "path": "data/instances/paper_batch_epoch/main/main_S_D1_9eba88a4cfa8.csv",
+      "path": "data/instances/paper_batch_epoch/main/S_D1_rho95_tau200.csv",
       "seed": 2663024804,
       "parameters": {
         "scale": "S",
@@ -95,12 +95,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "ced2d085bb4b21e5bdf2842a6b2643af2d9bc14492b0f25a3a5f77067e649429"
+      "sha256": "da9f39028754358eb0b433658229d202dc3e36308b89ea92f2766c014aa1bcd8"
     },
     {
-      "instance_id": "main_S_D3_b4779a3acd30",
+      "instance_id": "S_D3_rho65_tau50",
       "split": "main",
-      "path": "data/instances/paper_batch_epoch/main/main_S_D3_b4779a3acd30.csv",
+      "path": "data/instances/paper_batch_epoch/main/S_D3_rho65_tau50.csv",
       "seed": 3027737146,
       "parameters": {
         "scale": "S",
@@ -119,12 +119,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "aa63673cbb03fee420b8f04724805ad656f8fbd188565a598ade38a346bcaa15"
+      "sha256": "3b45d9b7e37e339666534c032b1b04cf566027f127a1f56d9ba8987fb02bd248"
     },
     {
-      "instance_id": "main_S_D3_b1359f621201",
+      "instance_id": "S_D3_rho65_tau200",
       "split": "main",
-      "path": "data/instances/paper_batch_epoch/main/main_S_D3_b1359f621201.csv",
+      "path": "data/instances/paper_batch_epoch/main/S_D3_rho65_tau200.csv",
       "seed": 2973081442,
       "parameters": {
         "scale": "S",
@@ -143,12 +143,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "a0762ab544ce5ebc0ffe7077d953cc5700d96b2711053f5390310868ab3a3100"
+      "sha256": "9c0a07c7eec1914c90fc0a501d12b9f9668e2ac9b61b77e2bc7a75d58e247529"
     },
     {
-      "instance_id": "main_S_D3_621699e16e10",
+      "instance_id": "S_D3_rho95_tau50",
       "split": "main",
-      "path": "data/instances/paper_batch_epoch/main/main_S_D3_621699e16e10.csv",
+      "path": "data/instances/paper_batch_epoch/main/S_D3_rho95_tau50.csv",
       "seed": 1645648353,
       "parameters": {
         "scale": "S",
@@ -167,12 +167,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "e1929aec3e58ad797543a992842d50f7899a73ab769588ced70ed45436b3ede5"
+      "sha256": "ad93b4792ae0e5899708df1e23d11eec8e4e1d7b101e22fe8988ea152c5b7cc8"
     },
     {
-      "instance_id": "main_S_D3_6650a065561e",
+      "instance_id": "S_D3_rho95_tau200",
       "split": "main",
-      "path": "data/instances/paper_batch_epoch/main/main_S_D3_6650a065561e.csv",
+      "path": "data/instances/paper_batch_epoch/main/S_D3_rho95_tau200.csv",
       "seed": 1716559973,
       "parameters": {
         "scale": "S",
@@ -191,12 +191,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "f42c1fc0d127f95de7fdd0401c6297249929a07fe58a54279975e314f0859bf4"
+      "sha256": "eecf9e0eae91e8f672e1d52bf08421a8866995c94142ca1d0631ed39424502cc"
     },
     {
-      "instance_id": "main_S_D4_f19018c7427b",
+      "instance_id": "S_D4_rho65_tau50",
       "split": "main",
-      "path": "data/instances/paper_batch_epoch/main/main_S_D4_f19018c7427b.csv",
+      "path": "data/instances/paper_batch_epoch/main/S_D4_rho65_tau50.csv",
       "seed": 4052752583,
       "parameters": {
         "scale": "S",
@@ -215,12 +215,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "aa7cd29079c51f038854ce75ae98c46b19851d0628524b57cfcfe5845b38454b"
+      "sha256": "6dfb0f258aae9b98c28ad50bdc3c1bdaaf007ba784e45a346626200733950723"
     },
     {
-      "instance_id": "main_S_D4_0f55b4436b6e",
+      "instance_id": "S_D4_rho65_tau200",
       "split": "main",
-      "path": "data/instances/paper_batch_epoch/main/main_S_D4_0f55b4436b6e.csv",
+      "path": "data/instances/paper_batch_epoch/main/S_D4_rho65_tau200.csv",
       "seed": 257274947,
       "parameters": {
         "scale": "S",
@@ -239,12 +239,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "8f5b9fc45ddd5a20bae9badfd4d83caba270fafab68741df2e20778141272da5"
+      "sha256": "dd98a65448c966fee6d5cbc9fedb9fe48192f313bfd82f5d5ae7194ba88d6c44"
     },
     {
-      "instance_id": "main_S_D4_308d40442f58",
+      "instance_id": "S_D4_rho95_tau50",
       "split": "main",
-      "path": "data/instances/paper_batch_epoch/main/main_S_D4_308d40442f58.csv",
+      "path": "data/instances/paper_batch_epoch/main/S_D4_rho95_tau50.csv",
       "seed": 814563396,
       "parameters": {
         "scale": "S",
@@ -263,12 +263,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "9289bca9c5274de91670a43c441766c941a52e4cab29bc2664a34e8eb2330b53"
+      "sha256": "696acc9379ca6b5a64df773cbc362b95127ccbd95c7f0619c39b57a28f7f52d3"
     },
     {
-      "instance_id": "main_S_D4_9f80d177d527",
+      "instance_id": "S_D4_rho95_tau200",
       "split": "main",
-      "path": "data/instances/paper_batch_epoch/main/main_S_D4_9f80d177d527.csv",
+      "path": "data/instances/paper_batch_epoch/main/S_D4_rho95_tau200.csv",
       "seed": 2676019575,
       "parameters": {
         "scale": "S",
@@ -287,12 +287,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "01c85fe4676b8622536620d5b1a29f408a9587839f9b5c6a64a47e8c8c173321"
+      "sha256": "33aaba76df928623dace958890fcecb5e9d960356fa4c594921aaaf36f2c9081"
     },
     {
-      "instance_id": "main_M_D1_040565c84e30",
+      "instance_id": "M_D1_rho65_tau50",
       "split": "main",
-      "path": "data/instances/paper_batch_epoch/main/main_M_D1_040565c84e30.csv",
+      "path": "data/instances/paper_batch_epoch/main/M_D1_rho65_tau50.csv",
       "seed": 67462600,
       "parameters": {
         "scale": "M",
@@ -311,12 +311,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "66c1628f84e6fa4440025891881138fa16bcdd750f3099daaa463e358808d788"
+      "sha256": "a55c5bc7ddbc074672c86121eced1855362ea980427a1f38de68f835184737a5"
     },
     {
-      "instance_id": "main_M_D1_64c2be373d1f",
+      "instance_id": "M_D1_rho65_tau200",
       "split": "main",
-      "path": "data/instances/paper_batch_epoch/main/main_M_D1_64c2be373d1f.csv",
+      "path": "data/instances/paper_batch_epoch/main/M_D1_rho65_tau200.csv",
       "seed": 1690484279,
       "parameters": {
         "scale": "M",
@@ -335,12 +335,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "29e39903f13330575178f1a2e05952703b53930332b2988072654dde37d06570"
+      "sha256": "5f6ac293a8dd542bece8f64e50f525ddb34fc014b50ec4c86da9d1744bbf300d"
     },
     {
-      "instance_id": "main_M_D1_aaf3b6598332",
+      "instance_id": "M_D1_rho95_tau50",
       "split": "main",
-      "path": "data/instances/paper_batch_epoch/main/main_M_D1_aaf3b6598332.csv",
+      "path": "data/instances/paper_batch_epoch/main/M_D1_rho95_tau50.csv",
       "seed": 2868098649,
       "parameters": {
         "scale": "M",
@@ -359,12 +359,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "a98c9526915bf403f712caed74d05bd31aa76bb3d4ddefe9ea283c8151aa630c"
+      "sha256": "b59dd70e0804b731d78eba047e0cc9cb571c69398ead6445b64202d7c97613b8"
     },
     {
-      "instance_id": "main_M_D1_c378b259d08d",
+      "instance_id": "M_D1_rho95_tau200",
       "split": "main",
-      "path": "data/instances/paper_batch_epoch/main/main_M_D1_c378b259d08d.csv",
+      "path": "data/instances/paper_batch_epoch/main/M_D1_rho95_tau200.csv",
       "seed": 3279467097,
       "parameters": {
         "scale": "M",
@@ -383,12 +383,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "fa2ca49a68189dda4dc627f545d77f2aa10c3057868fa33677547c63fa3645fa"
+      "sha256": "a9fb59082a1492deca5ce6064f2f64b11a0741c994f8ab5d440fbc9cbdd38003"
     },
     {
-      "instance_id": "main_M_D3_b4428b04d369",
+      "instance_id": "M_D3_rho65_tau50",
       "split": "main",
-      "path": "data/instances/paper_batch_epoch/main/main_M_D3_b4428b04d369.csv",
+      "path": "data/instances/paper_batch_epoch/main/M_D3_rho65_tau50.csv",
       "seed": 3024259844,
       "parameters": {
         "scale": "M",
@@ -407,12 +407,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "b63201607f197867093d90a2495ae8870ac5be7ec9c8d798d844e85c8e598979"
+      "sha256": "5aad5b7fcfad5e44ab26d794e197cc051d22b132e0f7ade1ea871424678da229"
     },
     {
-      "instance_id": "main_M_D3_bd669460da4e",
+      "instance_id": "M_D3_rho65_tau200",
       "split": "main",
-      "path": "data/instances/paper_batch_epoch/main/main_M_D3_bd669460da4e.csv",
+      "path": "data/instances/paper_batch_epoch/main/M_D3_rho65_tau200.csv",
       "seed": 3177616480,
       "parameters": {
         "scale": "M",
@@ -431,12 +431,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "6f85991a3184c1f45d40b96135e4b0c234c3e6abc66b1801b0187e83feeb26a6"
+      "sha256": "818cfc84a33b14c9af18c6fb559775a6f310fe91345545ff992aeffeccfb1436"
     },
     {
-      "instance_id": "main_M_D3_a63bf807283c",
+      "instance_id": "M_D3_rho95_tau50",
       "split": "main",
-      "path": "data/instances/paper_batch_epoch/main/main_M_D3_a63bf807283c.csv",
+      "path": "data/instances/paper_batch_epoch/main/M_D3_rho95_tau50.csv",
       "seed": 2788947975,
       "parameters": {
         "scale": "M",
@@ -455,12 +455,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "30c234c9eb5cbb968516dc5fc5442ec87319142ee4440a9d28178a79d317527b"
+      "sha256": "390298f32b4e9e47c3f429c5efa2b221a4829e0e202c93073e5bc5346ecb74bf"
     },
     {
-      "instance_id": "main_M_D3_ddf025145470",
+      "instance_id": "M_D3_rho95_tau200",
       "split": "main",
-      "path": "data/instances/paper_batch_epoch/main/main_M_D3_ddf025145470.csv",
+      "path": "data/instances/paper_batch_epoch/main/M_D3_rho95_tau200.csv",
       "seed": 3723502868,
       "parameters": {
         "scale": "M",
@@ -479,12 +479,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "bc75de3b3d08bdf63db027ac41ce3e39c865b7b6846e950d00d87c93c5e71a17"
+      "sha256": "07afc5199f8b79c5e4d29a5949b975b44e4fba710e08cb4704c2eb378af4aa61"
     },
     {
-      "instance_id": "main_M_D4_0acf9c6b8068",
+      "instance_id": "M_D4_rho65_tau50",
       "split": "main",
-      "path": "data/instances/paper_batch_epoch/main/main_M_D4_0acf9c6b8068.csv",
+      "path": "data/instances/paper_batch_epoch/main/M_D4_rho65_tau50.csv",
       "seed": 181378155,
       "parameters": {
         "scale": "M",
@@ -503,12 +503,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "3d4ea2f92ee0d511d0e2608e0ed2366dd83e6cab2236c8e51692a4e97c08054b"
+      "sha256": "ce018c19135519058df0b3b05a102863ae81e60c680bb7b5872035923087bd06"
     },
     {
-      "instance_id": "main_M_D4_9bef13fbfb27",
+      "instance_id": "M_D4_rho65_tau200",
       "split": "main",
-      "path": "data/instances/paper_batch_epoch/main/main_M_D4_9bef13fbfb27.csv",
+      "path": "data/instances/paper_batch_epoch/main/M_D4_rho65_tau200.csv",
       "seed": 2616136699,
       "parameters": {
         "scale": "M",
@@ -527,12 +527,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "8b75b1736aa24a426f95dd9e584f8438e55689b8e0a2b17782b839764985897b"
+      "sha256": "aa7f3ad60ba61cc8ec8149f31af5ae3a415dd271427dfe00a62bb3bcb681890a"
     },
     {
-      "instance_id": "main_M_D4_8ac00828b6b2",
+      "instance_id": "M_D4_rho95_tau50",
       "split": "main",
-      "path": "data/instances/paper_batch_epoch/main/main_M_D4_8ac00828b6b2.csv",
+      "path": "data/instances/paper_batch_epoch/main/M_D4_rho95_tau50.csv",
       "seed": 2327840808,
       "parameters": {
         "scale": "M",
@@ -551,12 +551,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "ce6372da9a2730b7aaf035b888d2c242670851c072833ebfaa5d4f1c82a717b9"
+      "sha256": "516bed9abe86d5e260bbb4f477b4f62a263f7eae60dcca081b2a2ccbaf14fa19"
     },
     {
-      "instance_id": "main_M_D4_367923680a3b",
+      "instance_id": "M_D4_rho95_tau200",
       "split": "main",
-      "path": "data/instances/paper_batch_epoch/main/main_M_D4_367923680a3b.csv",
+      "path": "data/instances/paper_batch_epoch/main/M_D4_rho95_tau200.csv",
       "seed": 913908584,
       "parameters": {
         "scale": "M",
@@ -575,12 +575,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "4e9213ee2764e6a25407830e0c875415c24feaaf37336ea63ed8d8bb132bacf3"
+      "sha256": "79a4b05868079eee1f364893f774fabd19dfba4cc8fdc1dd125a3807e1dfd0f5"
     },
     {
-      "instance_id": "main_L_D1_d21c8087bbbc",
+      "instance_id": "L_D1_rho65_tau50",
       "split": "generalization",
-      "path": "data/instances/paper_batch_epoch/main/main_L_D1_d21c8087bbbc.csv",
+      "path": "data/instances/paper_batch_epoch/main/L_D1_rho65_tau50.csv",
       "seed": 3525083271,
       "parameters": {
         "scale": "L",
@@ -599,13 +599,13 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "ed498eefec9b9df407ad926d26d76cbde7dfd1d9a42aba99b99cceea2cdc2a52",
+      "sha256": "a817c85814f2baaa7e406156eedd85c61839cf3538b95011724865cb1886c766",
       "storage_split": "main"
     },
     {
-      "instance_id": "main_L_D1_c3805093384e",
+      "instance_id": "L_D1_rho65_tau200",
       "split": "generalization",
-      "path": "data/instances/paper_batch_epoch/main/main_L_D1_c3805093384e.csv",
+      "path": "data/instances/paper_batch_epoch/main/L_D1_rho65_tau200.csv",
       "seed": 3279966355,
       "parameters": {
         "scale": "L",
@@ -624,13 +624,13 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "aa19aa3b38051e1cb3bff19246d4751a7e4ebc37093af78e3f195b76ad0b63f1",
+      "sha256": "9c5c01e38e3b8e2ea591b3d5028aa16b494ed1dcf875e8f27678475b14bc5bf4",
       "storage_split": "main"
     },
     {
-      "instance_id": "main_L_D1_9059ea841ff3",
+      "instance_id": "L_D1_rho95_tau50",
       "split": "generalization",
-      "path": "data/instances/paper_batch_epoch/main/main_L_D1_9059ea841ff3.csv",
+      "path": "data/instances/paper_batch_epoch/main/L_D1_rho95_tau50.csv",
       "seed": 2421811844,
       "parameters": {
         "scale": "L",
@@ -649,13 +649,13 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "69a56ca83785df6281b52153bb0024576794fee411792be4fdfcd686510f9c56",
+      "sha256": "21a3682d3dfab4d5b70e3b752bb8b8c253eca20087a43654351c8ff119342f68",
       "storage_split": "main"
     },
     {
-      "instance_id": "main_L_D1_a15d82bd96c6",
+      "instance_id": "L_D1_rho95_tau200",
       "split": "generalization",
-      "path": "data/instances/paper_batch_epoch/main/main_L_D1_a15d82bd96c6.csv",
+      "path": "data/instances/paper_batch_epoch/main/L_D1_rho95_tau200.csv",
       "seed": 2707260093,
       "parameters": {
         "scale": "L",
@@ -674,13 +674,13 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "2fafab748020f1e33792a8fa5150ef393382e1c318db9db3f9e3257676f836ef",
+      "sha256": "162ac7de4cce236022bab3bedf4b31f8aa466f42e09c240a5cab3337c878da1d",
       "storage_split": "main"
     },
     {
-      "instance_id": "main_L_D3_dc3bbea24259",
+      "instance_id": "L_D3_rho65_tau50",
       "split": "generalization",
-      "path": "data/instances/paper_batch_epoch/main/main_L_D3_dc3bbea24259.csv",
+      "path": "data/instances/paper_batch_epoch/main/L_D3_rho65_tau50.csv",
       "seed": 3694902946,
       "parameters": {
         "scale": "L",
@@ -699,13 +699,13 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "b1249ed093dcae1875a29ddc4e14ef53d409a3470e7b716c30838b52bcc63f06",
+      "sha256": "34eca6a65a167e6e7c3c14a234723e7bbd5858a60baa1e55e7ea2715f16c59e9",
       "storage_split": "main"
     },
     {
-      "instance_id": "main_L_D3_c2852c483955",
+      "instance_id": "L_D3_rho65_tau200",
       "split": "generalization",
-      "path": "data/instances/paper_batch_epoch/main/main_L_D3_c2852c483955.csv",
+      "path": "data/instances/paper_batch_epoch/main/L_D3_rho65_tau200.csv",
       "seed": 3263507528,
       "parameters": {
         "scale": "L",
@@ -724,13 +724,13 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "6e0435e36f09cb7d1cb766a9e0d9723ba6deab6c6588f51acc032e106cf87db4",
+      "sha256": "9dc5bb80368bd5e2c8b1d5acedf9f1a0af5ff06869df983889c149ca5759527f",
       "storage_split": "main"
     },
     {
-      "instance_id": "main_L_D3_6106e90152f8",
+      "instance_id": "L_D3_rho95_tau50",
       "split": "generalization",
-      "path": "data/instances/paper_batch_epoch/main/main_L_D3_6106e90152f8.csv",
+      "path": "data/instances/paper_batch_epoch/main/L_D3_rho95_tau50.csv",
       "seed": 1627842817,
       "parameters": {
         "scale": "L",
@@ -749,13 +749,13 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "30240207d32250aef57b27a9b6e7ec26f46ddedc5c1760a67f642a0fec616cb5",
+      "sha256": "8890f074682e2e6e55fb7327d82c82ab451fcbd87b3466e5c9d619175cf3f31a",
       "storage_split": "main"
     },
     {
-      "instance_id": "main_L_D3_863d721cd834",
+      "instance_id": "L_D3_rho95_tau200",
       "split": "generalization",
-      "path": "data/instances/paper_batch_epoch/main/main_L_D3_863d721cd834.csv",
+      "path": "data/instances/paper_batch_epoch/main/L_D3_rho95_tau200.csv",
       "seed": 2252173852,
       "parameters": {
         "scale": "L",
@@ -774,13 +774,13 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "2c0520481ddb2ecbd8f33395894b581de736d1fb8bd1d6430dfde255854bb2e9",
+      "sha256": "0595bd48725d3a00efc0a7d6c6d34dc40f199053968c71485fab20525601ff7f",
       "storage_split": "main"
     },
     {
-      "instance_id": "main_L_D4_b46f23784762",
+      "instance_id": "L_D4_rho65_tau50",
       "split": "generalization",
-      "path": "data/instances/paper_batch_epoch/main/main_L_D4_b46f23784762.csv",
+      "path": "data/instances/paper_batch_epoch/main/L_D4_rho65_tau50.csv",
       "seed": 3027182456,
       "parameters": {
         "scale": "L",
@@ -799,13 +799,13 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "3291ed14476f79680687cfdf38ea91c3f4787b4f2f9bc8b60823ceb3262a6c03",
+      "sha256": "38d84a4a3b3aa767b39bc65ed05be20f369814612f1799b11c814b547162b723",
       "storage_split": "main"
     },
     {
-      "instance_id": "main_L_D4_a1c28d440e8a",
+      "instance_id": "L_D4_rho65_tau200",
       "split": "generalization",
-      "path": "data/instances/paper_batch_epoch/main/main_L_D4_a1c28d440e8a.csv",
+      "path": "data/instances/paper_batch_epoch/main/L_D4_rho65_tau200.csv",
       "seed": 2713881924,
       "parameters": {
         "scale": "L",
@@ -824,13 +824,13 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "96191d210750d789175a69d6fa60408fca3c59903e098a992d366d4d928e6648",
+      "sha256": "d4f17873237af3897055e130d730671e2ff9f721a85c0a60a80ec0b391ac6540",
       "storage_split": "main"
     },
     {
-      "instance_id": "main_L_D4_adc06471be89",
+      "instance_id": "L_D4_rho95_tau50",
       "split": "generalization",
-      "path": "data/instances/paper_batch_epoch/main/main_L_D4_adc06471be89.csv",
+      "path": "data/instances/paper_batch_epoch/main/L_D4_rho95_tau50.csv",
       "seed": 2915066993,
       "parameters": {
         "scale": "L",
@@ -849,13 +849,13 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "0e2094b218824ff4ffe3a6c76b19c900c01a1c88f92ffd1993ac690ea08ffb63",
+      "sha256": "0c7308169aedf1af33ac38dc2f0f06adcb8430d5c1da0eec54e5e49c8c4e58ac",
       "storage_split": "main"
     },
     {
-      "instance_id": "main_L_D4_fc04f0b571ac",
+      "instance_id": "L_D4_rho95_tau200",
       "split": "generalization",
-      "path": "data/instances/paper_batch_epoch/main/main_L_D4_fc04f0b571ac.csv",
+      "path": "data/instances/paper_batch_epoch/main/L_D4_rho95_tau200.csv",
       "seed": 4228182197,
       "parameters": {
         "scale": "L",
@@ -874,13 +874,13 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "a979861113618772665c7a6c6866ee8db80a0fbbba8233acde92cf25d0c82884",
+      "sha256": "bfd8288e7646bbe987ded199902170dff1219d2544b2d285b39b60c68835bd49",
       "storage_split": "main"
     },
     {
-      "instance_id": "validation_S_D1_05386a9f644c",
+      "instance_id": "S_D1_rho72p5_tau100",
       "split": "validation",
-      "path": "data/instances/paper_batch_epoch/validation/validation_S_D1_05386a9f644c.csv",
+      "path": "data/instances/paper_batch_epoch/validation/S_D1_rho72p5_tau100.csv",
       "seed": 87583391,
       "parameters": {
         "scale": "S",
@@ -899,12 +899,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "e91c1c28ba63f249dcc56fabcd46faf011300d8e010c8c075f2eb51f8da908d4"
+      "sha256": "76cd17015726d72192d04bc334fffbdfd44f8717119347079d6c0e3c696d02a5"
     },
     {
-      "instance_id": "validation_S_D1_cb006f6079ff",
+      "instance_id": "S_D1_rho87p5_tau100",
       "split": "validation",
-      "path": "data/instances/paper_batch_epoch/validation/validation_S_D1_cb006f6079ff.csv",
+      "path": "data/instances/paper_batch_epoch/validation/S_D1_rho87p5_tau100.csv",
       "seed": 3405803360,
       "parameters": {
         "scale": "S",
@@ -923,12 +923,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "00a7adfe751e51c4a611bbe62b0dc073190951524d2f01dbfa3ec8be9f872685"
+      "sha256": "4ea0c34c243abcd683bd6cf247a4ff3e3d0ae78874df95fa396244e665b686e2"
     },
     {
-      "instance_id": "validation_S_D3_5fa810942029",
+      "instance_id": "S_D3_rho72p5_tau100",
       "split": "pilot",
-      "path": "data/instances/paper_batch_epoch/pilot/validation_S_D3_5fa810942029.csv",
+      "path": "data/instances/paper_batch_epoch/pilot/S_D3_rho72p5_tau100.csv",
       "seed": 1604849812,
       "parameters": {
         "scale": "S",
@@ -947,12 +947,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "fb3b12ae526c956c8f841bdfcd2f7a3eb3562f28a40057ec966e0925fc54a82e"
+      "sha256": "483e7ebc6a2a199e34ff60893a84f81ca558655a870f953afb30f25c47758d8e"
     },
     {
-      "instance_id": "validation_S_D3_1bdef4041026",
+      "instance_id": "S_D3_rho87p5_tau100",
       "split": "validation",
-      "path": "data/instances/paper_batch_epoch/validation/validation_S_D3_1bdef4041026.csv",
+      "path": "data/instances/paper_batch_epoch/validation/S_D3_rho87p5_tau100.csv",
       "seed": 467596292,
       "parameters": {
         "scale": "S",
@@ -971,12 +971,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "457afd7b903da59118a1b5d0c526d844b72a0000a9d1b4e2b28e16c0474fbbd6"
+      "sha256": "4362c066111e46d7c590833dee85f64100ef23b41fbae72d9e7bdbb13bffb495"
     },
     {
-      "instance_id": "validation_S_D4_7b1cac3bf99e",
+      "instance_id": "S_D4_rho72p5_tau100",
       "split": "validation",
-      "path": "data/instances/paper_batch_epoch/validation/validation_S_D4_7b1cac3bf99e.csv",
+      "path": "data/instances/paper_batch_epoch/validation/S_D4_rho72p5_tau100.csv",
       "seed": 2065476667,
       "parameters": {
         "scale": "S",
@@ -995,12 +995,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "37c09294028eaf146bca49e74178bf2d6f5ada9fb408b37b2ccffdda6a1093c1"
+      "sha256": "f31ee11e3ab7789b49191b5106a8e950dd8642a9df8a8d721de7f9916fa5447b"
     },
     {
-      "instance_id": "validation_S_D4_71dd94b24211",
+      "instance_id": "S_D4_rho87p5_tau100",
       "split": "validation",
-      "path": "data/instances/paper_batch_epoch/validation/validation_S_D4_71dd94b24211.csv",
+      "path": "data/instances/paper_batch_epoch/validation/S_D4_rho87p5_tau100.csv",
       "seed": 1910346930,
       "parameters": {
         "scale": "S",
@@ -1019,12 +1019,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "10862767ded5181ae13ded9ee5f33add34335f50aee14af0aa38514f7d73b7c0"
+      "sha256": "73e841ef1abfb3845604ce17a1b65995e5592c80aa9db958e154afa7462c45aa"
     },
     {
-      "instance_id": "validation_M_D1_e013c469cb95",
+      "instance_id": "M_D1_rho72p5_tau100",
       "split": "validation",
-      "path": "data/instances/paper_batch_epoch/validation/validation_M_D1_e013c469cb95.csv",
+      "path": "data/instances/paper_batch_epoch/validation/M_D1_rho72p5_tau100.csv",
       "seed": 3759391849,
       "parameters": {
         "scale": "M",
@@ -1043,12 +1043,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "c97f379fee44b1b0b5aa6d4a6d6f34949ab0aafcebd399c93b272b286b42cf4f"
+      "sha256": "6d297a59701ba2f42795837fad869b3e65d09887282a0fd10ec000430654d836"
     },
     {
-      "instance_id": "validation_M_D1_9eee99c66353",
+      "instance_id": "M_D1_rho87p5_tau100",
       "split": "validation",
-      "path": "data/instances/paper_batch_epoch/validation/validation_M_D1_9eee99c66353.csv",
+      "path": "data/instances/paper_batch_epoch/validation/M_D1_rho87p5_tau100.csv",
       "seed": 2666437062,
       "parameters": {
         "scale": "M",
@@ -1067,12 +1067,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "584c6bd04ad22b711a55e6c4e795d9364b7de189c14d13450add64bc4334e2dc"
+      "sha256": "a3a1dddb6320480316a8b44b29c44a83bc7f7143331d8774cdadc5ff04a77d47"
     },
     {
-      "instance_id": "validation_M_D3_1b424c3f1612",
+      "instance_id": "M_D3_rho72p5_tau100",
       "split": "pilot",
-      "path": "data/instances/paper_batch_epoch/pilot/validation_M_D3_1b424c3f1612.csv",
+      "path": "data/instances/paper_batch_epoch/pilot/M_D3_rho72p5_tau100.csv",
       "seed": 457329727,
       "parameters": {
         "scale": "M",
@@ -1091,12 +1091,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "6f3e9d8353b3023057f72ae0ce9ed4a5f6c70f0ff737f7a618667444539a90d0"
+      "sha256": "906cb59dc204f7b2f5a0cb63a7abb86f68e4584ad0a7870bd5a1634ace7b46cd"
     },
     {
-      "instance_id": "validation_M_D3_8081cd589e3d",
+      "instance_id": "M_D3_rho87p5_tau100",
       "split": "validation",
-      "path": "data/instances/paper_batch_epoch/validation/validation_M_D3_8081cd589e3d.csv",
+      "path": "data/instances/paper_batch_epoch/validation/M_D3_rho87p5_tau100.csv",
       "seed": 2155990360,
       "parameters": {
         "scale": "M",
@@ -1115,12 +1115,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "73c54472dabd925206ce8b69edac8cd435acc1fc09768c8cbb26d67fb79660df"
+      "sha256": "9f5bc56d115fb362940cda12507346a369dc29488c4d7452a07789944e9a0af0"
     },
     {
-      "instance_id": "validation_M_D4_442f6987eaf8",
+      "instance_id": "M_D4_rho72p5_tau100",
       "split": "validation",
-      "path": "data/instances/paper_batch_epoch/validation/validation_M_D4_442f6987eaf8.csv",
+      "path": "data/instances/paper_batch_epoch/validation/M_D4_rho72p5_tau100.csv",
       "seed": 1143957895,
       "parameters": {
         "scale": "M",
@@ -1139,12 +1139,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "ee5e2dbd327079f16619277058e8cd7e5b97c3555fd6579eb5fa0d17228f28ac"
+      "sha256": "bbf9ce188abbe0ad02073edbb3af0e7d35b4d3ff8e6aa812eff50a800adffbaf"
     },
     {
-      "instance_id": "validation_M_D4_f73629e8e414",
+      "instance_id": "M_D4_rho87p5_tau100",
       "split": "validation",
-      "path": "data/instances/paper_batch_epoch/validation/validation_M_D4_f73629e8e414.csv",
+      "path": "data/instances/paper_batch_epoch/validation/M_D4_rho87p5_tau100.csv",
       "seed": 4147522024,
       "parameters": {
         "scale": "M",
@@ -1163,12 +1163,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "75496a1d04684934b43a50d80c9e6c479579794161cc8d9ea7a12751fd36b5b7"
+      "sha256": "d7a2f27f7eac4637f7bf2152cb1cc65329b84101c383d2449e956315c995661d"
     },
     {
-      "instance_id": "tiny_S_D1_958cf1dd9a9d",
+      "instance_id": "tiny_S2_J4_rho65",
       "split": "tiny",
-      "path": "data/instances/paper_batch_epoch/tiny/tiny_S_D1_958cf1dd9a9d.csv",
+      "path": "data/instances/paper_batch_epoch/tiny/tiny_S2_J4_rho65.csv",
       "seed": 2509042141,
       "parameters": {
         "scale": "S",
@@ -1187,12 +1187,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "e7d58842746b36eba2ccef472ce47fe7bf2814a550de25537935960d50259618"
+      "sha256": "e34a97b64028a0a75cb9d9da2b9c0a4417df5c02918d28327cb7a09caaf913a0"
     },
     {
-      "instance_id": "tiny_S_D1_3baed38db2b2",
+      "instance_id": "tiny_S2_J4_rho95",
       "split": "tiny",
-      "path": "data/instances/paper_batch_epoch/tiny/tiny_S_D1_3baed38db2b2.csv",
+      "path": "data/instances/paper_batch_epoch/tiny/tiny_S2_J4_rho95.csv",
       "seed": 1001313165,
       "parameters": {
         "scale": "S",
@@ -1211,12 +1211,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "3c204c830a81ceadbee2a95c73c23676932d79b31b4d259c7ad13bfa39980f85"
+      "sha256": "50fb544c3d7bb3c718cafad7bb45693023bc7738f60458fe2599c5e5369a6456"
     },
     {
-      "instance_id": "tiny_S_D1_2d44b6d73129",
+      "instance_id": "tiny_S3_J4_rho65",
       "split": "tiny",
-      "path": "data/instances/paper_batch_epoch/tiny/tiny_S_D1_2d44b6d73129.csv",
+      "path": "data/instances/paper_batch_epoch/tiny/tiny_S3_J4_rho65.csv",
       "seed": 759477975,
       "parameters": {
         "scale": "S",
@@ -1235,12 +1235,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "6ae2102c8f22b6a7cc4998905cd1daee9ea893d86af42c31ea1f56e5e690aa5d"
+      "sha256": "4540f5e8948ae6fb08f403a9bc985828c47660027071d72f5136339ddd478447"
     },
     {
-      "instance_id": "tiny_S_D1_338c2ae6f60d",
+      "instance_id": "tiny_S3_J4_rho95",
       "split": "tiny",
-      "path": "data/instances/paper_batch_epoch/tiny/tiny_S_D1_338c2ae6f60d.csv",
+      "path": "data/instances/paper_batch_epoch/tiny/tiny_S3_J4_rho95.csv",
       "seed": 864824038,
       "parameters": {
         "scale": "S",
@@ -1259,12 +1259,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "9ab369a74ca27de22628bb411e6edd6f410be87715b40da1292b4368272a3bf1"
+      "sha256": "91aa3c72af3dd0409cab8c7fb653192cc4d12d4c966912d31550371e51a0d8d6"
     },
     {
-      "instance_id": "tiny_S_D1_2617925fda25",
+      "instance_id": "tiny_S2_J6_rho65",
       "split": "tiny",
-      "path": "data/instances/paper_batch_epoch/tiny/tiny_S_D1_2617925fda25.csv",
+      "path": "data/instances/paper_batch_epoch/tiny/tiny_S2_J6_rho65.csv",
       "seed": 639079007,
       "parameters": {
         "scale": "S",
@@ -1283,12 +1283,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "34a73da785f543d24d6329154ef9a2a17befb1032ac3cbb8aedbb1afe1f3165b"
+      "sha256": "ec51ef8364ad3c40e65a02819ec2518b855371d4eac43655c38fdee6cf3a6d82"
     },
     {
-      "instance_id": "tiny_S_D1_b3028f66411b",
+      "instance_id": "tiny_S2_J6_rho95",
       "split": "tiny",
-      "path": "data/instances/paper_batch_epoch/tiny/tiny_S_D1_b3028f66411b.csv",
+      "path": "data/instances/paper_batch_epoch/tiny/tiny_S2_J6_rho95.csv",
       "seed": 3003289446,
       "parameters": {
         "scale": "S",
@@ -1307,12 +1307,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "14848b25c83627238c596b809cc851839ef80690ac8279723a526b22c73f0f54"
+      "sha256": "74b88c057f20f16e6f01611d39b149251f81e3c194ecee8ae6b0519c4d857784"
     },
     {
-      "instance_id": "tiny_S_D1_771bcc9ca2d8",
+      "instance_id": "tiny_S3_J6_rho65",
       "split": "tiny",
-      "path": "data/instances/paper_batch_epoch/tiny/tiny_S_D1_771bcc9ca2d8.csv",
+      "path": "data/instances/paper_batch_epoch/tiny/tiny_S3_J6_rho65.csv",
       "seed": 1998310556,
       "parameters": {
         "scale": "S",
@@ -1331,12 +1331,12 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "613369ae4a188b8423f028d3144c3644c4fca541f4adb98ae91b103e1f93f7e3"
+      "sha256": "86026db71c4895ccf9d3c5fc1d7ba6f2f4b3cc539c85913046cacd4a0cea9b5c"
     },
     {
-      "instance_id": "tiny_S_D1_8ca87324d949",
+      "instance_id": "tiny_S3_J6_rho95",
       "split": "tiny",
-      "path": "data/instances/paper_batch_epoch/tiny/tiny_S_D1_8ca87324d949.csv",
+      "path": "data/instances/paper_batch_epoch/tiny/tiny_S3_J6_rho95.csv",
       "seed": 2359849764,
       "parameters": {
         "scale": "S",
@@ -1355,10 +1355,10 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "sha256": "5bef99fd89e77fd692daaf811594e9a1d72aa639541d2b38bb537c8de59b2b63"
+      "sha256": "09d6c92a7f27534e3ad6444a84712cf51e5403f6e8bd7494ac1f827bde696d48"
     },
     {
-      "instance_id": "train_S_D1_7635c9d7f13f",
+      "instance_id": "S_D1_rho70_tau75",
       "split": "train",
       "seed": 1983236567,
       "parameters": {
@@ -1378,11 +1378,11 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "path": "data/instances/paper_batch_epoch/train/train_S_D1_7635c9d7f13f.csv",
-      "sha256": "db272329fde802048d79d56b3b4f45262a89ecb23a08f0b9ae591106b868e125"
+      "path": "data/instances/paper_batch_epoch/train/S_D1_rho70_tau75.csv",
+      "sha256": "b901caff4318d90d72e87c615b9da1e895a9fa05c7371ac1dec2a75bdf4dbb10"
     },
     {
-      "instance_id": "train_S_D1_0c4ae01c9fe6",
+      "instance_id": "S_D1_rho70_tau125",
       "split": "train",
       "seed": 206233628,
       "parameters": {
@@ -1402,11 +1402,11 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "path": "data/instances/paper_batch_epoch/train/train_S_D1_0c4ae01c9fe6.csv",
-      "sha256": "fce82bbbb9cbd82a06fffc90b58586df7a9f9d928f821a8279ba76f866c4e499"
+      "path": "data/instances/paper_batch_epoch/train/S_D1_rho70_tau125.csv",
+      "sha256": "a414a37bbf0181c2fa2cea309274c1315b923a237d8a0856b87d598977e6ea59"
     },
     {
-      "instance_id": "train_S_D1_b1a1c3afb83b",
+      "instance_id": "S_D1_rho80_tau75",
       "split": "train",
       "seed": 2980168623,
       "parameters": {
@@ -1426,11 +1426,11 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "path": "data/instances/paper_batch_epoch/train/train_S_D1_b1a1c3afb83b.csv",
-      "sha256": "0c952343d1864b94bedeb27550e5ca8da53de26df655a4011e39a3e53746000d"
+      "path": "data/instances/paper_batch_epoch/train/S_D1_rho80_tau75.csv",
+      "sha256": "8ec4ef53cee7b24995515d8bc29f606649b53d6a1ea6b0f34b1447d866e52199"
     },
     {
-      "instance_id": "train_S_D1_1fd73fec8790",
+      "instance_id": "S_D1_rho80_tau125",
       "split": "train",
       "seed": 534200300,
       "parameters": {
@@ -1450,11 +1450,11 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "path": "data/instances/paper_batch_epoch/train/train_S_D1_1fd73fec8790.csv",
-      "sha256": "f102c0da52715b6eaf4afa5bcae42bee703f712ea69d92fcf8ced11baa03063b"
+      "path": "data/instances/paper_batch_epoch/train/S_D1_rho80_tau125.csv",
+      "sha256": "eb8f9bfda6c2336a7169ad79f78ff58d9c6fa3e279676eca028fb59bf72312ec"
     },
     {
-      "instance_id": "train_S_D1_3ffb7037026f",
+      "instance_id": "S_D1_rho90_tau75",
       "split": "train",
       "seed": 1073442871,
       "parameters": {
@@ -1474,11 +1474,11 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "path": "data/instances/paper_batch_epoch/train/train_S_D1_3ffb7037026f.csv",
-      "sha256": "f4c8f949057b3040dd443b7cb61c8e2947170f36ac2b6c48d5915edc93f38b3d"
+      "path": "data/instances/paper_batch_epoch/train/S_D1_rho90_tau75.csv",
+      "sha256": "e368aa8bf3a2d3ccb8ba2a5d5b90331fb153b2c92e250d44f9b56d9c5b9fc1ea"
     },
     {
-      "instance_id": "train_S_D1_3c4e23b85fa7",
+      "instance_id": "S_D1_rho90_tau125",
       "split": "train",
       "seed": 1011753912,
       "parameters": {
@@ -1498,11 +1498,11 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "path": "data/instances/paper_batch_epoch/train/train_S_D1_3c4e23b85fa7.csv",
-      "sha256": "358d575402ecae87c860fd238ef1c9e8e52742a2690064e8430cd8cdc7f1f9fd"
+      "path": "data/instances/paper_batch_epoch/train/S_D1_rho90_tau125.csv",
+      "sha256": "ba9b5dc54a409fff716d11e429d6fa104fa717e1f5f59ea42225e9f1f7521887"
     },
     {
-      "instance_id": "train_S_D3_7b100bbfa5d0",
+      "instance_id": "S_D3_rho70_tau75",
       "split": "train",
       "seed": 2064649151,
       "parameters": {
@@ -1522,11 +1522,11 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "path": "data/instances/paper_batch_epoch/train/train_S_D3_7b100bbfa5d0.csv",
-      "sha256": "463686653808b07237dea4795c4909f3a2118b76a01b87da6f91a56cfe4af748"
+      "path": "data/instances/paper_batch_epoch/train/S_D3_rho70_tau75.csv",
+      "sha256": "05495a8bc48d78df46b6ad4bdcf3b4ed9a07c8675ef8015c31c580052220d85c"
     },
     {
-      "instance_id": "train_S_D3_5daa6f19a2a3",
+      "instance_id": "S_D3_rho70_tau125",
       "split": "train",
       "seed": 1571450649,
       "parameters": {
@@ -1546,11 +1546,11 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "path": "data/instances/paper_batch_epoch/train/train_S_D3_5daa6f19a2a3.csv",
-      "sha256": "5c067d9236758f44b9ed9e0141ecab952b3e2cded75c83ecc17a37abe8837947"
+      "path": "data/instances/paper_batch_epoch/train/S_D3_rho70_tau125.csv",
+      "sha256": "ac65f46b966b70be57d51ba38e71910ed9684d9e7e1b1e63434091625dd99763"
     },
     {
-      "instance_id": "train_S_D3_7425564eb5ec",
+      "instance_id": "S_D3_rho80_tau75",
       "split": "train",
       "seed": 1948603982,
       "parameters": {
@@ -1570,11 +1570,11 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "path": "data/instances/paper_batch_epoch/train/train_S_D3_7425564eb5ec.csv",
-      "sha256": "ccf71fb72a5b022762d59aa7e15cd64ce8c8e6efbb2078929c52406a31fc3e77"
+      "path": "data/instances/paper_batch_epoch/train/S_D3_rho80_tau75.csv",
+      "sha256": "4fed6ac5eafa808925dd678d6584e778720c851e4ce30e67653d2fcb2363d0dc"
     },
     {
-      "instance_id": "train_S_D3_0fdf98c33b72",
+      "instance_id": "S_D3_rho80_tau125",
       "split": "train",
       "seed": 266311875,
       "parameters": {
@@ -1594,11 +1594,11 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "path": "data/instances/paper_batch_epoch/train/train_S_D3_0fdf98c33b72.csv",
-      "sha256": "c79144062cb6ad5a60ca742cebdb0e1b3302d923d8d65ecefce2dc984b945e04"
+      "path": "data/instances/paper_batch_epoch/train/S_D3_rho80_tau125.csv",
+      "sha256": "7ea57a751741ad0f1c4326b8ca5963ada08034826e2a0dbb23a8102b914c2df5"
     },
     {
-      "instance_id": "train_S_D3_9b76b8b9713e",
+      "instance_id": "S_D3_rho90_tau75",
       "split": "train",
       "seed": 2608249017,
       "parameters": {
@@ -1618,11 +1618,11 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "path": "data/instances/paper_batch_epoch/train/train_S_D3_9b76b8b9713e.csv",
-      "sha256": "3678b6f47a6e22afe11d8e76d18f3bd4e52230109c55f566f26c6d70791bfbc3"
+      "path": "data/instances/paper_batch_epoch/train/S_D3_rho90_tau75.csv",
+      "sha256": "e64f0ccf4f4fef051b690865c17204f0bf26aee9679ed83c0ce805a45e0136df"
     },
     {
-      "instance_id": "train_S_D3_dc77decd2990",
+      "instance_id": "S_D3_rho90_tau125",
       "split": "train",
       "seed": 3698843341,
       "parameters": {
@@ -1642,11 +1642,11 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "path": "data/instances/paper_batch_epoch/train/train_S_D3_dc77decd2990.csv",
-      "sha256": "9bd96f910c5425bec39cd6ed0134d3561979828684d39aee46d41e1cfa2911e0"
+      "path": "data/instances/paper_batch_epoch/train/S_D3_rho90_tau125.csv",
+      "sha256": "4715abd337a987cfc4e9d04af8972538fa966ee7b324c40f7992b281e672717d"
     },
     {
-      "instance_id": "train_S_D4_ce320827887a",
+      "instance_id": "S_D4_rho70_tau75",
       "split": "train",
       "seed": 3459385383,
       "parameters": {
@@ -1666,11 +1666,11 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "path": "data/instances/paper_batch_epoch/train/train_S_D4_ce320827887a.csv",
-      "sha256": "25f4a3f896e6f3470bf6d1e7cbf6448312bc7a74998b90d61768a3c2d265d4e0"
+      "path": "data/instances/paper_batch_epoch/train/S_D4_rho70_tau75.csv",
+      "sha256": "590918b8af364a1eb53f240f9d2cf6526e4c9bfdb6c7791a0b854a102a26c9b3"
     },
     {
-      "instance_id": "train_S_D4_2dce4de572a0",
+      "instance_id": "S_D4_rho70_tau125",
       "split": "train",
       "seed": 768495077,
       "parameters": {
@@ -1690,11 +1690,11 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "path": "data/instances/paper_batch_epoch/train/train_S_D4_2dce4de572a0.csv",
-      "sha256": "930f5396bb7bf4d3e49122f069111e5fa572f2009f6ea65b7f85d19d32826680"
+      "path": "data/instances/paper_batch_epoch/train/S_D4_rho70_tau125.csv",
+      "sha256": "09593134daed4c38e2d2813cf4bcaa285b4209921263b971423d397be1b938e5"
     },
     {
-      "instance_id": "train_S_D4_017f03eb9795",
+      "instance_id": "S_D4_rho80_tau75",
       "split": "train",
       "seed": 25101291,
       "parameters": {
@@ -1714,11 +1714,11 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "path": "data/instances/paper_batch_epoch/train/train_S_D4_017f03eb9795.csv",
-      "sha256": "f2991becd400ac66ecdf793fea68a3c5596494b761a67d063c16e7e5d5ebae26"
+      "path": "data/instances/paper_batch_epoch/train/S_D4_rho80_tau75.csv",
+      "sha256": "c7859b3b596622320d082ef15c24fecf6fa4a818724055f5d0456fa86fa69b5b"
     },
     {
-      "instance_id": "train_S_D4_f803fd20b326",
+      "instance_id": "S_D4_rho80_tau125",
       "split": "train",
       "seed": 4161010976,
       "parameters": {
@@ -1738,11 +1738,11 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "path": "data/instances/paper_batch_epoch/train/train_S_D4_f803fd20b326.csv",
-      "sha256": "6568bf3e29414b3e870fe0be9c68401bedb358041a526658e63c1efee214205a"
+      "path": "data/instances/paper_batch_epoch/train/S_D4_rho80_tau125.csv",
+      "sha256": "be2e825db50b35f467ecd4bc301850ac50d2d08b0da2afe33b32359b735a4180"
     },
     {
-      "instance_id": "train_S_D4_97f33aa211e9",
+      "instance_id": "S_D4_rho90_tau75",
       "split": "train",
       "seed": 2549299874,
       "parameters": {
@@ -1762,11 +1762,11 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "path": "data/instances/paper_batch_epoch/train/train_S_D4_97f33aa211e9.csv",
-      "sha256": "fd9d5dc451b929402eaa6ff38ca0af299110dd6eeee7c67a56877e94cfde454b"
+      "path": "data/instances/paper_batch_epoch/train/S_D4_rho90_tau75.csv",
+      "sha256": "396adf0f9dfa5b3fbcaf466d2ff359edb7d3b4554d8e6b069aec5a1dd8a6445e"
     },
     {
-      "instance_id": "train_S_D4_a39cd4040322",
+      "instance_id": "S_D4_rho90_tau125",
       "split": "train",
       "seed": 2744964100,
       "parameters": {
@@ -1786,11 +1786,11 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "path": "data/instances/paper_batch_epoch/train/train_S_D4_a39cd4040322.csv",
-      "sha256": "4be954b51789e14af37f7fab1b5a2b3f9e274f9d7bb319475ac2c580a625578f"
+      "path": "data/instances/paper_batch_epoch/train/S_D4_rho90_tau125.csv",
+      "sha256": "f5c3b027d595671bcd63ab12a2174efe5cfafd209d07c09d35568248f45c6c80"
     },
     {
-      "instance_id": "train_M_D1_e1f47b07d807",
+      "instance_id": "M_D1_rho70_tau75",
       "split": "train",
       "seed": 3790895879,
       "parameters": {
@@ -1810,11 +1810,11 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "path": "data/instances/paper_batch_epoch/train/train_M_D1_e1f47b07d807.csv",
-      "sha256": "da3db7e83c107e0ff73e29c2d0d8707d02579a7f95ff7e1af1ab5ab0786206ea"
+      "path": "data/instances/paper_batch_epoch/train/M_D1_rho70_tau75.csv",
+      "sha256": "58a7c9966d8e0da37e0a89eb856ff32c48a271f8e7f1517e75fca6820c0f877f"
     },
     {
-      "instance_id": "train_M_D1_e00dc8771a14",
+      "instance_id": "M_D1_rho70_tau125",
       "split": "train",
       "seed": 3758999671,
       "parameters": {
@@ -1834,11 +1834,11 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "path": "data/instances/paper_batch_epoch/train/train_M_D1_e00dc8771a14.csv",
-      "sha256": "684fb594a68a8d1f5aa253cb66d57f002631d1136ca2c6108a630d74331047b3"
+      "path": "data/instances/paper_batch_epoch/train/M_D1_rho70_tau125.csv",
+      "sha256": "ada9fcd307fad36d100f7d154353d789b7e4b066c91cab47eb9ee6fa56ba7c4f"
     },
     {
-      "instance_id": "train_M_D1_023f3671fe53",
+      "instance_id": "M_D1_rho80_tau75",
       "split": "train",
       "seed": 37697137,
       "parameters": {
@@ -1858,11 +1858,11 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "path": "data/instances/paper_batch_epoch/train/train_M_D1_023f3671fe53.csv",
-      "sha256": "75947c0284f8f6d943935983f7b6a90a745dea9c1edc591c15dd522738f24c3b"
+      "path": "data/instances/paper_batch_epoch/train/M_D1_rho80_tau75.csv",
+      "sha256": "e007e6c2650d48037e9b2aba2dd2633c652f38839fe474866def2d2203060ed0"
     },
     {
-      "instance_id": "train_M_D1_f7f44a8a437c",
+      "instance_id": "M_D1_rho80_tau125",
       "split": "train",
       "seed": 4159982218,
       "parameters": {
@@ -1882,11 +1882,11 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "path": "data/instances/paper_batch_epoch/train/train_M_D1_f7f44a8a437c.csv",
-      "sha256": "a1c22af832a24bd07bd64ea602ec7b93d5ada7e5403284448b8d8c8f5d4fa392"
+      "path": "data/instances/paper_batch_epoch/train/M_D1_rho80_tau125.csv",
+      "sha256": "f49e385e9db4be99e9037d2a2646b547a226c4912fd3c2d2e7bcc073a3fd0237"
     },
     {
-      "instance_id": "train_M_D1_0b986858ba07",
+      "instance_id": "M_D1_rho90_tau75",
       "split": "train",
       "seed": 194537560,
       "parameters": {
@@ -1906,11 +1906,11 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "path": "data/instances/paper_batch_epoch/train/train_M_D1_0b986858ba07.csv",
-      "sha256": "6157d5ad3661ed7a05da2e63e2cfcbb79537aabc6fd7671a995424a304108310"
+      "path": "data/instances/paper_batch_epoch/train/M_D1_rho90_tau75.csv",
+      "sha256": "5780ffde9176fb50581ae728d57635c75fbd63470dc83d14d900152fd498c03c"
     },
     {
-      "instance_id": "train_M_D1_7fe5902a2a58",
+      "instance_id": "M_D1_rho90_tau125",
       "split": "train",
       "seed": 2145751082,
       "parameters": {
@@ -1930,11 +1930,11 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "path": "data/instances/paper_batch_epoch/train/train_M_D1_7fe5902a2a58.csv",
-      "sha256": "e2f0c4c9fb9c2f04c0d1414391fd0f361622e915e41b6ecbe287072d244e6d47"
+      "path": "data/instances/paper_batch_epoch/train/M_D1_rho90_tau125.csv",
+      "sha256": "886b4b0e72591a673035ed342c9f7700939568badd9da8942a2ce23376da7661"
     },
     {
-      "instance_id": "train_M_D3_7bf7cb8a00d6",
+      "instance_id": "M_D3_rho70_tau75",
       "split": "train",
       "seed": 2079837066,
       "parameters": {
@@ -1954,11 +1954,11 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "path": "data/instances/paper_batch_epoch/train/train_M_D3_7bf7cb8a00d6.csv",
-      "sha256": "bd835f842ee0123a72c4b9dc61089765e16ccae8dd7ffd05ec3c52b7ea7213fe"
+      "path": "data/instances/paper_batch_epoch/train/M_D3_rho70_tau75.csv",
+      "sha256": "84aa7ac37234acd789d4281169a132f1bb8178eabca370d14a6f9db1fb86985d"
     },
     {
-      "instance_id": "train_M_D3_acb85863b256",
+      "instance_id": "M_D3_rho70_tau125",
       "split": "train",
       "seed": 2897762403,
       "parameters": {
@@ -1978,11 +1978,11 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "path": "data/instances/paper_batch_epoch/train/train_M_D3_acb85863b256.csv",
-      "sha256": "6d3aa519527381163bcce821e10bc2cf80512c7e2cb46b60f5045fde6a63273c"
+      "path": "data/instances/paper_batch_epoch/train/M_D3_rho70_tau125.csv",
+      "sha256": "970c10910cb744a5bf681aa90f8a59a2b8ecd1529e7f3a296e746bd0a2e68d50"
     },
     {
-      "instance_id": "train_M_D3_39d160511fde",
+      "instance_id": "M_D3_rho80_tau75",
       "split": "train",
       "seed": 970022993,
       "parameters": {
@@ -2002,11 +2002,11 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "path": "data/instances/paper_batch_epoch/train/train_M_D3_39d160511fde.csv",
-      "sha256": "9545bb0f227aade65f897a65489cd1a99cfca3f9c40bd9899811286b8f874fcc"
+      "path": "data/instances/paper_batch_epoch/train/M_D3_rho80_tau75.csv",
+      "sha256": "b536fee2aae1049cbd321b941917c6c4cfa1c3a3a965a90d4be7cb564c7ce72a"
     },
     {
-      "instance_id": "train_M_D3_9241b1d760e3",
+      "instance_id": "M_D3_rho80_tau125",
       "split": "train",
       "seed": 2453778903,
       "parameters": {
@@ -2026,11 +2026,11 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "path": "data/instances/paper_batch_epoch/train/train_M_D3_9241b1d760e3.csv",
-      "sha256": "30c3447f906b4e937ad53dbf0649a091d6c7fd973bf9c1a8f899309c8185d8c6"
+      "path": "data/instances/paper_batch_epoch/train/M_D3_rho80_tau125.csv",
+      "sha256": "84cd91b30955899a8624a4d12c83c6177879b2e0a4ffad25bf03eb9e7e388975"
     },
     {
-      "instance_id": "train_M_D3_61039564be18",
+      "instance_id": "M_D3_rho90_tau75",
       "split": "train",
       "seed": 1627624804,
       "parameters": {
@@ -2050,11 +2050,11 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "path": "data/instances/paper_batch_epoch/train/train_M_D3_61039564be18.csv",
-      "sha256": "88acfe11452a4c9a7945a1ae00be4af85ce63683012e23b4c11f6a8ce609a2df"
+      "path": "data/instances/paper_batch_epoch/train/M_D3_rho90_tau75.csv",
+      "sha256": "033404706fce4458a32e41f920b78fbd844e0db902301d14f89804ca7dd3995f"
     },
     {
-      "instance_id": "train_M_D3_ced145fb4f48",
+      "instance_id": "M_D3_rho90_tau125",
       "split": "train",
       "seed": 3469821435,
       "parameters": {
@@ -2074,11 +2074,11 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "path": "data/instances/paper_batch_epoch/train/train_M_D3_ced145fb4f48.csv",
-      "sha256": "66354c8117efff86c018a30aefdc231ff6cab7e0ea8ccb691c06149e11a08b03"
+      "path": "data/instances/paper_batch_epoch/train/M_D3_rho90_tau125.csv",
+      "sha256": "4fbbe94703a69c06b32f743abf70991a69eeb8f4c1ab57e64aaff76602e6357f"
     },
     {
-      "instance_id": "train_M_D4_09d9f9f15c46",
+      "instance_id": "M_D4_rho70_tau75",
       "split": "train",
       "seed": 165280241,
       "parameters": {
@@ -2098,11 +2098,11 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "path": "data/instances/paper_batch_epoch/train/train_M_D4_09d9f9f15c46.csv",
-      "sha256": "112c922a7d60f14ee1afe4e314d1a755001814435877fca8ad91efc4028370d2"
+      "path": "data/instances/paper_batch_epoch/train/M_D4_rho70_tau75.csv",
+      "sha256": "6f350340cfce59d0db72ae72c44a49e7271aa2fd0034c3a2e39c19f4fbcd8695"
     },
     {
-      "instance_id": "train_M_D4_5a2e37016f15",
+      "instance_id": "M_D4_rho70_tau125",
       "split": "train",
       "seed": 1512978177,
       "parameters": {
@@ -2122,11 +2122,11 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "path": "data/instances/paper_batch_epoch/train/train_M_D4_5a2e37016f15.csv",
-      "sha256": "5cc002efaa96960c72485df45a229c23a7c5446b955e4acf0a80fcc0efbe0d26"
+      "path": "data/instances/paper_batch_epoch/train/M_D4_rho70_tau125.csv",
+      "sha256": "9c6a8d91c6848b3a250f7cf4870f782c0eff806f16c22671ce6a2f9f1df6f418"
     },
     {
-      "instance_id": "train_M_D4_de5836bc5242",
+      "instance_id": "M_D4_rho80_tau75",
       "split": "train",
       "seed": 3730323132,
       "parameters": {
@@ -2146,11 +2146,11 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "path": "data/instances/paper_batch_epoch/train/train_M_D4_de5836bc5242.csv",
-      "sha256": "628f06c11e48c4fcd97c413c9e0206f6378595e20ff29c68c226f72fe02a28ec"
+      "path": "data/instances/paper_batch_epoch/train/M_D4_rho80_tau75.csv",
+      "sha256": "a1ecf21efbae690f6ed82ab064d30d52da94df821c3e01d86d0d2c8dd2155eb9"
     },
     {
-      "instance_id": "train_M_D4_3e5498d5f4f4",
+      "instance_id": "M_D4_rho80_tau125",
       "split": "train",
       "seed": 1045731541,
       "parameters": {
@@ -2170,11 +2170,11 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "path": "data/instances/paper_batch_epoch/train/train_M_D4_3e5498d5f4f4.csv",
-      "sha256": "f89809011951ab630430976d05b5fc1faa5da16e760d70b069bef17374bcbe94"
+      "path": "data/instances/paper_batch_epoch/train/M_D4_rho80_tau125.csv",
+      "sha256": "3b0bc4e5a3d8345a59f8c1364f1eedb4086bad7dd3ef1c0d397cd939b679ea59"
     },
     {
-      "instance_id": "train_M_D4_e8759ff04fa1",
+      "instance_id": "M_D4_rho90_tau75",
       "split": "train",
       "seed": 3900022768,
       "parameters": {
@@ -2194,11 +2194,11 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "path": "data/instances/paper_batch_epoch/train/train_M_D4_e8759ff04fa1.csv",
-      "sha256": "1a903fcf564887ec4a4f768a9a1958f67fa3ccd07b63aaac22e579618317edf1"
+      "path": "data/instances/paper_batch_epoch/train/M_D4_rho90_tau75.csv",
+      "sha256": "a0b232b60f2034789f1b2dc5d42800005feacad841c9e1830461a3f086a8be65"
     },
     {
-      "instance_id": "train_M_D4_a90fcfc79683",
+      "instance_id": "M_D4_rho90_tau125",
       "split": "train",
       "seed": 2836385735,
       "parameters": {
@@ -2218,8 +2218,8 @@
         "worker_skill_density": 0.75,
         "robot_capability_density": 0.65
       },
-      "path": "data/instances/paper_batch_epoch/train/train_M_D4_a90fcfc79683.csv",
-      "sha256": "8f1e79fb9a2a3fddad2dc772f9fa052a5a44e2099c43cc8d2f9413049725a41c"
+      "path": "data/instances/paper_batch_epoch/train/M_D4_rho90_tau125.csv",
+      "sha256": "0d73bea610a6b54744eb31d807a4d81595f26245d71ca3c5948c8e81f7cf70ba"
     }
   ],
   "generator_config": {
@@ -3439,5 +3439,6 @@
       "status": "removed",
       "reason": "Retired L training/development file deleted by user-approved repository cleanup; not part of the 92 active instances"
     }
-  ]
+  ],
+  "naming": "<scale>_<scenario>_rho<load x100>_tau<relocation multiplier x100>; tiny_S<stages>_J<orders>_rho<load x100>; 'p' is the decimal point"
 }

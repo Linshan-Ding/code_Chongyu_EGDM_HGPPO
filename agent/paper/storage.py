@@ -61,7 +61,8 @@ def read_csv(path):
     path = Path(path)
     if not path.exists():
         return []
-    with path.open(newline="", encoding="utf-8") as f:
+    # Report tables are written with a BOM for spreadsheet tools; utf-8-sig reads both.
+    with path.open(newline="", encoding="utf-8-sig") as f:
         return list(csv.DictReader(f))
 
 def rng_state():

@@ -53,7 +53,7 @@ def ensure_idle(options):
         command = args[entry_index + 1] if entry_index is not None and entry_index + 1 < len(args) else None
         # A suite option such as `matrix --suite formal` is not a training command.
         if p.pid not in (os.getpid(), os.getppid()) and "python" in (p.info["name"] or "").lower() and command in (
-            "_replay", "_replay-file", "_execute", "pilot-single", "pilot-joint", "formal", "resume", "evaluate-final", "pilot", "supervisor", "smoke"
+            "_replay", "_replay-file", "_execute", "pilot-single", "pilot-joint", "formal", "resume", "evaluate-final", "pilot", "supervisor", "smoke", "single"
         ):
             raise RuntimeError(f"Existing experiment process: {p.info}")
 

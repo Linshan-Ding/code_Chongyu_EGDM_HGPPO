@@ -93,7 +93,7 @@ class PaperTests(unittest.TestCase):
                     cmdline=['python.exe', str(ENTRY), command, '--suite', 'formal']))
                 with patch('agent.paper.runtime.psutil.process_iter', return_value=[process]):
                     ensure_idle(options)
-            for command in ('pilot-joint', 'formal', 'resume', 'evaluate-final', '_execute', '_replay-file', 'smoke'):
+            for command in ('pilot-joint', 'formal', 'resume', 'evaluate-final', '_execute', '_replay-file', 'smoke', 'single'):
                 process = SimpleNamespace(pid=999999999, info=dict(pid=999999999, name='python.exe',
                     cmdline=['python.exe', str(ENTRY), command, '--suite', 'pilot-joint']))
                 with patch('agent.paper.runtime.psutil.process_iter', return_value=[process]):
