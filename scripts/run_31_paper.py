@@ -30,7 +30,7 @@ if _configured_device(sys.argv) != "cuda":
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command")
-    commands = ("prepare", "matrix", "smoke", "pilot-single", "pilot-joint", "formal", "evaluate-final", "collect", "authorize-formal", "resume", "status", "monitor", "report", "_replay", "_replay-file", "_server", "_execute")
+    commands = ("prepare", "matrix", "smoke", "pilot-single", "pilot-joint", "formal", "evaluate-final", "collect", "authorize-formal", "resume", "status", "monitor", "report", "single", "_replay", "_replay-file", "_server", "_execute")
     for name in commands:
         p = sub.add_parser(name)
         p.add_argument("--config", default=str(ROOT / "configs/paper.yaml"))
@@ -65,6 +65,12 @@ def main():
             p.add_argument("--offline", action="store_true")
         if name == "smoke":
             p.add_argument("--skip-display", action="store_true", help="Explicitly leave live display acceptance unverified")
+        if name == "single":
+            p.add_argument("--instance", required=True, help="Registered case id, e.g. S_D3_rho72p5_tau100")
+            p.add_argument("--updates", type=int, default=100)
+            p.add_argument("--episodes", type=int, default=32, help="Complete episodes of the case per update")
+            p.add_argument("--validation-every", type=int, default=5)
+            p.add_argument("--resume", action="store_true")
     args = parser.parse_args()
     if args.command is None:
         parser.print_help()
@@ -76,6 +82,13 @@ def main():
     from agent.paper.matrix import matrix
     from agent.paper.storage import read_json, write_json
     overrides = {k: getattr(args, k) for k in ("result_root", "run_id", "workers") if getattr(args, k) is not None}
+    if args.command == "single":
+        # One case per update; the diagnostic suite has its own run namespace.
+        overrides.update(instances_per_update=1, episodes_per_instance=args.episodes, environments=args.episodes,
+                         pilot_updates=args.updates, validation_every_updates=args.validation_every,
+                         run_id=overrides.get("run_id", "single01"))
+        workers = overrides.get("workers", settings(args.config)["workers"])
+        overrides["workers"] = max(1, min(int(workers), int(args.episodes)))
     options = settings(args.config, **overrides)
     torch.set_num_threads(options["update_threads"])
     if args.command == "prepare":
@@ -132,6 +145,12 @@ def main():
             result = runtime.run_suite(options, suite, phase=phase, resume=resume, reviewed=args.human_reviewed_pilot,
                                        approval_file=args.approval_file, methods=args.methods, seeds=args.seeds, job_ids=args.jobs)
             print(json.dumps(dict(complete=result["complete"], admission=result["admission"]), indent=2))
+    elif args.command == "single":
+        from agent.paper.single import run_single
+        summary = run_single(options, instance_id=args.instance, methods=args.methods or ["full"], seeds=args.seeds or [0], resume=args.resume)
+        print(json.dumps(dict(case=summary["case"]["instance_id"], reference_twt=summary["reference_twt"], reports=summary["reports"],
+                              learners=[{k: r[k] for k in ("method", "seed", "kind", "epoch", "twt", "rel_twt")} for r in summary["learners"]],
+                              convergence=summary["convergence"]), indent=2))
     elif args.command == "_replay":
         plan = matrix(options, args.suite)
         job = next(j for j in plan["jobs"] if j["id"] == args.job)

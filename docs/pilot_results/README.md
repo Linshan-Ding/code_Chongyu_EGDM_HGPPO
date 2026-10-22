@@ -2,6 +2,8 @@
 
 These numbers were produced under the previous protocol `paper-sm100-1` (one case per epoch, eight episodes, per-event GAE, entropy bonus, no validation). They are kept as the diagnostic basis for the `paper-sm100-2` refactor described in `docs/refactor-sm100-2.md`; they are not comparable with runs of the current protocol.
 
+The tables still use the pre-rename case ids (for example `validation_S_D3_5fa810942029`). The registry has since switched to parameter-derived names (`S_D3_rho72p5_tau100`); `case_id_mapping.csv` in this directory lists every old id next to its new id, seed and file hash. The case contents are unchanged apart from the id field.
+
 This directory contains the compact, reviewable output of the EGDM-HGPPO pilot experiment.
 
 ## Contents

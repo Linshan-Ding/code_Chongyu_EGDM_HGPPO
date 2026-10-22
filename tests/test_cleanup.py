@@ -32,9 +32,20 @@ class CleanupTests(unittest.TestCase):
         self.assertTrue(all(not (ROOT / r['path']).exists() for r in manifest['removed_instances']))
         root = ROOT / 'data/instances/paper_batch_epoch'
         self.assertEqual({p.resolve() for p in root.rglob('*.csv')}, {(ROOT / r['path']).resolve() for r in records})
+        from agent.paper.data import case_id
         for row in records:
             self.assertEqual(digest(ROOT / row['path']), row['sha256'])
             self.assertEqual(Path(row['path']).parent.name, row.get('storage_split', row['split']))
+            self.assertEqual(row['instance_id'], case_id(row['parameters'], row['split']))
+        # A registry whose ids are not derived from the design parameters is refused.
+        import json
+        with tempfile.TemporaryDirectory(dir=ROOT / 'result') as tmp:
+            bad = json.loads((ROOT / self.options['data_manifest']).read_text('utf-8'))
+            bad['instances'][0]['instance_id'] = 'main_S_D1_ff418b2c8d54'
+            bad['instances'][0]['path'] = str(Path(bad['instances'][0]['path']).with_name('main_S_D1_ff418b2c8d54.csv'))
+            (Path(tmp) / 'manifest.json').write_text(json.dumps(bad), 'utf-8')
+            with self.assertRaisesRegex(ValueError, 'derived from the design parameters'):
+                registered_manifest(dict(self.options, data_manifest=str(Path(tmp).relative_to(ROOT) / 'manifest.json')))
 
     def test_missing_file_exact_recovery_and_corruption_rejection(self):
         original = rows(self.options, 'tiny')[0]
